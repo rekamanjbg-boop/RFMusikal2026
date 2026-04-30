@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dasbor Produksi: Mencari Taman</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+.chart-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 300px;
+    max-height: 400px;
+}
+@media (min-width: 768px) {
+    .chart-container {
+        height: 350px;
+    }
+}
+body {
+    background-color: #fafaf9;
+    color: #292524;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+.tab-active {
+    background-color: #fcd34d;
+    font-weight: bold;
+    border-bottom: 4px solid #d97706;
+}
+.tab-inactive {
+    background-color: #f5f5f4;
+    color: #57534e;
+}
+.timeline-btn-active {
+    background-color: #d97706;
+    color: white;
+    transform: scale(1.05);
+}
+.timeline-btn-inactive {
+    background-color: #e7e5e4;
+    color: #44403c;
+}
+nav div::-webkit-scrollbar {
+    height: 6px;
+}
+nav div::-webkit-scrollbar-thumb {
+    background-color: #d6d3d1;
+    border-radius: 10px;
+}
+</style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+<!-- Chosen Palette: Warm Neutrals (Stone/Amber) - #fafaf9 (bg), #fcd34d (accent), #d97706 (highlight), #292524 (text) -->
+<!-- Application Structure Plan: Single Page Application utuh. Tab Koreografi diperluas secara masif untuk mencakup Babak 1-5 dengan instruksi mendetail bagi 300 anak ensemble. -->
+<!-- Visualization & Content Choices: CSS Grid Tailwind, Chart.js Canvas, Vanilla JS. Setiap babak di Tab Koreografi diberi warna berbeda (Pink, Sky, Teal, Orange, Purple) untuk memudahkan Koreografer membaca instruksi yang padat. -->
+<!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+<header class="bg-stone-900 text-stone-50 p-6 shadow-md">
+    <div class="container mx-auto max-w-6xl flex justify-between items-center">
+        <div>
+            <h1 class="text-3xl font-bold tracking-tight">🎭 Dasbor Produksi: MENCARI TAMAN</h1>
+            <p class="text-stone-400 mt-2 text-sm md:text-base">SD Islam Roushon Fikr 2026 | Adaptasi Noorca M. Massardi</p>
+        </div>
+        <div class="hidden md:block bg-stone-800 text-xs px-3 py-1 rounded text-emerald-400 border border-emerald-800">
+            🟢 Vercel Ready
+        </div>
+    </div>
+</header>
+
+<nav class="bg-stone-200 shadow-inner sticky top-0 z-10">
+    <div class="container mx-auto max-w-6xl flex overflow-x-auto pb-1 md:pb-0">
+        <button id="nav-ringkasan" class="tab-active px-6 py-4 text-sm md:text-base whitespace-nowrap transition-colors" onclick="switchTab('ringkasan')">📖 Ringkasan</button>
+        <button id="nav-kostum" class="tab-inactive px-6 py-4 text-sm md:text-base whitespace-nowrap transition-colors" onclick="switchTab('kostum')">👕 Kostum & Properti</button>
+        <button id="nav-koreografi" class="tab-inactive px-6 py-4 text-sm md:text-base whitespace-nowrap transition-colors" onclick="switchTab('koreografi')">🎵 Koreografi & Musik</button>
+        <button id="nav-teknis" class="tab-inactive px-6 py-4 text-sm md:text-base whitespace-nowrap transition-colors" onclick="switchTab('teknis')">⚡ Cue Sheet</button>
+        <button id="nav-backstage" class="tab-inactive px-6 py-4 text-sm md:text-base whitespace-nowrap transition-colors" onclick="switchTab('backstage')">🗺️ Backstage</button>
+        <button id="nav-risiko" class="tab-inactive px-6 py-4 text-sm md:text-base whitespace-nowrap transition-colors" onclick="switchTab('risiko')">⚠️ Risiko</button>
+        <button id="nav-analisis" class="tab-inactive px-6 py-4 text-sm md:text-base whitespace-nowrap transition-colors" onclick="switchTab('analisis')">📊 Analisis</button>
+    </div>
+</nav>
+
+<main class="flex-grow container mx-auto max-w-6xl p-6">
+
+    <!-- TAB 1: RINGKASAN -->
+    <section id="sec-ringkasan" class="block animate-fade-in">
+        <div class="bg-white p-8 rounded-xl shadow-sm border border-stone-200">
+            <h2 class="text-2xl font-bold mb-4 text-amber-600">Pengantar Pementasan</h2>
+            <p class="mb-6 leading-relaxed text-stone-700">
+                Bagian ini menyajikan gambaran umum dari lakon teater musikal "Mencari Taman". Tujuannya adalah memberikan pemahaman mendasar kepada seluruh elemen produksi mengenai pesan inti, konflik utama, dan karakter yang terlibat. Pementasan ini bukan sekadar hiburan, melainkan kritik sosial mengenai polusi dan hilangnya ruang bermain bagi anak-anak.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+                <div class="bg-stone-50 p-6 rounded-lg border-l-4 border-amber-500">
+                    <h3 class="text-xl font-semibold mb-3">Sinopsis Inti</h3>
+                    <p class="text-stone-600 text-sm md:text-base leading-relaxed">
+                        Di sebuah kota maju yang penuh polusi dan bising, seorang gadis kecil bernama Kasih tidak bisa tidur. Bersama teman-teman imajinatifnya (Udin, Siti, Yuni), ia berkhayal tentang taman. Di sisi lain kota, anak-anak gang (Bagas, Dino, Bobby) kehilangan tempat bermain. Sementara itu, elemen alam terakhir (Matahari, Bulan, Lily, Tulip, Kupu-kupu) terancam digusur oleh Buldoser. Mereka bersatu menolak penggusuran.
+                    </p>
+                </div>
+                <div class="bg-stone-50 p-6 rounded-lg border-l-4 border-stone-500">
+                    <h3 class="text-xl font-semibold mb-3">Karakter Utama</h3>
+                    <ul class="list-disc list-inside text-stone-600 space-y-2 text-sm md:text-base">
+                        <li><strong>Kasih:</strong> Gadis kecil dengan paru-paru sensitif.</li>
+                        <li><span class="bg-purple-100 px-1 rounded text-purple-800 font-semibold border border-purple-200">Grup Kamar:</span> Udin (datar/robotik), Siti (panik), Yuni (profesor).</li>
+                        <li><strong>Grup Gang:</strong> Bagas (sinis), Dino (dramatis), Bobby (logis).</li>
+                        <li><strong>Elemen Alam:</strong> Matahari, Bulan, Lily, Tulip, Kupu-Kupu.</li>
+                        <li><strong>Antagonis:</strong> Pekerja Proyek & Buldoser Kardus Raksasa.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TAB 2: KOSTUM & PROPERTI LENGKAP -->
+    <section id="sec-kostum" class="hidden animate-fade-in">
+        <div class="bg-white p-8 rounded-xl shadow-sm border border-stone-200">
+            <h2 class="text-2xl font-bold mb-2 text-emerald-600">Kebutuhan Kostum & Properti</h2>
+            <p class="mb-8 text-stone-600 leading-relaxed">
+                Daftar inventaris untuk departemen Wardrobe dan Property. Pemisahan dibuat jelas antara 12 karakter utama dan 12 grup ansambel pendukung (300 anak).
+            </p>
+
+            <div class="mb-10">
+                <h3 class="text-xl font-bold text-stone-800 border-b-2 border-stone-200 pb-2 mb-4">A. Kostum Karakter Utama</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="bg-stone-50 p-4 rounded border border-stone-200">
+                        <strong class="text-emerald-700 block text-lg mb-1">Kasih</strong>
+                        <p class="text-sm text-stone-600"><strong>Kostum:</strong> Piyama kusam (Babak 1-4). Baju cerah + topi (Babak 5).</p>
+                        <p class="text-sm text-stone-600"><strong>Properti:</strong> Boneka peluk, Daun Lily patah.</p>
+                    </div>
+                    <div class="bg-stone-50 p-4 rounded border border-stone-200">
+                        <strong class="text-emerald-700 block text-lg mb-1">Grup Kamar</strong>
+                        <p class="text-sm text-stone-600"><strong>Kostum:</strong> Pakaian rumahan. Yuni pakai kacamata kebesaran.</p>
+                        <p class="text-sm text-stone-600"><strong>Properti:</strong> Krupuk kulit utuh & mlempem, Antena TV rusak.</p>
+                    </div>
+                    <div class="bg-stone-50 p-4 rounded border border-stone-200">
+                        <strong class="text-emerald-700 block text-lg mb-1">Grup Gang</strong>
+                        <p class="text-sm text-stone-600"><strong>Kostum:</strong> Kaos dan celana pendek dekil.</p>
+                        <p class="text-sm text-stone-600"><strong>Properti:</strong> Batu kerikil kecil.</p>
+                    </div>
+                    <div class="bg-stone-50 p-4 rounded border border-stone-200">
+                        <strong class="text-emerald-700 block text-lg mb-1">Matahari & Bulan</strong>
+                        <p class="text-sm text-stone-600"><strong>Kostum:</strong> Baju oranye kotor, kacamata hitam. Baju santai untuk Bulan.</p>
+                        <p class="text-sm text-stone-600"><strong>Properti:</strong> Handuk dekil, Bantal leher, Gelas Kopi.</p>
+                    </div>
+                    <div class="bg-stone-50 p-4 rounded border border-stone-200">
+                        <strong class="text-emerald-700 block text-lg mb-1">Bunga & Kupu-Kupu</strong>
+                        <p class="text-sm text-stone-600"><strong>Kostum:</strong> Gaun kusam (Lily/Tulip). Sayap lelah (Kupu-kupu).</p>
+                        <p class="text-sm text-stone-600"><strong>Properti:</strong> Tisu basah, Masker medis, Tas selempang kecil.</p>
+                    </div>
+                    <div class="bg-stone-50 p-4 rounded border border-stone-200">
+                        <strong class="text-emerald-700 block text-lg mb-1">Pekerja Proyek</strong>
+                        <p class="text-sm text-stone-600"><strong>Kostum:</strong> Wearpack kotor, Helm proyek.</p>
+                        <p class="text-sm text-stone-600"><strong>Properti:</strong> Buldoser Kardus Raksasa, Balok beton (kardus).</p>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-bold text-stone-800 border-b-2 border-stone-200 pb-2 mb-4">B. Kebutuhan 12 Grup Pendukung (300 Anak / @25 Anak)</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                    <div class="bg-indigo-50 border border-indigo-200 p-3 rounded shadow-sm">
+                        <div class="font-bold text-indigo-800 border-b border-indigo-200 pb-1 mb-2">1: Anak Kamar</div>
+                        <div class="text-xs text-stone-600"><strong>Kostum:</strong> Piyama biasa.</div>
+                        <div class="text-xs text-stone-600 mt-1"><strong>Properti:</strong> (Tangan kosong).</div>
+                    </div>
+                    <div class="bg-indigo-50 border border-indigo-200 p-3 rounded shadow-sm">
+                        <div class="font-bold text-indigo-800 border-b border-indigo-200 pb-1 mb-2">2: Asap & Debu</div>
+                        <div class="text-xs text-stone-600"><strong>Kostum:</strong> Baju abu-abu/hitam berkibar.</div>
+                        <div class="text-xs text-stone-600 mt-1"><strong>Properti:</strong> -</div>
+                    </div>
+                    <div class="bg-indigo-50 border border-indigo-200 p-3 rounded shadow-sm">
+                        <div class="font-bold text-indigo-800 border-b border-indigo-200 pb-1 mb-2">3: Rumput Menari</div>
+                        <div class="text-xs text-stone-600"><strong>Kostum:</strong> Baju bernuansa hijau.</div>
+                        <div class="text-xs text-stone-600 mt-1"><strong>Properti:</strong> -</div>
+                    </div>
+                    <div class="bg-indigo-50 border border-indigo-200 p-3 rounded shadow-sm">
+                        <div class="font-bold text-indigo-800 border-b border-indigo-200 pb-1 mb-2">4: Lebah Pekerja</div>
+                        <div class="text-xs text-stone-600"><strong>Kostum:</strong> Kostum/kaos kuning-hitam.</div>
+                        <div class="text-xs text-stone-600 mt-1"><strong>Properti:</strong> Bando antena lebah.</div>
+                    </div>
+                    <div class="bg-indigo-50 border border-indigo-200 p-3 rounded shadow-sm">
+                        <div class="font-bold text-indigo-800 border-b border-indigo-200 pb-1 mb-2">5: Bunga Mekar</div>
+                        <div class="text-xs text-stone-600"><strong>Kostum:</strong> Baju warna-warni cerah.</div>
+                        <div class="text-xs text-stone-600 mt-1"><strong>Properti:</strong> Bunga besar dari karton/busa.</div>
+                    </div>
+                    <div class="bg-indigo-50 border border-indigo-200 p-3 rounded shadow-sm">
+                        <div class="font-bold text-indigo-800 border-b border-indigo-200 pb-1 mb-2">6: Anak Gang</div>
+                        <div class="text-xs text-stone-600"><strong>Kostum:</strong> Baju main kasual/dekil.</div>
+                        <div class="text-xs text-stone-600 mt-1"><strong>Properti:</strong> -</div>
+                    </div>
+                    <div class="bg-indigo-50 border border-indigo-200 p-3 rounded shadow-sm">
+                        <div class="font-bold text-indigo-800 border-b border-indigo-200 pb-1 mb-2">7: Kemacetan</div>
+                        <div class="text-xs text-stone-600"><strong>Kostum:</strong> Pakaian bebas.</div>
+                        <div class="text-xs text-stone-600 mt-1"><strong>Properti:</strong> Potongan kardus bentuk setir mobil.</div>
+                    </div>
+                    <div class="bg-indigo-50 border border-indigo-200 p-3 rounded shadow-sm">
+                        <div class="font-bold text-indigo-800 border-b border-indigo-200 pb-1 mb-2">8: Pasukan Langit</div>
+                        <div class="text-xs text-stone-600"><strong>Kostum:</strong> Baju bernuansa biru/gelap.</div>
+                        <div class="text-xs text-stone-600 mt-1"><strong>Properti:</strong> Potongan awan mendung / bintang.</div>
+                    </div>
+                    <div class="bg-indigo-50 border border-indigo-200 p-3 rounded shadow-sm">
+                        <div class="font-bold text-indigo-800 border-b border-indigo-200 pb-1 mb-2">9: Pekerja Proyek</div>
+                        <div class="text-xs text-stone-600"><strong>Kostum:</strong> Kaos + Rompi Proyek.</div>
+                        <div class="text-xs text-stone-600 mt-1"><strong>Properti:</strong> Balok kardus abu-abu.</div>
+                    </div>
+                    <div class="bg-indigo-50 border border-indigo-200 p-3 rounded shadow-sm">
+                        <div class="font-bold text-indigo-800 border-b border-indigo-200 pb-1 mb-2">10: Pagar Betis</div>
+                        <div class="text-xs text-stone-600"><strong>Kostum:</strong> Baju bermain bebas.</div>
+                        <div class="text-xs text-stone-600 mt-1"><strong>Properti:</strong> - (Hanya pegangan tangan).</div>
+                    </div>
+                    <div class="bg-indigo-50 border border-indigo-200 p-3 rounded shadow-sm">
+                        <div class="font-bold text-indigo-800 border-b border-indigo-200 pb-1 mb-2">11: Pembawa Bibit</div>
+                        <div class="text-xs text-stone-600"><strong>Kostum:</strong> Baju warna-warni cerah.</div>
+                        <div class="text-xs text-stone-600 mt-1"><strong>Properti:</strong> Pot kecil / alat siram.</div>
+                    </div>
+                    <div class="bg-indigo-50 border border-indigo-200 p-3 rounded shadow-sm">
+                        <div class="font-bold text-indigo-800 border-b border-indigo-200 pb-1 mb-2">12: Pasukan Pelangi</div>
+                        <div class="text-xs text-stone-600"><strong>Kostum:</strong> Baju warna-warni cerah.</div>
+                        <div class="text-xs text-stone-600 mt-1"><strong>Properti:</strong> Pita senam / selendang pelangi.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TAB 3: MUSIK & KOREOGRAFI MENDETAIL PER BABAK -->
+    <section id="sec-koreografi" class="hidden animate-fade-in">
+        <div class="bg-white p-8 rounded-xl shadow-sm border border-stone-200">
+            <h2 class="text-2xl font-bold mb-2 text-pink-600">🎵 Panduan Musik & Koreografi Ensemble</h2>
+            <p class="mb-8 text-stone-600 leading-relaxed">
+                Panduan ini disusun secara spesifik untuk Koreografer dan Music Director. Terdapat instruksi detail mengenai musik pengiring dan aksi koreografi untuk <strong>300 anak ensemble pendukung</strong> di setiap babaknya.
+            </p>
+
+            <div class="space-y-6">
+                <!-- BABAK 1 -->
+                <div class="bg-pink-50 rounded-lg p-6 border border-pink-200 flex flex-col md:flex-row gap-6 items-start">
+                    <div class="bg-pink-100 p-4 rounded text-center min-w-[120px] shadow-sm">
+                        <span class="text-3xl block mb-1">🕵️</span>
+                        <span class="font-bold text-pink-800 text-sm">BABAK 1</span>
+                        <span class="block text-xs text-pink-600">Misteri Kamar</span>
+                    </div>
+                    <div class="flex-grow">
+                        <h3 class="text-xl font-bold text-stone-800 mb-2">Misteri & Imajinasi (2 Sesi Koreo)</h3>
+                        
+                        <div class="mb-4">
+                            <h4 class="font-semibold text-pink-700 text-sm mb-1">1. Prolog (Atmosfer Bising)</h4>
+                            <p class="text-sm text-stone-700 mb-1"><strong>Musik:</strong> Scoring Suspense/Misteri Komedi dipadukan SFX bising kota & batuk.</p>
+                            <div class="bg-white p-3 rounded text-sm text-stone-700 border-l-4 border-pink-400">
+                                <strong>Koreo Ensemble:</strong> <br>
+                                • <strong>Grup 1 (Anak Kamar):</strong> Muncul di sisi kiri dan kanan panggung luar batas kamar. Koreo pantomim repetitif: terbatuk parah, mengigau, dan menutup telinga dengan bantal imajiner.<br>
+                                • <strong>Grup 2 (Asap):</strong> Masuk dari bawah (merayap/rolling) di bibir panggung depan dengan jubah hitam, menari kontemporer patah-patah layaknya polusi yang mencekik udara.
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="font-semibold text-pink-700 text-sm mb-1">2. Tarian Taman Khayalan</h4>
+                            <p class="text-sm text-stone-700 mb-1"><strong>Musik:</strong> Lagu pop anak bertempo riang gembira (Durasi 2-3 menit).</p>
+                            <div class="bg-white p-3 rounded text-sm text-stone-700 border-l-4 border-pink-400">
+                                <strong>Koreo Ensemble:</strong> <br>
+                                • <strong>Grup 3 (Rumput):</strong> Duduk berlutut di seluruh area panggung, melakukan gerakan ombak (sway) dengan tangan ke kiri dan kanan sesuai ketukan.<br>
+                                • <strong>Grup 4 (Lebah):</strong> Koreo berlari jinjit (tiptoe) berkeliling dengan tangan mengepak cepat, mengitari Grup 5.<br>
+                                • <strong>Grup 5 (Bunga):</strong> Berdiri di tengah, jongkok perlahan lalu mekar (berdiri merentangkan properti bunga) pada reff lagu.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BABAK 2 -->
+                <div class="bg-sky-50 rounded-lg p-6 border border-sky-200 flex flex-col md:flex-row gap-6 items-start">
+                    <div class="bg-sky-100 p-4 rounded text-center min-w-[120px] shadow-sm">
+                        <span class="text-3xl block mb-1">🚲</span>
+                        <span class="font-bold text-sky-800 text-sm">BABAK 2</span>
+                        <span class="block text-xs text-sky-600">Gang Sempit</span>
+                    </div>
+                    <div class="flex-grow">
+                        <h3 class="text-xl font-bold text-stone-800 mb-2">Realita Jalanan & Kemacetan</h3>
+                        <p class="text-sm text-stone-700 mb-1"><strong>Musik:</strong> Perkusi barang bekas (stomp) atau beat hip-hop urban anak dengan volume pelan sebagai <em>background</em> (Underscore).</p>
+                        
+                        <div class="bg-white p-3 rounded text-sm text-stone-700 border-l-4 border-sky-400">
+                            <strong>Koreo Ensemble (Background Action):</strong><br>
+                            Saat Bagas, Dino, dan Bobby berdialog di teras depan, ansambel bermain di area belakang (upstage) tanpa mengeluarkan suara sungguhan (Pantomim):<br>
+                            • <strong>Grup 6 (Anak Gang):</strong> Koreografi melompat tali karet imajiner dan main petak umpet. Gerakan dibuat sedikit <em>slow-motion</em> agar tidak mendistraksi dialog utama. Tiba-tiba diam ketakutan (freeze) seolah dimarahi orang dewasa gaib.<br>
+                            • <strong>Grup 7 (Kemacetan):</strong> Memegang setir kardus, berjalan berbaris tersendat-sendat menyilang dari sayap kiri ke kanan. Kadang membunyikan klakson imajiner dengan wajah kesal.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BABAK 3 -->
+                <div class="bg-teal-50 rounded-lg p-6 border border-teal-200 flex flex-col md:flex-row gap-6 items-start">
+                    <div class="bg-teal-100 p-4 rounded text-center min-w-[120px] shadow-sm">
+                        <span class="text-3xl block mb-1">🌤️</span>
+                        <span class="font-bold text-teal-800 text-sm">BABAK 3</span>
+                        <span class="block text-xs text-teal-600">Rapat Alam</span>
+                    </div>
+                    <div class="flex-grow">
+                        <h3 class="text-xl font-bold text-stone-800 mb-2">Bayangan Ancaman</h3>
+                        <p class="text-sm text-stone-700 mb-1"><strong>Musik:</strong> Scoring ambient sore yang gelisah. <em>String section</em> yang semakin cepat nadanya saat Buldoser mulai dibahas.</p>
+                        
+                        <div class="bg-white p-3 rounded text-sm text-stone-700 border-l-4 border-teal-400">
+                            <strong>Koreo Ensemble (Tableau/Statis):</strong><br>
+                            • <strong>Grup 8 (Pasukan Langit):</strong> Saat dialog Matahari dan Bulan berlangsung, Grup 8 masuk dengan sangat pelan dari sayap kanan. Separuh membawa awan mendung, separuh bintang redup.<br>
+                            Mereka membuat formasi melingkar besar mengelilingi karakter alam, melakukan tarian kontemporer statis (pose yang berubah setiap 10 detik) melambangkan transisi dari sore ke malam yang berpolusi pekat.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BABAK 4 -->
+                <div class="bg-orange-50 rounded-lg p-6 border border-orange-200 flex flex-col md:flex-row gap-6 items-start">
+                    <div class="bg-orange-100 p-4 rounded text-center min-w-[120px] shadow-sm">
+                        <span class="text-3xl block mb-1">🚧</span>
+                        <span class="font-bold text-orange-800 text-sm">BABAK 4</span>
+                        <span class="block text-xs text-orange-600">Klimaks</span>
+                    </div>
+                    <div class="flex-grow">
+                        <h3 class="text-xl font-bold text-stone-800 mb-2">Konfrontasi (Marching & Chaos)</h3>
+                        <p class="text-sm text-stone-700 mb-1"><strong>Musik:</strong> Lagu "Kami Butuh Taman" bertempo Marching Band / Kepahlawanan (1 menit). Terpotong kasar oleh SFX Mesin Buldoser TEEET TEEET (Distorsi berat).</p>
+                        
+                        <div class="bg-white p-3 rounded text-sm text-stone-700 border-l-4 border-orange-400">
+                            <strong>Koreo Ensemble:</strong><br>
+                            • <strong>Grup 10 (Pagar Betis):</strong> Masuk berlari serempak merespons komando Bobby. Koreografi menghentak kaki kanan (Stomp) ke lantai, lalu saling mengunci lengan (interlock) membentuk pagar melengkung melindungi bunga. Saat Buldoser (Kardus) maju, koreografi berubah menjadi <em>"Fall Choreo"</em> (jatuh terpelanting ke belakang secara dramatis dan sinkron, seolah terkalahkan).<br>
+                            • <strong>Grup 9 (Pekerja Proyek):</strong> Masuk bersama Buldoser. Gerakan mereka kaku, mekanis, dan patah-patah layaknya robot yang tidak punya empati. Meletakkan balok beton dengan hentakan keras (sinkron dengan drum beat).
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BABAK 5 -->
+                <div class="bg-purple-50 rounded-lg p-6 border border-purple-200 flex flex-col md:flex-row gap-6 items-start">
+                    <div class="bg-purple-100 p-4 rounded text-center min-w-[120px] shadow-sm">
+                        <span class="text-3xl block mb-1">🎷</span>
+                        <span class="font-bold text-purple-800 text-sm">BABAK 5</span>
+                        <span class="block text-xs text-purple-600">Grand Finale</span>
+                    </div>
+                    <div class="flex-grow">
+                        <h3 class="text-xl font-bold text-stone-800 mb-2">Kemenangan & Harapan</h3>
+                        <p class="text-sm text-stone-700 mb-1"><strong>Musik:</strong> Broadway Jazz Megah (Full Orchestra). Paduan suara lagu "Dunia Ini Bukan Milik Gedung Tinggi Saja".</p>
+                        
+                        <div class="bg-white p-3 rounded text-sm text-stone-700 border-l-4 border-purple-400">
+                            <strong>Koreo Ensemble (Massal 300 Anak):</strong><br>
+                            Ini adalah ledakan visual. Seluruh panggung dan lorong penonton penuh.<br>
+                            • <strong>Grup 11 (Bibit):</strong> Memasuki baris depan, koreografi berlutut serempak, menaruh pot, dan menyiram tanaman dengan alat siram.<br>
+                            • <strong>Grup 12 (Pelangi):</strong> Berlari lari berputar mengelilingi seluruh cast utama, menciptakan pusaran pelangi dengan mengibaskan pita senam ritmik (Ribbon dance) ke udara.<br>
+                            • <strong>Seluruh Grup (1-10):</strong> Berada di lorong penonton (Aisle) dan sisa panggung, melakukan gerakan <em>sway</em> serempak sambil menyanyi lepas. <br>
+                            Ditutup dengan <strong>Grand Bow</strong> (seluruh 312 anak membungkuk hormat bersamaan tepat pada nada terakhir lagu).
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- TAB 4: TEKNIS CUE SHEET -->
+    <section id="sec-teknis" class="hidden animate-fade-in">
+        <div class="bg-white p-8 rounded-xl shadow-sm border border-stone-200">
+            <h2 class="text-2xl font-bold mb-4 text-amber-600">Panduan Teknis (Cue Sheet Interaktif)</h2>
+            <p class="mb-6 leading-relaxed text-stone-700">
+                Instrumen utama bagi Stage Manager dan Kru. Pilih babak pada linimasa di bawah ini untuk melihat detail *Cue Lighting, Sound, Crew Runner*, dan pergerakan *Ensemble*.
+            </p>
+
+            <div class="flex flex-wrap gap-2 justify-center mb-8 bg-stone-100 p-4 rounded-lg" id="timeline-container">
+            </div>
+
+            <div id="cue-detail-card" class="bg-stone-50 border border-stone-200 rounded-lg p-6 shadow-inner">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 border-b border-stone-300 pb-4">
+                    <h3 id="detail-title" class="text-2xl font-bold text-stone-800"></h3>
+                    <span id="detail-time" class="bg-stone-800 text-stone-100 px-3 py-1 rounded-full text-sm font-mono mt-2 md:mt-0"></span>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-4">
+                        <div class="bg-white p-4 rounded shadow-sm border-l-4 border-yellow-400">
+                            <h4 class="font-bold text-stone-700 flex items-center gap-2">💡 Lighting Cue</h4>
+                            <p id="detail-lighting" class="text-sm mt-2 text-stone-600"></p>
+                        </div>
+                        <div class="bg-white p-4 rounded shadow-sm border-l-4 border-blue-400">
+                            <h4 class="font-bold text-stone-700 flex items-center gap-2">🔊 Sound Cue</h4>
+                            <p id="detail-sound" class="text-sm mt-2 text-stone-600"></p>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-white p-4 rounded shadow-sm border-l-4 border-red-400">
+                            <h4 class="font-bold text-stone-700 flex items-center gap-2">🏃 Crew Runner</h4>
+                            <p id="detail-crew" class="text-sm mt-2 text-stone-600"></p>
+                        </div>
+                        <div class="bg-white p-4 rounded shadow-sm border-l-4 border-green-400">
+                            <h4 class="font-bold text-stone-700 flex items-center gap-2">👥 Pendamping Grup</h4>
+                            <p id="detail-grup" class="text-sm mt-2 text-stone-600"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TAB 5: BACKSTAGE UTUH -->
+    <section id="sec-backstage" class="hidden animate-fade-in">
+        <div class="bg-white p-8 rounded-xl shadow-sm border border-stone-200">
+            <h2 class="text-2xl font-bold mb-4 text-indigo-600">Manajemen & Denah Backstage</h2>
+            <p class="mb-6 leading-relaxed text-stone-700">
+                Pemisahan sirkulasi sangat penting untuk mencegah penumpukan (bottleneck). Area belakang dibagi menjadi <strong>Backstage A (Area Tenang untuk 12 Aktor Utama)</strong> dan <strong>Backstage B (Area Transit untuk 300 Ensemble)</strong>.
+            </p>
+
+            <div class="bg-stone-100 p-6 rounded-lg mb-8 border border-stone-300">
+                <h3 class="text-center font-bold text-stone-800 mb-4 tracking-wider">DENAH LALU LINTAS PANGGUNG PEMENTASAN</h3>
+                
+                <div class="grid grid-cols-4 gap-4 text-center text-sm md:text-base">
+                    <!-- Area Transit Belakang -->
+                    <div class="col-span-4 bg-indigo-100 border-2 border-indigo-300 p-4 rounded shadow-sm">
+                        <h4 class="font-bold text-indigo-800">⛺ BACKSTAGE B (HOLDING AREA MASSAL)</h4>
+                        <p class="text-indigo-600 text-xs mt-1">Area Tunggu Luar (300 Anak / 12 Grup) - Dikoordinir oleh Pendamping Grup</p>
+                    </div>
+
+                    <!-- Jalur Masuk Sayap Kiri -->
+                    <div class="col-span-1 bg-emerald-100 border-2 border-emerald-300 p-4 rounded shadow-sm flex flex-col justify-center relative">
+                        <span class="absolute top-2 left-0 right-0 text-xs font-bold text-emerald-600">JALUR MASUK</span>
+                        <h4 class="font-bold text-emerald-800 mt-4">SAYAP KIRI (Stage Left)</h4>
+                        <ul class="text-xs text-emerald-700 mt-2 text-left list-disc list-inside">
+                            <li>Grup 1 (Anak Kamar)</li>
+                            <li>Grup 2 (Asap/Debu)</li>
+                            <li>Grup 6 (Anak Gang)</li>
+                            <li>Grup 9 (Pekerja Proyek)</li>
+                        </ul>
+                    </div>
+
+                    <!-- Area Panggung Utama & Backstage A -->
+                    <div class="col-span-2 space-y-4">
+                        <div class="bg-amber-100 border-2 border-amber-400 p-4 rounded shadow-sm">
+                            <h4 class="font-bold text-amber-800">⭐ BACKSTAGE A (AREA TENANG)</h4>
+                            <p class="text-amber-700 text-xs mt-1">Zona 12 Karakter Utama (Kasih, Matahari, dll)<br>Teknisi Mic & Meja Properti Utama</p>
+                        </div>
+                        <div class="bg-stone-800 text-stone-100 border-4 border-amber-500 p-12 rounded shadow-lg flex items-center justify-center min-h-[150px]">
+                            <h2 class="text-2xl font-bold tracking-widest">PANGGUNG UTAMA</h2>
+                        </div>
+                    </div>
+
+                    <!-- Jalur Masuk Sayap Kanan -->
+                    <div class="col-span-1 bg-emerald-100 border-2 border-emerald-300 p-4 rounded shadow-sm flex flex-col justify-center relative">
+                        <span class="absolute top-2 left-0 right-0 text-xs font-bold text-emerald-600">JALUR MASUK</span>
+                        <h4 class="font-bold text-emerald-800 mt-4">SAYAP KANAN (Stage Right)</h4>
+                        <ul class="text-xs text-emerald-700 mt-2 text-left list-disc list-inside">
+                            <li>Grup 3 (Rumput)</li>
+                            <li>Grup 4 (Lebah)</li>
+                            <li>Grup 5 (Bunga)</li>
+                            <li>Grup 7 (Macet)</li>
+                            <li>Grup 8 (Langit)</li>
+                        </ul>
+                    </div>
+
+                    <!-- Area Penonton / Lorong (Aisle) -->
+                    <div class="col-span-4 bg-rose-100 border-2 border-rose-300 p-6 rounded shadow-sm relative overflow-hidden mt-4">
+                        <h4 class="font-bold text-rose-800">🪑 AREA PENONTON & LORONG (AISLE)</h4>
+                        <p class="text-rose-700 text-xs mt-1">Jalur Masuk Khusus Klimaks & Grand Finale (Menyebar di antara kursi)</p>
+                        <ul class="text-sm text-rose-800 mt-3 font-semibold flex justify-center gap-6">
+                            <li>🏃 Grup 10 (Pagar Betis)</li>
+                            <li>🌱 Grup 11 (Bibit)</li>
+                            <li>🌈 Grup 12 (Pelangi)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detail SOP -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-stone-50 p-5 rounded border border-stone-200">
+                    <h3 class="font-bold text-stone-800 mb-2">SOP Pergerakan Ensemble (300 Anak)</h3>
+                    <ul class="list-decimal list-inside text-sm text-stone-600 space-y-2">
+                        <li>Semua anggota ensemble menunggu di <strong>Backstage B</strong> hingga dijemput.</li>
+                        <li><strong>10 menit sebelum cue:</strong> <em>Crew Runner</em> memberi aba-aba kepada <em>Pendamping Grup</em>.</li>
+                        <li>Grup berjalan berbaris menuju Sayap Kiri/Kanan yang ditentukan.</li>
+                        <li>Setelah adegan selesai, keluar panggung menggunakan sayap yang sama dan langsung kembali ke Holding Area. Dilarang menetap di sayap panggung.</li>
+                    </ul>
+                </div>
+                <div class="bg-stone-50 p-5 rounded border border-stone-200">
+                    <h3 class="font-bold text-stone-800 mb-2">SOP Backstage A (12 Karakter Utama)</h3>
+                    <ul class="list-decimal list-inside text-sm text-stone-600 space-y-2">
+                        <li>Hanya 12 anak, Sutradara, dan 2 Teknisi Mic yang diizinkan berada di area ini.</li>
+                        <li>Gunakan sistem pita fosfor di lantai untuk memandu aktor saat pergantian set gelap (<em>blackout</em>).</li>
+                        <li>Properti krusial (Krupuk Siti, Daun patah Kasih) diletakkan di meja khusus yang dijaga 1 kru tetap agar tidak hilang.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TAB 6: RISIKO UTUH -->
+    <section id="sec-risiko" class="hidden animate-fade-in">
+        <div class="bg-white p-8 rounded-xl shadow-sm border border-stone-200">
+            <h2 class="text-2xl font-bold mb-4 text-red-600">Manajemen Risiko & Skenario Terburuk</h2>
+            <p class="mb-6 leading-relaxed text-stone-700">
+                Berdasarkan analisis karakter spesifik (Grup Kamar) dan skala produksi (300+ anak), berikut adalah potensi kendala teknis dan kemungkinan terburuk di atas panggung, beserta langkah mitigasinya.
+            </p>
+
+            <div class="space-y-6">
+                <!-- Specific Actor Risks -->
+                <div class="bg-red-50 p-6 rounded-lg border-l-4 border-red-500">
+                    <h3 class="text-xl font-semibold mb-3 text-red-800">1. Risiko Karakteristik "Grup Kamar"</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-white p-4 rounded shadow-sm border border-red-100">
+                            <h4 class="font-bold text-stone-800">Udin (Robotik/Datar)</h4>
+                            <p class="text-sm text-stone-600 mt-2"><strong>Kendala:</strong> Aktor anak sulit menahan ekspresi.</p>
+                            <p class="text-sm text-red-600 mt-1"><strong>Skenario Terburuk:</strong> <em>Breaking character</em> (tertawa lepas) di panggung, merusak komedi.</p>
+                            <p class="text-sm text-green-700 mt-1"><strong>Mitigasi:</strong> Latihan fokus dengan distraksi. Kalimat afirmasi sebelum naik panggung.</p>
+                        </div>
+                        <div class="bg-white p-4 rounded shadow-sm border border-red-100">
+                            <h4 class="font-bold text-stone-800">Siti (Panik & Krupuk)</h4>
+                            <p class="text-sm text-stone-600 mt-2"><strong>Kendala:</strong> Rawan tersedak dan remahan kotor.</p>
+                            <p class="text-sm text-red-600 mt-1"><strong>Skenario Terburuk:</strong> Penari terpeleset remahan di adegan lari Pagar Betis, atau tersedak.</p>
+                            <p class="text-sm text-green-700 mt-1"><strong>Mitigasi:</strong> Krupuk tidak rapuh. Kru <em>runner</em> "Sapu Kilat" saat transisi <em>blackout</em>.</p>
+                        </div>
+                        <div class="bg-white p-4 rounded shadow-sm border border-red-100">
+                            <h4 class="font-bold text-stone-800">Yuni (Profesor)</h4>
+                            <p class="text-sm text-stone-600 mt-2"><strong>Kendala:</strong> Properti antena besar menyenggol.</p>
+                            <p class="text-sm text-red-600 mt-1"><strong>Skenario Terburuk:</strong> Antena patah di panggung, kacamata terinjak, aktor panik & <em>blank</em>.</p>
+                            <p class="text-sm text-green-700 mt-1"><strong>Mitigasi:</strong> Antena bahan fleksibel (karet/spons eva). Tali transparan untuk kacamata.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- General Mass Production Risks -->
+                <div class="bg-orange-50 p-6 rounded-lg border-l-4 border-orange-500">
+                    <h3 class="text-xl font-semibold mb-3 text-orange-800">2. Risiko Teknis Skala Masif (300 Anak)</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-white p-4 rounded shadow-sm border border-orange-100">
+                            <h4 class="font-bold text-stone-800">Tata Suara (Audio) & Asap</h4>
+                            <ul class="list-disc list-inside text-sm text-stone-600 mt-2 space-y-1">
+                                <li><strong>Kendala:</strong> 300 anak berkumpul menghasilkan distorsi suara.</li>
+                                <li><strong>Skenario Terburuk:</strong> Suara tangisan/ribut bocor ke mic menutupi dialog. Asap Buldoser membuat Kasih batuk sungguhan.</li>
+                                <li><strong>Mitigasi:</strong> Tim <em>sound</em> disiplin <em>mute</em> mic. Uji coba volume asap secara ketat.</li>
+                            </ul>
+                        </div>
+                        <div class="bg-white p-4 rounded shadow-sm border border-orange-100">
+                            <h4 class="font-bold text-stone-800">Lalu Lintas Panggung (Blocking)</h4>
+                            <ul class="list-disc list-inside text-sm text-stone-600 mt-2 space-y-1">
+                                <li><strong>Kendala:</strong> Evakuasi puluhan anak di kondisi <em>blackout</em>.</li>
+                                <li><strong>Skenario Terburuk:</strong> Tabrakan masal (<em>miss cue</em>) di sayap panggung yang merusak urutan acara.</li>
+                                <li><strong>Mitigasi:</strong> Pasang jalur evakuasi lakban fosfor (<em>glow in the dark</em>) di lantai panggung.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TAB 7: ANALISIS DATA -->
+    <section id="sec-analisis" class="hidden animate-fade-in">
+        <div class="bg-white p-8 rounded-xl shadow-sm border border-stone-200">
+            <h2 class="text-2xl font-bold mb-4 text-amber-600">Analisis Skala Produksi</h2>
+            <p class="mb-8 leading-relaxed text-stone-700">
+                Visualisasi data logistik untuk membantu tim manajemen produksi mengalokasikan sumber daya. Grafik pertama menyoroti rasio aktor untuk persiapan *wardrobe* dan konsumsi, grafik kedua memetakan intensitas tugas kru per babak.
+            </p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div class="bg-stone-50 p-6 rounded-lg border border-stone-200">
+                    <h3 class="text-center font-bold text-stone-700 mb-2">Komposisi Pemeran</h3>
+                    <p class="text-center text-xs text-stone-500 mb-4">Total 312 Aktor di Panggung</p>
+                    <div class="chart-container">
+                        <canvas id="castChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="bg-stone-50 p-6 rounded-lg border border-stone-200">
+                    <h3 class="text-center font-bold text-stone-700 mb-2">Intensitas Beban Teknis Kru</h3>
+                    <p class="text-center text-xs text-stone-500 mb-4">Volume Cues per Babak (Skala 1-10)</p>
+                    <div class="chart-container">
+                        <canvas id="intensityChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="bg-stone-900 text-stone-400 text-center py-6 mt-12">
+    <p class="text-sm">Hak Cipta Produksi Pementasan - Dasbor Internal SD Islam Roushon Fikr 2026</p>
+</footer>
+
+<script>
+// Data Cue Sheet Penuh
+const cueData = [
+    {
+        id: 1,
+        title: "BABAK 1: Kamar Berdebu",
+        time: "00:00 - 08:30",
+        lighting: "- Prolog: Lampu biru redup/kelabu, kelap-kelip lampu jalan.<br>- Dialog: Sorot (Spotlight) ke area ranjang Kasih.<br>- Sequence Tari: Lampu perlahan berubah warna-warni cerah (Hijau, Kuning, Pink).",
+        sound: "- Prolog: SFX bising kota, klakson, deru mesin, batuk berat.<br>- Dialog: Musik latar komedi/detektif.<br>- Sequence Tari: Play Lagu 1 & Lagu 2.",
+        crew: "- Siapkan Ranjang Kasih di tengah panggung.<br>- Siapkan krupuk Siti (pastikan renyah).",
+        grup: "- Grup 1 & 2: Standby di Sayap Kiri panggung, masuk diam-diam saat Prolog.<br>- Grup 3, 4, 5: Standby di Sayap Kanan, masuk berlari saat lagu Sequence dimulai."
+    },
+    {
+        id: 2,
+        title: "BABAK 2: Interaksi Gang Sempit",
+        time: "08:30 - 14:00",
+        lighting: "- Transisi ke Lampu jalanan (Streetlight / Amber/Kuning/Putih terang). Area terbatas di bibir panggung depan (Teras rumah).",
+        sound: "- SFX lalu lintas kejauhan.<br>- Opsional: Suara ibu-ibu memarahi anak (Live / Mic dari Sayap).",
+        crew: "- Blackout transisi: Tarik ranjang Kasih.<br>- Masukkan Pot Lidah Mertua dan properti Knalpot/Motor.",
+        grup: "- Grup 6: Masuk dari Kiri, pantomim main di belakang aktor utama.<br>- Grup 7: Masuk dari Kanan membawa setir kardus, mondar-mandir pelan sebagai background kemacetan."
+    },
+    {
+        id: 3,
+        title: "BABAK 3: Rapat Darurat Sisa Taman",
+        time: "14:00 - 20:00",
+        lighting: "- Lampu panggung Jingga redup (Sore hari pergantian sif).<br>- Saat Buldoser dibahas, beri kilatan lampu strobe pelan penanda bahaya.",
+        sound: "- SFX Klakson makin keras dan mencekam saat Kupu-Kupu mendarat darurat.<br>- SFX HT Mandor proyek (sayup-sayup).",
+        crew: "- Bersihkan properti Babak 2.<br>- Letakkan karpet kecil (petak tanah) di Center Stage.",
+        grup: "- Grup 8: Standby mengelilingi petak taman, masuk perlahan mendampingi Matahari & Bulan. Tahan posisi."
+    },
+    {
+        id: 4,
+        title: "BABAK 4: Runtuhnya Taman (KLIMAKS)",
+        time: "20:00 - 28:00",
+        lighting: "- Subuh (Biru kemerahan).<br>- Saat Buldoser Masuk: Lampu berubah Abu-abu/Kelam, Sorot merah agresif menyala-nyala dari arah sayap (efek bahaya).",
+        sound: "- Musik Marching Heroik (Sequence 'Kami Butuh Taman').<br>- Cut Tiba-tiba: SFX Gemuruh Mesin Buldoser TEEET! TEEET!<br>- V.O Suara Mandor via Toa.",
+        crew: "- CRUCIAL: Siapkan Mesin Asap (Dry Ice/Fog) tembak ke panggung.<br>- Dorong Buldoser Kardus Raksasa.<br>- Siapkan Balok Beton.",
+        grup: "- Grup 9: Masuk mendampingi Buldoser dari Kiri.<br>- Grup 10: Lari masuk dari lorong penonton berpegangan tangan membuat rantai menahan Buldoser."
+    },
+    {
+        id: 5,
+        title: "BABAK 5: Cahaya Pagi (FINALE)",
+        time: "28:00 - Selesai",
+        lighting: "- Lampu Kuning Cerah Pagi Hari (Warm White).<br>- Saat lagu Finale: Semua lampu menyala maksimal (Full Stage Wash), warna-warni meriah.",
+        sound: "- SFX Burung Berkicau (bersih).<br>- V.O Suara Ibu Kasih.<br>- Play Musik Finale: Jazz Theatrical Broadway Upbeat.",
+        crew: "- Kembalikan Set Ranjang Kasih saat blackout.<br>- Pasang Poster dan Pot Kuncup Lily di meja.",
+        grup: "- Semua Grup (1-10): Ganti atribut cerah.<br>- Grup 11 & 12: Masuk bawa bibit & selendang dari area lorong (aisle).<br>- SELURUH 300 ANAK masuk panggung/lorong penonton merayakan."
+    }
+];
+
+let castChartInstance = null;
+let intensityChartInstance = null;
+
+function switchTab(tabId) {
+    // Hide all sections
+    const sections = ['sec-ringkasan', 'sec-kostum', 'sec-koreografi', 'sec-teknis', 'sec-backstage', 'sec-risiko', 'sec-analisis'];
+    sections.forEach(id => {
+        document.getElementById(id).classList.add('hidden');
+    });
+    
+    // Reset all nav buttons
+    const navIds = ['nav-ringkasan', 'nav-kostum', 'nav-koreografi', 'nav-teknis', 'nav-backstage', 'nav-risiko', 'nav-analisis'];
+    navIds.forEach(id => {
+        document.getElementById(id).className = 'tab-inactive px-6 py-4 text-sm md:text-base whitespace-nowrap transition-colors cursor-pointer';
+    });
+    
+    // Show selected section & activate tab
+    document.getElementById('sec-' + tabId).classList.remove('hidden');
+    document.getElementById('nav-' + tabId).className = 'tab-active px-6 py-4 text-sm md:text-base whitespace-nowrap transition-colors cursor-pointer';
+
+    // Init charts if needed
+    if(tabId === 'analisis' && !castChartInstance) {
+        initCharts();
+    }
+}
+
+function renderTimeline() {
+    const container = document.getElementById('timeline-container');
+    container.innerHTML = '';
+    
+    cueData.forEach((babak, index) => {
+        const btn = document.createElement('button');
+        btn.id = 'btn-babak-' + babak.id;
+        btn.className = 'px-4 py-2 rounded-md font-semibold text-sm transition-all duration-300 ' + (index === 0 ? 'timeline-btn-active' : 'timeline-btn-inactive');
+        btn.innerText = 'Babak ' + babak.id;
+        btn.onclick = () => loadBabakDetail(babak.id);
+        container.appendChild(btn);
+    });
+    
+    loadBabakDetail(1);
+}
+
+function loadBabakDetail(id) {
+    cueData.forEach(b => {
+        const btn = document.getElementById('btn-babak-' + b.id);
+        if(btn) {
+            btn.className = 'px-4 py-2 rounded-md font-semibold text-sm transition-all duration-300 ' + (b.id === id ? 'timeline-btn-active shadow-md' : 'timeline-btn-inactive hover:bg-stone-300');
+        }
+    });
+
+    const data = cueData.find(b => b.id === id);
+    if(data) {
+        document.getElementById('detail-title').innerText = data.title;
+        document.getElementById('detail-time').innerText = "Waktu: " + data.time;
+        document.getElementById('detail-lighting').innerHTML = data.lighting;
+        document.getElementById('detail-sound').innerHTML = data.sound;
+        document.getElementById('detail-crew').innerHTML = data.crew;
+        document.getElementById('detail-grup').innerHTML = data.grup;
+        
+        const card = document.getElementById('cue-detail-card');
+        card.classList.remove('animate-pulse');
+        void card.offsetWidth; 
+        card.classList.add('animate-pulse');
+        setTimeout(() => { card.classList.remove('animate-pulse'); }, 500);
+    }
+}
+
+function initCharts() {
+    const ctxCast = document.getElementById('castChart').getContext('2d');
+    castChartInstance = new Chart(ctxCast, {
+        type: 'doughnut',
+        data: {
+            labels: ['Karakter Utama (12)', 'Ensemble (300)'],
+            datasets: [{
+                data: [12, 300],
+                backgroundColor: ['#d97706', '#fcd34d'],
+                borderWidth: 0,
+                hoverOffset: 10
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { position: 'bottom' }
+            }
+        }
+    });
+
+    const ctxIntensity = document.getElementById('intensityChart').getContext('2d');
+    intensityChartInstance = new Chart(ctxIntensity, {
+        type: 'bar',
+        data: {
+            labels: ['Babak 1', 'Babak 2', 'Babak 3', 'Babak 4', 'Babak 5'],
+            datasets: [
+                {
+                    label: 'Lighting Cues',
+                    data: [5, 2, 4, 9, 7],
+                    backgroundColor: '#fbbf24',
+                    borderRadius: 4
+                },
+                {
+                    label: 'Sound & SFX Cues',
+                    data: [6, 3, 5, 10, 6],
+                    backgroundColor: '#60a5fa',
+                    borderRadius: 4
+                },
+                {
+                    label: 'Prop/Crew Gerak',
+                    data: [4, 3, 3, 9, 8],
+                    backgroundColor: '#f87171',
+                    borderRadius: 4
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 10,
+                    title: { display: true, text: 'Kompleksitas' }
+                }
+            },
+            plugins: {
+                legend: { position: 'bottom' }
+            }
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    renderTimeline();
+});
+</script>
+</body>
+</html>
