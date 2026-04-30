@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dasbor Produksi: Mencari Taman V7.0</title>
+    <title>Dasbor Produksi: Mencari Taman V8.0</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -16,7 +16,7 @@
         }
         .tab-content { 
             display: none; 
-            animation: fadeIn 0.3s ease-in-out; 
+            animation: fadeIn 0.4s ease-in-out; 
         }
         .tab-content.active { 
             display: block; 
@@ -27,15 +27,15 @@
             border-color: #3b82f6; 
         }
         @keyframes fadeIn { 
-            from { opacity: 0; transform: translateY(5px); } 
+            from { opacity: 0; transform: translateY(10px); } 
             to { opacity: 1; transform: translateY(0); } 
         }
         
         /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 8px; height: 8px; }
-        ::-webkit-scrollbar-track { background: #1e293b; } /* slate-800 */
-        ::-webkit-scrollbar-thumb { background: #475569; border-radius: 4px; } /* slate-600 */
-        ::-webkit-scrollbar-thumb:hover { background: #64748b; } /* slate-500 */
+        ::-webkit-scrollbar-track { background: #1e293b; }
+        ::-webkit-scrollbar-thumb { background: #475569; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #64748b; }
 
         /* Chart constraints */
         .chart-container {
@@ -47,16 +47,13 @@
             height: 300px;
             max-height: 400px;
         }
-        @media (min-width: 768px) {
-            .chart-container { height: 350px; }
-        }
     </style>
 </head>
 <body class="antialiased min-h-screen flex flex-col">
 
     <!-- Header -->
     <header class="bg-slate-800 border-b border-slate-700 p-6 sticky top-0 z-50 shadow-lg">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="max-w-[1400px] mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
             <div>
                 <h1 class="text-2xl md:text-3xl font-bold text-white flex items-center gap-3 tracking-tight">
                     <i class="fa-solid fa-masks-theater text-blue-500"></i>
@@ -69,56 +66,107 @@
                     <i class="fa-solid fa-circle text-[8px] text-blue-400 animate-pulse"></i> LIVE
                 </span>
                 <span class="bg-emerald-900/50 text-emerald-300 border border-emerald-700/50 px-3 py-1 rounded-full text-xs font-semibold">
-                    V7.0 (Dark Mode)
+                    V8.0 (Side-by-side UI)
                 </span>
             </div>
         </div>
 
         <!-- Navigation Tabs -->
-        <div class="max-w-7xl mx-auto mt-6 overflow-x-auto pb-2">
+        <div class="max-w-[1400px] mx-auto mt-6 overflow-x-auto pb-2">
             <div class="flex space-x-2 whitespace-nowrap" id="tabs-container">
-                <button onclick="openTab(event, 'ringkasan')" class="tab-btn active px-4 py-2 rounded-lg border border-slate-600 hover:bg-slate-700 transition-colors text-sm font-semibold text-slate-300"><i class="fa-solid fa-book-open mr-2 text-slate-400"></i>Ringkasan</button>
+                <button onclick="openTab(event, 'ringkasan-cue')" class="tab-btn active px-4 py-2 rounded-lg border border-slate-600 hover:bg-slate-700 transition-colors text-sm font-semibold text-slate-300"><i class="fa-solid fa-table-columns mr-2 text-blue-400"></i>Ringkasan & Cue Master</button>
                 <button onclick="openTab(event, 'kostum')" class="tab-btn px-4 py-2 rounded-lg border border-slate-600 hover:bg-slate-700 transition-colors text-sm font-semibold text-slate-300"><i class="fa-solid fa-shirt mr-2 text-amber-400"></i>Kostum & Prop</button>
                 <button onclick="openTab(event, 'koreografi')" class="tab-btn px-4 py-2 rounded-lg border border-slate-600 hover:bg-slate-700 transition-colors text-sm font-semibold text-slate-300"><i class="fa-solid fa-music mr-2 text-pink-400"></i>Musik & Koreo</button>
                 <button onclick="openTab(event, 'videotron')" class="tab-btn px-4 py-2 rounded-lg border border-slate-600 hover:bg-slate-700 transition-colors text-sm font-semibold text-slate-300"><i class="fa-solid fa-desktop mr-2 text-purple-400"></i>Videotron</button>
                 <button onclick="openTab(event, 'lighting')" class="tab-btn px-4 py-2 rounded-lg border border-slate-600 hover:bg-slate-700 transition-colors text-sm font-semibold text-slate-300"><i class="fa-solid fa-lightbulb mr-2 text-yellow-400"></i>Lighting</button>
-                <button onclick="openTab(event, 'teknis')" class="tab-btn px-4 py-2 rounded-lg border border-slate-600 hover:bg-slate-700 transition-colors text-sm font-semibold text-slate-300"><i class="fa-solid fa-list-check mr-2 text-orange-400"></i>Cue Master</button>
                 <button onclick="openTab(event, 'backstage')" class="tab-btn px-4 py-2 rounded-lg border border-slate-600 hover:bg-slate-700 transition-colors text-sm font-semibold text-slate-300"><i class="fa-solid fa-map-location-dot mr-2 text-emerald-400"></i>Backstage</button>
                 <button onclick="openTab(event, 'risiko')" class="tab-btn px-4 py-2 rounded-lg border border-slate-600 hover:bg-slate-700 transition-colors text-sm font-semibold text-slate-300"><i class="fa-solid fa-triangle-exclamation mr-2 text-red-400"></i>Risiko</button>
                 <button onclick="openTab(event, 'analisis')" class="tab-btn px-4 py-2 rounded-lg border border-slate-600 hover:bg-slate-700 transition-colors text-sm font-semibold text-slate-300"><i class="fa-solid fa-chart-pie mr-2 text-cyan-400"></i>Analisis</button>
+                <button onclick="openTab(event, 'timeline')" class="tab-btn px-4 py-2 rounded-lg border border-slate-600 hover:bg-slate-700 transition-colors text-sm font-semibold text-slate-300"><i class="fa-solid fa-stopwatch mr-2 text-orange-400"></i>⌛ Timeline Standby</button>
             </div>
         </div>
     </header>
 
     <!-- Main Content Area -->
-    <main class="max-w-7xl mx-auto w-full p-4 md:p-6 flex-grow">
+    <main class="max-w-[1400px] mx-auto w-full p-4 md:p-6 flex-grow">
 
-        <!-- TAB 1: RINGKASAN -->
-        <div id="ringkasan" class="tab-content active">
-            <div class="bg-slate-800 rounded-xl p-6 md:p-8 border border-slate-700 shadow-xl mb-6">
-                <h2 class="text-2xl font-bold mb-4 text-white"><i class="fa-solid fa-book-open mr-2 text-blue-400"></i>Pengantar Pementasan</h2>
-                <p class="text-slate-300 mb-6 leading-relaxed">
-                    Pementasan teater musikal "Mencari Taman" adalah kritik sosial mengenai polusi dan hilangnya ruang bermain anak. Pementasan ini dirancang masif dengan memisahkan 12 Karakter Utama di Panggung Atas dan 300 Anak Ansambel di Panggung Bawah/Lorong.
-                </p>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-                    <div class="bg-slate-900/50 p-6 rounded-lg border-l-4 border-blue-500 shadow-inner">
-                        <h3 class="text-xl font-semibold mb-3 text-white">Sinopsis Inti</h3>
-                        <p class="text-slate-400 text-sm md:text-base leading-relaxed">
-                            Di sebuah kota yang bising dan penuh polusi, Kasih tidak bisa tidur. Bersama teman imajinatifnya (Udin, Siti, Yuni), ia berkhayal tentang taman. Di sisi lain, anak gang (Bagas, Dino, Bobby) kehilangan tempat bermain. Karakter alam (Matahari, Bulan, Bunga, Kupu-kupu) bersatu dengan anak-anak menolak penggusuran sisa taman oleh Buldoser.
+        <!-- TAB 1: RINGKASAN & CUE MASTER (SIDE BY SIDE) -->
+        <div id="ringkasan-cue" class="tab-content active">
+            <div class="grid grid-cols-1 xl:grid-cols-12 gap-6">
+                
+                <!-- Kiri: Bagan Ringkasan -->
+                <div class="xl:col-span-5 space-y-6">
+                    <div class="bg-slate-800 rounded-xl p-6 border border-slate-700 shadow-xl">
+                        <h2 class="text-xl font-bold mb-4 text-white"><i class="fa-solid fa-book-open mr-2 text-blue-400"></i>Konteks Pementasan</h2>
+                        <p class="text-slate-300 mb-6 text-sm leading-relaxed">
+                            Pementasan ini adalah kritik sosial hilangnya ruang bermain anak. Dirancang masif: 12 Karakter Utama di <strong>Panggung Atas</strong> dan 300 Anak Ansambel di <strong>Panggung Bawah/Lorong</strong>.
                         </p>
-                    </div>
-                    <div class="bg-slate-900/50 p-6 rounded-lg border-l-4 border-emerald-500 shadow-inner">
-                        <h3 class="text-xl font-semibold mb-3 text-white">Karakter Utama (Panggung Atas)</h3>
-                        <ul class="list-disc list-inside text-slate-400 space-y-2 text-sm md:text-base">
-                            <li><strong class="text-slate-200">Kasih:</strong> Gadis kecil dengan paru-paru sensitif.</li>
-                            <li><span class="bg-purple-900/50 px-2 py-0.5 rounded text-purple-300 font-semibold border border-purple-700/50">Grup Kamar:</span> Udin (datar/robotik), Siti (panik), Yuni (profesor).</li>
-                            <li><strong class="text-slate-200">Grup Gang:</strong> Bagas (sinis), Dino (dramatis), Bobby (logis).</li>
-                            <li><strong class="text-slate-200">Elemen Alam:</strong> Matahari, Bulan, Lily, Tulip, Kupu-Kupu.</li>
-                            <li><strong class="text-slate-200">Antagonis:</strong> Pekerja Proyek & Buldoser Kardus Raksasa.</li>
-                        </ul>
+                        
+                        <div class="bg-slate-900/50 p-4 rounded-lg border-l-4 border-blue-500 mb-4 shadow-inner">
+                            <h3 class="text-base font-semibold mb-2 text-white">Sinopsis Inti</h3>
+                            <p class="text-slate-400 text-xs leading-relaxed">
+                                Kasih tidak bisa tidur akibat polusi. Ia berkhayal tentang taman. Di sisi lain, anak gang kehilangan tempat bermain. Karakter alam bersatu dengan anak-anak menolak penggusuran sisa taman oleh Buldoser.
+                            </p>
+                        </div>
+                        
+                        <div class="bg-slate-900/50 p-4 rounded-lg border-l-4 border-emerald-500 shadow-inner">
+                            <h3 class="text-base font-semibold mb-2 text-white">Karakter (Panggung Atas)</h3>
+                            <ul class="list-disc list-inside text-slate-400 space-y-1 text-xs">
+                                <li><strong class="text-slate-200">Kasih:</strong> Gadis dengan paru-paru sensitif.</li>
+                                <li><strong class="text-slate-200">Grup Kamar:</strong> Udin (datar), Siti (panik), Yuni (profesor).</li>
+                                <li><strong class="text-slate-200">Grup Gang:</strong> Bagas (sinis), Dino (dramatis), Bobby (logis).</li>
+                                <li><strong class="text-slate-200">Elemen Alam:</strong> Matahari, Bulan, Lily, Tulip, Kupu-Kupu.</li>
+                                <li><strong class="text-slate-200">Antagonis:</strong> Pekerja Proyek & Buldoser Kardus.</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Kanan: Cue Master -->
+                <div class="xl:col-span-7">
+                    <div class="bg-slate-800 rounded-xl p-6 border border-slate-700 shadow-xl h-full flex flex-col">
+                        <div class="flex items-center justify-between mb-4">
+                            <h2 class="text-xl font-bold text-white"><i class="fa-solid fa-list-check mr-2 text-orange-400"></i>Panduan Teknis (Cue Master)</h2>
+                            <span class="bg-orange-900/50 text-orange-300 text-[10px] px-2 py-1 rounded border border-orange-700/50">Stage Manager</span>
+                        </div>
+                        <p class="text-slate-400 text-xs mb-4">
+                            Pilih babak pada linimasa di bawah ini untuk melihat sinkronisasi singkat antar divisi per adegan.
+                        </p>
+
+                        <!-- Timeline Nav -->
+                        <div class="flex flex-wrap gap-2 justify-center mb-6 bg-slate-900/50 p-3 rounded-lg border border-slate-700" id="timeline-container">
+                            <!-- JS Generated Buttons -->
+                        </div>
+
+                        <!-- Cue Cards -->
+                        <div id="cue-detail-card" class="bg-slate-900 border border-slate-700 rounded-xl p-5 shadow-inner flex-grow">
+                            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 border-b border-slate-700 pb-3">
+                                <h3 id="detail-title" class="text-lg font-bold text-white"></h3>
+                                <span id="detail-time" class="bg-slate-800 text-slate-300 px-2 py-1 rounded border border-slate-600 text-xs font-mono mt-2 md:mt-0"></span>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-slate-800/80 p-4 rounded-lg border-l-4 border-yellow-500 shadow">
+                                    <h4 class="font-bold text-yellow-400 text-xs flex items-center gap-2"><i class="fa-solid fa-lightbulb"></i> Lighting Cue</h4>
+                                    <p id="detail-lighting" class="text-xs mt-2 text-slate-300"></p>
+                                </div>
+                                <div class="bg-slate-800/80 p-4 rounded-lg border-l-4 border-blue-500 shadow">
+                                    <h4 class="font-bold text-blue-400 text-xs flex items-center gap-2"><i class="fa-solid fa-volume-high"></i> Sound Cue</h4>
+                                    <p id="detail-sound" class="text-xs mt-2 text-slate-300"></p>
+                                </div>
+                                <div class="bg-slate-800/80 p-4 rounded-lg border-l-4 border-red-500 shadow">
+                                    <h4 class="font-bold text-red-400 text-xs flex items-center gap-2"><i class="fa-solid fa-person-running"></i> Crew Runner</h4>
+                                    <p id="detail-crew" class="text-xs mt-2 text-slate-300"></p>
+                                </div>
+                                <div class="bg-slate-800/80 p-4 rounded-lg border-l-4 border-green-500 shadow">
+                                    <h4 class="font-bold text-emerald-400 text-xs flex items-center gap-2"><i class="fa-solid fa-users"></i> Pendamping Grup</h4>
+                                    <p id="detail-grup" class="text-xs mt-2 text-slate-300"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
 
@@ -129,39 +177,36 @@
                     <h2 class="text-2xl font-bold text-white"><i class="fa-solid fa-shirt mr-2 text-amber-400"></i>Kebutuhan Kostum & Properti</h2>
                     <span class="bg-amber-900/50 text-amber-300 text-xs px-3 py-1 rounded-full border border-amber-700/50">Divisi: Wardrobe & Props</span>
                 </div>
-                <p class="text-slate-400 mb-8 leading-relaxed">
-                    Daftar inventaris untuk departemen Wardrobe dan Property. Pemisahan dibuat jelas antara 12 karakter utama dan 12 grup ansambel pendukung (300 anak).
-                </p>
 
                 <div class="mb-10">
                     <h3 class="text-xl font-bold text-white border-b border-slate-600 pb-2 mb-4">A. Kostum Karakter Utama (Panggung Atas)</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <div class="bg-slate-900/80 p-5 rounded-lg border border-slate-700 hover:border-amber-500/50 transition-colors">
+                        <div class="bg-slate-900/80 p-5 rounded-lg border border-slate-700">
                             <strong class="text-amber-400 block text-lg mb-2">Kasih</strong>
                             <p class="text-sm text-slate-300 mb-1"><strong class="text-slate-400">Kostum:</strong> Piyama kusam (Babak 1-4). Baju cerah + topi (Babak 5).</p>
                             <p class="text-sm text-slate-300"><strong class="text-slate-400">Properti:</strong> Boneka peluk, Daun Lily patah.</p>
                         </div>
-                        <div class="bg-slate-900/80 p-5 rounded-lg border border-slate-700 hover:border-amber-500/50 transition-colors">
+                        <div class="bg-slate-900/80 p-5 rounded-lg border border-slate-700">
                             <strong class="text-amber-400 block text-lg mb-2">Grup Kamar</strong>
                             <p class="text-sm text-slate-300 mb-1"><strong class="text-slate-400">Kostum:</strong> Pakaian rumahan. Yuni pakai kacamata kebesaran.</p>
                             <p class="text-sm text-slate-300"><strong class="text-slate-400">Properti:</strong> Krupuk kulit utuh & mlempem, Antena TV rusak.</p>
                         </div>
-                        <div class="bg-slate-900/80 p-5 rounded-lg border border-slate-700 hover:border-amber-500/50 transition-colors">
+                        <div class="bg-slate-900/80 p-5 rounded-lg border border-slate-700">
                             <strong class="text-amber-400 block text-lg mb-2">Grup Gang</strong>
                             <p class="text-sm text-slate-300 mb-1"><strong class="text-slate-400">Kostum:</strong> Kaos dan celana pendek dekil.</p>
                             <p class="text-sm text-slate-300"><strong class="text-slate-400">Properti:</strong> Batu kerikil kecil.</p>
                         </div>
-                        <div class="bg-slate-900/80 p-5 rounded-lg border border-slate-700 hover:border-amber-500/50 transition-colors">
+                        <div class="bg-slate-900/80 p-5 rounded-lg border border-slate-700">
                             <strong class="text-amber-400 block text-lg mb-2">Matahari & Bulan</strong>
                             <p class="text-sm text-slate-300 mb-1"><strong class="text-slate-400">Kostum:</strong> Baju oranye kotor, kacamata hitam. Baju santai untuk Bulan.</p>
                             <p class="text-sm text-slate-300"><strong class="text-slate-400">Properti:</strong> Handuk dekil, Bantal leher, Gelas Kopi.</p>
                         </div>
-                        <div class="bg-slate-900/80 p-5 rounded-lg border border-slate-700 hover:border-amber-500/50 transition-colors">
+                        <div class="bg-slate-900/80 p-5 rounded-lg border border-slate-700">
                             <strong class="text-amber-400 block text-lg mb-2">Bunga & Kupu-Kupu</strong>
                             <p class="text-sm text-slate-300 mb-1"><strong class="text-slate-400">Kostum:</strong> Gaun kusam (Lily/Tulip). Sayap lelah (Kupu-kupu).</p>
                             <p class="text-sm text-slate-300"><strong class="text-slate-400">Properti:</strong> Tisu basah, Masker medis, Tas selempang kecil.</p>
                         </div>
-                        <div class="bg-slate-900/80 p-5 rounded-lg border border-slate-700 hover:border-amber-500/50 transition-colors">
+                        <div class="bg-slate-900/80 p-5 rounded-lg border border-slate-700">
                             <strong class="text-amber-400 block text-lg mb-2">Pekerja Proyek</strong>
                             <p class="text-sm text-slate-300 mb-1"><strong class="text-slate-400">Kostum:</strong> Wearpack kotor, Helm proyek.</p>
                             <p class="text-sm text-slate-300"><strong class="text-slate-400">Properti:</strong> Buldoser Kardus Raksasa, Balok beton (kardus).</p>
@@ -172,81 +217,30 @@
                 <div>
                     <h3 class="text-xl font-bold text-white border-b border-slate-600 pb-2 mb-4">B. Kebutuhan 12 Grup Pendukung (300 Anak / @25 Anak)</h3>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                        <div class="bg-slate-900/50 border border-slate-700 p-4 rounded-lg shadow-inner">
-                            <div class="font-bold text-emerald-400 border-b border-slate-700 pb-1 mb-2">1: Anak Kamar</div>
-                            <div class="text-xs text-slate-300"><strong class="text-slate-500">Kostum:</strong> Piyama biasa.</div>
-                            <div class="text-xs text-slate-300 mt-1"><strong class="text-slate-500">Properti:</strong> Pantomim batuk.</div>
-                        </div>
-                        <div class="bg-slate-900/50 border border-slate-700 p-4 rounded-lg shadow-inner">
-                            <div class="font-bold text-slate-400 border-b border-slate-700 pb-1 mb-2">2: Asap & Debu</div>
-                            <div class="text-xs text-slate-300"><strong class="text-slate-500">Kostum:</strong> Baju abu-abu/hitam berkibar.</div>
-                            <div class="text-xs text-slate-300 mt-1"><strong class="text-slate-500">Properti:</strong> -</div>
-                        </div>
-                        <div class="bg-slate-900/50 border border-slate-700 p-4 rounded-lg shadow-inner">
-                            <div class="font-bold text-green-400 border-b border-slate-700 pb-1 mb-2">3: Rumput Menari</div>
-                            <div class="text-xs text-slate-300"><strong class="text-slate-500">Kostum:</strong> Baju bernuansa hijau.</div>
-                            <div class="text-xs text-slate-300 mt-1"><strong class="text-slate-500">Properti:</strong> -</div>
-                        </div>
-                        <div class="bg-slate-900/50 border border-slate-700 p-4 rounded-lg shadow-inner">
-                            <div class="font-bold text-yellow-400 border-b border-slate-700 pb-1 mb-2">4: Lebah Pekerja</div>
-                            <div class="text-xs text-slate-300"><strong class="text-slate-500">Kostum:</strong> Kaos kuning-hitam.</div>
-                            <div class="text-xs text-slate-300 mt-1"><strong class="text-slate-500">Properti:</strong> Bando antena lebah.</div>
-                        </div>
-                        <div class="bg-slate-900/50 border border-slate-700 p-4 rounded-lg shadow-inner">
-                            <div class="font-bold text-pink-400 border-b border-slate-700 pb-1 mb-2">5: Bunga Mekar</div>
-                            <div class="text-xs text-slate-300"><strong class="text-slate-500">Kostum:</strong> Baju warna-warni cerah.</div>
-                            <div class="text-xs text-slate-300 mt-1"><strong class="text-slate-500">Properti:</strong> Bunga karton/busa.</div>
-                        </div>
-                        <div class="bg-slate-900/50 border border-slate-700 p-4 rounded-lg shadow-inner">
-                            <div class="font-bold text-orange-400 border-b border-slate-700 pb-1 mb-2">6: Anak Gang</div>
-                            <div class="text-xs text-slate-300"><strong class="text-slate-500">Kostum:</strong> Baju main kasual/dekil.</div>
-                            <div class="text-xs text-slate-300 mt-1"><strong class="text-slate-500">Properti:</strong> -</div>
-                        </div>
-                        <div class="bg-slate-900/50 border border-slate-700 p-4 rounded-lg shadow-inner">
-                            <div class="font-bold text-red-400 border-b border-slate-700 pb-1 mb-2">7: Kemacetan</div>
-                            <div class="text-xs text-slate-300"><strong class="text-slate-500">Kostum:</strong> Pakaian bebas.</div>
-                            <div class="text-xs text-slate-300 mt-1"><strong class="text-slate-500">Properti:</strong> Setir kardus.</div>
-                        </div>
-                        <div class="bg-slate-900/50 border border-slate-700 p-4 rounded-lg shadow-inner">
-                            <div class="font-bold text-blue-400 border-b border-slate-700 pb-1 mb-2">8: Pasukan Langit</div>
-                            <div class="text-xs text-slate-300"><strong class="text-slate-500">Kostum:</strong> Baju biru/gelap.</div>
-                            <div class="text-xs text-slate-300 mt-1"><strong class="text-slate-500">Properti:</strong> Awan mendung/bintang.</div>
-                        </div>
-                        <div class="bg-slate-900/50 border border-slate-700 p-4 rounded-lg shadow-inner">
-                            <div class="font-bold text-amber-600 border-b border-slate-700 pb-1 mb-2">9: Pekerja Proyek</div>
-                            <div class="text-xs text-slate-300"><strong class="text-slate-500">Kostum:</strong> Kaos + Rompi Proyek.</div>
-                            <div class="text-xs text-slate-300 mt-1"><strong class="text-slate-500">Properti:</strong> Balok kardus abu-abu.</div>
-                        </div>
-                        <div class="bg-slate-900/50 border border-slate-700 p-4 rounded-lg shadow-inner">
-                            <div class="font-bold text-purple-400 border-b border-slate-700 pb-1 mb-2">10: Pagar Betis</div>
-                            <div class="text-xs text-slate-300"><strong class="text-slate-500">Kostum:</strong> Baju bermain bebas.</div>
-                            <div class="text-xs text-slate-300 mt-1"><strong class="text-slate-500">Properti:</strong> (Pegangan tangan).</div>
-                        </div>
-                        <div class="bg-slate-900/50 border border-slate-700 p-4 rounded-lg shadow-inner">
-                            <div class="font-bold text-teal-400 border-b border-slate-700 pb-1 mb-2">11: Pembawa Bibit</div>
-                            <div class="text-xs text-slate-300"><strong class="text-slate-500">Kostum:</strong> Baju cerah.</div>
-                            <div class="text-xs text-slate-300 mt-1"><strong class="text-slate-500">Properti:</strong> Pot kecil/alat siram.</div>
-                        </div>
-                        <div class="bg-slate-900/50 border border-slate-700 p-4 rounded-lg shadow-inner">
-                            <div class="font-bold text-cyan-400 border-b border-slate-700 pb-1 mb-2">12: Pasukan Pelangi</div>
-                            <div class="text-xs text-slate-300"><strong class="text-slate-500">Kostum:</strong> Baju cerah.</div>
-                            <div class="text-xs text-slate-300 mt-1"><strong class="text-slate-500">Properti:</strong> Pita senam pelangi.</div>
-                        </div>
+                        <div class="bg-slate-900/50 border border-slate-700 p-4 rounded-lg"><div class="font-bold text-emerald-400 pb-1">1: Anak Kamar</div><div class="text-xs text-slate-300">Piyama, (Tangan kosong).</div></div>
+                        <div class="bg-slate-900/50 border border-slate-700 p-4 rounded-lg"><div class="font-bold text-slate-400 pb-1">2: Asap & Debu</div><div class="text-xs text-slate-300">Baju abu-abu/hitam berkibar.</div></div>
+                        <div class="bg-slate-900/50 border border-slate-700 p-4 rounded-lg"><div class="font-bold text-green-400 pb-1">3: Rumput Menari</div><div class="text-xs text-slate-300">Baju bernuansa hijau.</div></div>
+                        <div class="bg-slate-900/50 border border-slate-700 p-4 rounded-lg"><div class="font-bold text-yellow-400 pb-1">4: Lebah Pekerja</div><div class="text-xs text-slate-300">Kaos kuning-hitam, Bando lebah.</div></div>
+                        <div class="bg-slate-900/50 border border-slate-700 p-4 rounded-lg"><div class="font-bold text-pink-400 pb-1">5: Bunga Mekar</div><div class="text-xs text-slate-300">Baju cerah, Bunga karton/busa.</div></div>
+                        <div class="bg-slate-900/50 border border-slate-700 p-4 rounded-lg"><div class="font-bold text-orange-400 pb-1">6: Anak Gang</div><div class="text-xs text-slate-300">Baju main kasual/dekil.</div></div>
+                        <div class="bg-slate-900/50 border border-slate-700 p-4 rounded-lg"><div class="font-bold text-red-400 pb-1">7: Kemacetan</div><div class="text-xs text-slate-300">Pakaian bebas, Setir kardus.</div></div>
+                        <div class="bg-slate-900/50 border border-slate-700 p-4 rounded-lg"><div class="font-bold text-blue-400 pb-1">8: Pasukan Langit</div><div class="text-xs text-slate-300">Baju biru/gelap, Awan/bintang.</div></div>
+                        <div class="bg-slate-900/50 border border-slate-700 p-4 rounded-lg"><div class="font-bold text-amber-600 pb-1">9: Pekerja Proyek</div><div class="text-xs text-slate-300">Rompi Proyek, Balok kardus.</div></div>
+                        <div class="bg-slate-900/50 border border-slate-700 p-4 rounded-lg"><div class="font-bold text-purple-400 pb-1">10: Pagar Betis</div><div class="text-xs text-slate-300">Baju bebas, Pegangan tangan.</div></div>
+                        <div class="bg-slate-900/50 border border-slate-700 p-4 rounded-lg"><div class="font-bold text-teal-400 pb-1">11: Pembawa Bibit</div><div class="text-xs text-slate-300">Baju cerah, Pot kecil.</div></div>
+                        <div class="bg-slate-900/50 border border-slate-700 p-4 rounded-lg"><div class="font-bold text-cyan-400 pb-1">12: Pasukan Pelangi</div><div class="text-xs text-slate-300">Baju cerah, Pita senam pelangi.</div></div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- TAB 3: MUSIK & KOREOGRAFI (TABEL) -->
+        <!-- TAB 3: MUSIK & KOREOGRAFI -->
         <div id="koreografi" class="tab-content">
             <div class="bg-slate-800 rounded-xl p-6 md:p-8 border border-slate-700 shadow-xl mb-6">
                 <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 gap-4">
                     <h2 class="text-2xl font-bold text-white"><i class="fa-solid fa-music mr-2 text-pink-400"></i>Tabel Scoring Musik & Koreografi</h2>
                     <span class="bg-pink-900/50 text-pink-300 text-xs px-3 py-1 rounded-full border border-pink-700/50">Divisi: Music Director & Koreografer</span>
                 </div>
-                <p class="text-slate-400 mb-6 leading-relaxed">
-                    Panduan komprehensif bagi Music Director & Koreografer. Siapkan *looping* untuk lagu yang ditandai agar BGM tidak terputus saat ratusan anak bermobilisasi ke panggung bawah.
-                </p>
 
                 <div class="overflow-x-auto rounded-lg border border-slate-700 shadow-lg">
                     <table class="w-full text-sm text-left border-collapse">
@@ -260,7 +254,7 @@
                         </thead>
                         <tbody class="text-slate-300 align-top">
                             <!-- Babak 1 -->
-                            <tr class="bg-slate-800/80 border-b border-slate-700 hover:bg-slate-700/50 transition-colors">
+                            <tr class="bg-slate-800/80 border-b border-slate-700">
                                 <th scope="row" class="px-4 py-4 font-bold text-pink-400">1: Prolog</th>
                                 <td class="px-4 py-4">
                                     <strong class="text-white">Track 1: Misteri Bising</strong><br>
@@ -272,10 +266,10 @@
                                 </td>
                                 <td class="px-4 py-4">
                                     <strong class="text-slate-200">Grup 1:</strong> Pantomim batuk, menutup telinga.<br>
-                                    <strong class="text-slate-200">Grup 2:</strong> Merayap, tari kontemporer patah-patah (polusi).
+                                    <strong class="text-slate-200">Grup 2:</strong> Merayap, tari kontemporer patah-patah.
                                 </td>
                             </tr>
-                            <tr class="bg-slate-800/40 border-b border-slate-700 hover:bg-slate-700/50 transition-colors">
+                            <tr class="bg-slate-800/40 border-b border-slate-700">
                                 <th scope="row" class="px-4 py-4 font-bold text-emerald-400">1: Khayalan</th>
                                 <td class="px-4 py-4">
                                     <strong class="text-white">Track 2: Taman Ajaib</strong><br>
@@ -285,13 +279,13 @@
                                     <strong class="text-slate-200">00:00 - 03:00:</strong> Lagu pop anak ceria. Crescendo saat bunga mekar.
                                 </td>
                                 <td class="px-4 py-4">
-                                    <strong class="text-slate-200">Grup 3:</strong> Duduk berlutut, <em>sway</em> kiri-kanan.<br>
+                                    <strong class="text-slate-200">Grup 3:</strong> Duduk berlutut, sway kiri-kanan.<br>
                                     <strong class="text-slate-200">Grup 4:</strong> Lari jinjit kepakkan sayap.<br>
                                     <strong class="text-slate-200">Grup 5:</strong> Jongkok lalu mekar serempak.
                                 </td>
                             </tr>
                             <!-- Babak 2 -->
-                            <tr class="bg-slate-800/80 border-b border-slate-700 hover:bg-slate-700/50 transition-colors">
+                            <tr class="bg-slate-800/80 border-b border-slate-700">
                                 <th scope="row" class="px-4 py-4 font-bold text-orange-400">2: Gang</th>
                                 <td class="px-4 py-4">
                                     <strong class="text-white">Track 3: Realita Urban</strong><br>
@@ -301,12 +295,12 @@
                                     <strong class="text-slate-200">Underscore:</strong> Volume pelan mengiringi dialog Bobby, Dino, Bagas.
                                 </td>
                                 <td class="px-4 py-4">
-                                    <strong class="text-slate-200">Grup 6:</strong> Pantomim main petak umpet <em>slow-motion</em>.<br>
+                                    <strong class="text-slate-200">Grup 6:</strong> Pantomim main petak umpet slow-motion.<br>
                                     <strong class="text-slate-200">Grup 7:</strong> Jalan tersendat pegang setir kardus menyilang.
                                 </td>
                             </tr>
                             <!-- Babak 3 -->
-                            <tr class="bg-slate-800/40 border-b border-slate-700 hover:bg-slate-700/50 transition-colors">
+                            <tr class="bg-slate-800/40 border-b border-slate-700">
                                 <th scope="row" class="px-4 py-4 font-bold text-blue-400">3: Rapat</th>
                                 <td class="px-4 py-4">
                                     <strong class="text-white">Track 4: Ancaman Senja</strong><br>
@@ -314,14 +308,14 @@
                                 </td>
                                 <td class="px-4 py-4">
                                     <strong class="text-slate-200">00:00 - 02:00:</strong> Ambient sore (kicau gagak/mesin).<br>
-                                    <strong class="text-yellow-400">02:00 - Selesai:</strong> Strings makin tegang (Siapkan LOOP).
+                                    <strong class="text-yellow-400">02:00 - Selesai:</strong> Strings makin tegang (Loop).
                                 </td>
                                 <td class="px-4 py-4">
                                     <strong class="text-slate-200">Grup 8:</strong> Masuk pelan bawa awan/bintang. Formasi lingkaran, pose statis tiap 10 detik.
                                 </td>
                             </tr>
                             <!-- Babak 4 -->
-                            <tr class="bg-slate-800/80 border-b border-slate-700 hover:bg-slate-700/50 transition-colors">
+                            <tr class="bg-slate-800/80 border-b border-slate-700">
                                 <th scope="row" class="px-4 py-4 font-bold text-red-400">4: Klimaks</th>
                                 <td class="px-4 py-4">
                                     <strong class="text-white">Track 5: Konfrontasi</strong><br>
@@ -337,7 +331,7 @@
                                 </td>
                             </tr>
                             <!-- Babak 5 -->
-                            <tr class="bg-slate-800/40 hover:bg-slate-700/50 transition-colors">
+                            <tr class="bg-slate-800/40">
                                 <th scope="row" class="px-4 py-4 font-bold text-cyan-400">5: Finale</th>
                                 <td class="px-4 py-4">
                                     <strong class="text-white">Track 6: Kemenangan</strong><br>
@@ -365,101 +359,57 @@
                     <h2 class="text-2xl font-bold text-white"><i class="fa-solid fa-desktop mr-2 text-purple-400"></i>Panduan Visual Videotron (Latar)</h2>
                     <span class="bg-purple-900/50 text-purple-300 text-xs px-3 py-1 rounded-full border border-purple-700/50">Divisi: Multimedia</span>
                 </div>
-                <p class="text-slate-400 mb-8 leading-relaxed">
-                    Layar LED (Videotron) berfungsi sebagai latar set utama untuk menggantikan <em>backdrop</em> fisik. Menggambarkan kontras visual distopia kota dan alam impian.
-                </p>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="bg-slate-900 rounded-lg overflow-hidden border border-slate-700 shadow-lg relative">
+                    <div class="bg-slate-900 rounded-lg overflow-hidden border border-slate-700 shadow-lg">
                         <div class="bg-slate-800 border-b border-slate-700 p-3 flex justify-between items-center">
                             <span class="text-xs text-slate-400 uppercase font-bold tracking-widest">CUE 01: KAMAR</span>
                             <i class="fa-solid fa-industry text-slate-500"></i>
                         </div>
                         <div class="p-6">
                             <h3 class="text-lg font-bold text-white mb-2">Siluet Kota Beracun</h3>
-                            <p class="text-sm text-slate-400 mb-4"><strong>Palet:</strong> Abu kelam, kuning neon beracun, hitam.</p>
+                            <p class="text-sm text-slate-400 mb-4"><strong>Palet:</strong> Abu kelam, kuning neon beracun.</p>
                             <div class="bg-slate-950 p-4 rounded-lg border-l-2 border-yellow-500 text-sm text-slate-300">
-                                <strong class="text-slate-100">Visual:</strong> Gedung pabrik industri.<br>
-                                <strong class="text-slate-100">Motion:</strong> Asap mengepul tebal dari cerobong (looping lambat). Jendela-jendela gedung berkedip (flicker).
+                                <strong class="text-slate-100">Motion:</strong> Asap mengepul tebal dari cerobong (looping lambat). Jendela gedung berkedip (flicker).
                             </div>
                         </div>
                     </div>
-
-                    <div class="bg-slate-900 rounded-lg overflow-hidden border border-slate-700 shadow-lg relative">
+                    <div class="bg-slate-900 rounded-lg overflow-hidden border border-slate-700 shadow-lg">
                         <div class="bg-slate-800 border-b border-slate-700 p-3 flex justify-between items-center">
                             <span class="text-xs text-slate-400 uppercase font-bold tracking-widest">CUE 02: KHAYALAN</span>
                             <i class="fa-solid fa-wand-magic-sparkles text-purple-400"></i>
                         </div>
                         <div class="p-6">
                             <h3 class="text-lg font-bold text-white mb-2">Taman Magis Malam Hari</h3>
-                            <p class="text-sm text-slate-400 mb-4"><strong>Palet:</strong> Biru dongker, ungu magis, kilauan emas.</p>
+                            <p class="text-sm text-slate-400 mb-4"><strong>Palet:</strong> Biru dongker, ungu magis, emas.</p>
                             <div class="bg-slate-950 p-4 rounded-lg border-l-2 border-purple-500 text-sm text-slate-300">
-                                <strong class="text-slate-100">Visual:</strong> Efek partikel meledak. Langit malam bertabur bintang raksasa.<br>
                                 <strong class="text-slate-100">Motion:</strong> Kunang-kunang berterbangan lambat. Bintang jatuh saat reff.
                             </div>
                         </div>
                     </div>
-
-                    <div class="bg-slate-900 rounded-lg overflow-hidden border border-slate-700 shadow-lg relative">
+                    <div class="bg-slate-900 rounded-lg overflow-hidden border border-slate-700 shadow-lg">
                         <div class="bg-slate-800 border-b border-slate-700 p-3 flex justify-between items-center">
-                            <span class="text-xs text-slate-400 uppercase font-bold tracking-widest">CUE 03: GANG SEMPIT</span>
-                            <i class="fa-solid fa-road text-orange-400"></i>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-lg font-bold text-white mb-2">Lorong Beton & Grafiti</h3>
-                            <p class="text-sm text-slate-400 mb-4"><strong>Palet:</strong> Cokelat kusam, abu-abu semen, warna pudar.</p>
-                            <div class="bg-slate-950 p-4 rounded-lg border-l-2 border-orange-500 text-sm text-slate-300">
-                                <strong class="text-slate-100">Visual:</strong> Perspektif 3D gang sangat panjang, dinding penuh poster.<br>
-                                <strong class="text-slate-100">Motion:</strong> Relatif statis. Efek debu halus melayang ditiup angin pelan.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-slate-900 rounded-lg overflow-hidden border border-slate-700 shadow-lg relative">
-                        <div class="bg-slate-800 border-b border-slate-700 p-3 flex justify-between items-center">
-                            <span class="text-xs text-slate-400 uppercase font-bold tracking-widest">CUE 04: RAPAT ALAM</span>
-                            <i class="fa-solid fa-cloud-sun text-red-400"></i>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-lg font-bold text-white mb-2">Senja Polusi Pejam</h3>
-                            <p class="text-sm text-slate-400 mb-4"><strong>Palet:</strong> Jingga tua, merah darah, cokelat pekat.</p>
-                            <div class="bg-slate-950 p-4 rounded-lg border-l-2 border-red-500 text-sm text-slate-300">
-                                <strong class="text-slate-100">Visual:</strong> Matahari terbenam. Siluet jalan layang & kemacetan.<br>
-                                <strong class="text-slate-100">Motion:</strong> Awan polusi bergerak cepat. Lampu rem mobil berkedip di kejauhan.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-slate-900 rounded-lg overflow-hidden border border-slate-700 shadow-lg md:col-span-2 relative">
-                        <div class="bg-slate-800 border-b border-slate-700 p-3 flex justify-between items-center">
-                            <span class="text-xs text-red-400 uppercase font-bold tracking-widest">CUE 05: KLIMAKS (BULDOSER)</span>
+                            <span class="text-xs text-red-400 uppercase font-bold tracking-widest">CUE 05: KLIMAKS</span>
                             <i class="fa-solid fa-truck-monster text-red-500"></i>
                         </div>
-                        <div class="p-6 flex flex-col md:flex-row gap-6 items-center">
-                            <div class="flex-1">
-                                <h3 class="text-xl font-bold text-white mb-2">Monster Besi Berjalan</h3>
-                                <p class="text-sm text-slate-400 mb-4"><strong>Palet:</strong> Hitam, besi metalik, sorot kuning tajam.</p>
-                                <div class="bg-slate-950 p-4 rounded-lg border-l-4 border-red-600 text-sm text-slate-300">
-                                    <strong class="text-white">Visual:</strong> Subuh kelam. Saat SFX masuk, muncul animasi siluet gerigi roda besi raksasa menekan maju ke penonton.<br><br>
-                                    <strong class="text-white">Motion:</strong> <em>Camera shake</em> (layar bergetar) sinkron dentuman drum. Layar tertutup balok abu-abu di akhir.
-                                </div>
+                        <div class="p-6">
+                            <h3 class="text-lg font-bold text-white mb-2">Monster Besi Berjalan</h3>
+                            <p class="text-sm text-slate-400 mb-4"><strong>Palet:</strong> Hitam, besi metalik, sorot kuning tajam.</p>
+                            <div class="bg-slate-950 p-4 rounded-lg border-l-4 border-red-600 text-sm text-slate-300">
+                                <strong class="text-white">Motion:</strong> <em>Camera shake</em> sinkron dentuman drum. Layar tertutup balok abu-abu di akhir.
                             </div>
                         </div>
                     </div>
-
-                    <div class="bg-slate-900 rounded-lg overflow-hidden border border-slate-700 shadow-lg md:col-span-2 relative">
+                    <div class="bg-slate-900 rounded-lg overflow-hidden border border-slate-700 shadow-lg">
                         <div class="bg-slate-800 border-b border-slate-700 p-3 flex justify-between items-center">
-                            <span class="text-xs text-cyan-400 uppercase font-bold tracking-widest">CUE 06: GRAND FINALE</span>
+                            <span class="text-xs text-cyan-400 uppercase font-bold tracking-widest">CUE 06: FINALE</span>
                             <i class="fa-solid fa-rainbow text-cyan-400"></i>
                         </div>
-                        <div class="p-6 flex flex-col md:flex-row gap-6 items-center">
-                            <div class="flex-1">
-                                <h3 class="text-xl font-bold text-white mb-2">Dunia Baru (Taman Impian)</h3>
-                                <p class="text-sm text-slate-400 mb-4"><strong>Palet:</strong> Biru langit cerah, hijau segar, pelangi.</p>
-                                <div class="bg-slate-950 p-4 rounded-lg border-l-4 border-cyan-500 text-sm text-slate-300">
-                                    <strong class="text-white">Visual:</strong> Transisi dramatis cahaya fajar. Pemandangan kota yang telah ditumbuhi tanaman hijau.<br><br>
-                                    <strong class="text-white">Motion:</strong> Matahari pagi muncul. Merpati terbang. Pelangi besar melengkung di akhir lagu.
-                                </div>
+                        <div class="p-6">
+                            <h3 class="text-lg font-bold text-white mb-2">Taman Impian</h3>
+                            <p class="text-sm text-slate-400 mb-4"><strong>Palet:</strong> Biru langit cerah, hijau, pelangi.</p>
+                            <div class="bg-slate-950 p-4 rounded-lg border-l-4 border-cyan-500 text-sm text-slate-300">
+                                <strong class="text-white">Motion:</strong> Matahari pagi muncul. Merpati terbang. Pelangi melengkung di akhir lagu.
                             </div>
                         </div>
                     </div>
@@ -474,9 +424,6 @@
                     <h2 class="text-2xl font-bold text-white"><i class="fa-solid fa-lightbulb mr-2 text-yellow-400"></i>Tabel Tata Cahaya (Lighting ToR)</h2>
                     <span class="bg-yellow-900/50 text-yellow-300 text-xs px-3 py-1 rounded-full border border-yellow-700/50">Divisi: Lighting Vendor</span>
                 </div>
-                <p class="text-slate-400 mb-6 leading-relaxed">
-                    Tabel <em>Terms of Reference</em> (ToR) spesifik untuk Vendor Lighting. Mengatur detail palet warna (RGB), tipe fixture, dan target area (Atas vs Bawah).
-                </p>
 
                 <div class="overflow-x-auto rounded-lg border border-slate-700 shadow-lg">
                     <table class="w-full text-sm text-left border-collapse">
@@ -489,108 +436,50 @@
                             </tr>
                         </thead>
                         <tbody class="text-slate-300 align-top">
-                            <tr class="bg-slate-900/80 border-b border-slate-700 hover:bg-slate-800 transition-colors">
-                                <th scope="row" class="px-4 py-4 font-bold text-white">1: Prolog<br><span class="text-xs font-normal text-slate-500">Awal Pertunjukan</span></th>
+                            <tr class="bg-slate-900/80 border-b border-slate-700">
+                                <th scope="row" class="px-4 py-4 font-bold text-white">1: Prolog</th>
                                 <td class="px-4 py-4">
                                     <strong class="text-slate-200">Biru Kelam & Cyan</strong><br>
-                                    <div class="mt-2 flex gap-1">
-                                        <span class="w-4 h-4 bg-blue-900 rounded-full border border-slate-500"></span>
-                                        <span class="w-4 h-4 bg-cyan-600 rounded-full border border-slate-500"></span>
-                                        <span class="w-4 h-4 bg-slate-700 rounded-full border border-slate-500"></span>
-                                    </div>
+                                    <div class="mt-2 flex gap-1"><span class="w-4 h-4 bg-blue-900 rounded-full border border-slate-500"></span><span class="w-4 h-4 bg-cyan-600 rounded-full border border-slate-500"></span></div>
                                 </td>
-                                <td class="px-4 py-4 text-slate-400">
-                                    <strong class="text-white">Fade in perlahan (10s).</strong> Lampu wash panggung bawah dibuat berkedip pelan (flicker) menyerupai lampu jalanan rusak.
-                                </td>
-                                <td class="px-4 py-4 text-slate-400">
-                                    <strong class="text-yellow-400">Spot:</strong> Ranjang Kasih (Atas Tengah).<br>
-                                    <strong class="text-yellow-400">Wash:</strong> Panggung Bawah (Redup 30%).
-                                </td>
+                                <td class="px-4 py-4 text-slate-400"><strong class="text-white">Fade in perlahan (10s).</strong> Lampu wash bawah berkedip pelan (flicker).</td>
+                                <td class="px-4 py-4 text-slate-400"><strong class="text-yellow-400">Spot:</strong> Atas Tengah.<br><strong class="text-yellow-400">Wash:</strong> Panggung Bawah (Redup).</td>
                             </tr>
-                            <tr class="bg-slate-900/40 border-b border-slate-700 hover:bg-slate-800 transition-colors">
-                                <th scope="row" class="px-4 py-4 font-bold text-white">1: Khayalan<br><span class="text-xs font-normal text-slate-500">Musik Tarian</span></th>
+                            <tr class="bg-slate-900/40 border-b border-slate-700">
+                                <th scope="row" class="px-4 py-4 font-bold text-white">1: Khayalan</th>
                                 <td class="px-4 py-4">
                                     <strong class="text-slate-200">Hijau, Pink, Kuning</strong><br>
-                                    <div class="mt-2 flex gap-1">
-                                        <span class="w-4 h-4 bg-green-400 rounded-full border border-slate-500"></span>
-                                        <span class="w-4 h-4 bg-pink-400 rounded-full border border-slate-500"></span>
-                                        <span class="w-4 h-4 bg-yellow-400 rounded-full border border-slate-500"></span>
-                                    </div>
+                                    <div class="mt-2 flex gap-1"><span class="w-4 h-4 bg-green-400 rounded-full border border-slate-500"></span><span class="w-4 h-4 bg-pink-400 rounded-full border border-slate-500"></span></div>
                                 </td>
-                                <td class="px-4 py-4 text-slate-400">
-                                    <strong class="text-white">Crossfade lambat (5s).</strong> Matikan efek flicker. Cahaya sehalus dan seterang mungkin (Magical feel).
-                                </td>
-                                <td class="px-4 py-4 text-slate-400">
-                                    <strong class="text-yellow-400">Full Wash:</strong> Panggung Atas & Bawah menyala terang benderang.
-                                </td>
+                                <td class="px-4 py-4 text-slate-400"><strong class="text-white">Crossfade lambat (5s).</strong> Matikan efek flicker. Cahaya sehalus dan seterang mungkin.</td>
+                                <td class="px-4 py-4 text-slate-400"><strong class="text-yellow-400">Full Wash:</strong> Atas & Bawah menyala terang benderang.</td>
                             </tr>
-                            <tr class="bg-slate-900/80 border-b border-slate-700 hover:bg-slate-800 transition-colors">
-                                <th scope="row" class="px-4 py-4 font-bold text-white">2: Gang Sempit<br><span class="text-xs font-normal text-slate-500">Blackout Transisi</span></th>
+                            <tr class="bg-slate-900/80 border-b border-slate-700">
+                                <th scope="row" class="px-4 py-4 font-bold text-white">2: Gang Sempit</th>
                                 <td class="px-4 py-4">
                                     <strong class="text-slate-200">Amber & Putih</strong><br>
-                                    <div class="mt-2 flex gap-1">
-                                        <span class="w-4 h-4 bg-orange-300 rounded-full border border-slate-500"></span>
-                                        <span class="w-4 h-4 bg-white rounded-full border border-slate-500"></span>
-                                    </div>
+                                    <div class="mt-2 flex gap-1"><span class="w-4 h-4 bg-orange-300 rounded-full border border-slate-500"></span><span class="w-4 h-4 bg-white rounded-full border border-slate-500"></span></div>
                                 </td>
-                                <td class="px-4 py-4 text-slate-400">
-                                    <strong class="text-white">Blackout instan 2s.</strong> Lalu tembak lampu sorot tajam seperti bohlam jalanan di malam hari.
-                                </td>
-                                <td class="px-4 py-4 text-slate-400">
-                                    <strong class="text-yellow-400">Spot:</strong> Teras Gang (Atas Kanan).<br>
-                                    <strong class="text-yellow-400">Wash:</strong> Gelap/Sisa pantulan.
-                                </td>
+                                <td class="px-4 py-4 text-slate-400"><strong class="text-white">Blackout instan 2s.</strong> Tembak lampu sorot tajam (bohlam jalanan).</td>
+                                <td class="px-4 py-4 text-slate-400"><strong class="text-yellow-400">Spot:</strong> Teras Gang (Atas Kanan).<br><strong class="text-yellow-400">Wash:</strong> Gelap.</td>
                             </tr>
-                            <tr class="bg-slate-900/40 border-b border-slate-700 hover:bg-slate-800 transition-colors">
-                                <th scope="row" class="px-4 py-4 font-bold text-white">3: Rapat Alam<br><span class="text-xs font-normal text-slate-500">Sore Polusi</span></th>
-                                <td class="px-4 py-4">
-                                    <strong class="text-slate-200">Jingga & Merah Gelap</strong><br>
-                                    <div class="mt-2 flex gap-1">
-                                        <span class="w-4 h-4 bg-orange-600 rounded-full border border-slate-500"></span>
-                                        <span class="w-4 h-4 bg-red-800 rounded-full border border-slate-500"></span>
-                                    </div>
-                                </td>
-                                <td class="px-4 py-4 text-slate-400">
-                                    <strong class="text-white">Fade in perlahan.</strong> Tambahkan kedipan merah redup berulang (Strobe slow) saat Buldoser dibahas.
-                                </td>
-                                <td class="px-4 py-4 text-slate-400">
-                                    <strong class="text-yellow-400">Wash:</strong> Rata di Panggung Bawah Tengah (karpet taman).
-                                </td>
-                            </tr>
-                            <tr class="bg-red-900/20 border-b border-red-900/50 hover:bg-red-900/30 transition-colors">
-                                <th scope="row" class="px-4 py-4 font-bold text-red-400">4: Klimaks<br><span class="text-xs font-normal text-red-500">Buldoser Masuk</span></th>
+                            <tr class="bg-red-900/20 border-b border-red-900/50">
+                                <th scope="row" class="px-4 py-4 font-bold text-red-400">4: Klimaks</th>
                                 <td class="px-4 py-4">
                                     <strong class="text-slate-200">Merah Agresif & Strobe</strong><br>
-                                    <div class="mt-2 flex gap-1">
-                                        <span class="w-4 h-4 bg-red-600 rounded-full border border-slate-500"></span>
-                                        <span class="w-4 h-4 bg-white rounded-full border border-slate-500"></span>
-                                        <span class="w-4 h-4 bg-slate-900 rounded-full border border-slate-500"></span>
-                                    </div>
+                                    <div class="mt-2 flex gap-1"><span class="w-4 h-4 bg-red-600 rounded-full border border-slate-500"></span><span class="w-4 h-4 bg-white rounded-full border border-slate-500"></span></div>
                                 </td>
-                                <td class="px-4 py-4 text-slate-400">
-                                    <strong class="text-white">Sudden Change!</strong> Seluruh panggung merah kelam. Aktifkan Moving Head menyapu liar (efek chaos).
-                                </td>
-                                <td class="px-4 py-4 text-slate-400">
-                                    <strong class="text-red-400">Moving Heads:</strong> Sapu area Panggung Bawah.<br>
-                                    <strong class="text-red-400">Spot:</strong> Ke Buldoser di Panggung Atas.
-                                </td>
+                                <td class="px-4 py-4 text-slate-400"><strong class="text-white">Sudden Change!</strong> Seluruh panggung merah kelam. Moving Head menyapu liar (chaos).</td>
+                                <td class="px-4 py-4 text-slate-400"><strong class="text-red-400">Moving Heads:</strong> Sapu Bawah.<br><strong class="text-red-400">Spot:</strong> Buldoser Atas.</td>
                             </tr>
-                            <tr class="bg-cyan-900/20 hover:bg-cyan-900/30 transition-colors">
-                                <th scope="row" class="px-4 py-4 font-bold text-cyan-400">5: Finale<br><span class="text-xs font-normal text-cyan-600">Akhir Bahagia</span></th>
+                            <tr class="bg-cyan-900/20">
+                                <th scope="row" class="px-4 py-4 font-bold text-cyan-400">5: Finale</th>
                                 <td class="px-4 py-4">
                                     <strong class="text-slate-200">Warm White -> RGB</strong><br>
-                                    <div class="mt-2 flex gap-1">
-                                        <span class="w-4 h-4 bg-yellow-100 rounded-full border border-slate-500"></span>
-                                        <span class="w-4 h-4 bg-blue-400 rounded-full border border-slate-500"></span>
-                                        <span class="w-4 h-4 bg-red-400 rounded-full border border-slate-500"></span>
-                                    </div>
+                                    <div class="mt-2 flex gap-1"><span class="w-4 h-4 bg-yellow-100 rounded-full border border-slate-500"></span><span class="w-4 h-4 bg-blue-400 rounded-full border border-slate-500"></span></div>
                                 </td>
-                                <td class="px-4 py-4 text-slate-400">
-                                    <strong class="text-white">Blackout 3s.</strong> Fade in fajar (Warm White). Saat lagu reff, aktifkan mode Pelangi (RGB Chase). Blinder kejut saat Bow.
-                                </td>
-                                <td class="px-4 py-4 text-slate-400">
-                                    <strong class="text-cyan-400">All Fixtures ON:</strong> Wash merata maksimal (Atas, Bawah, dan Lorong Penonton).
-                                </td>
+                                <td class="px-4 py-4 text-slate-400"><strong class="text-white">Blackout 3s.</strong> Fade in fajar. Saat lagu reff, aktifkan mode Pelangi (RGB Chase). Blinder kejut.</td>
+                                <td class="px-4 py-4 text-slate-400"><strong class="text-cyan-400">All Fixtures ON:</strong> Wash merata maksimal (Atas, Bawah, Lorong).</td>
                             </tr>
                         </tbody>
                     </table>
@@ -598,87 +487,30 @@
             </div>
         </div>
 
-        <!-- TAB 6: TEKNIS CUE SHEET MASTER -->
-        <div id="teknis" class="tab-content">
-            <div class="bg-slate-800 rounded-xl p-6 md:p-8 border border-slate-700 shadow-xl mb-6">
-                <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 gap-4">
-                    <h2 class="text-2xl font-bold text-white"><i class="fa-solid fa-list-check mr-2 text-orange-400"></i>Panduan Teknis (Cue Master)</h2>
-                    <span class="bg-orange-900/50 text-orange-300 text-xs px-3 py-1 rounded-full border border-orange-700/50">Divisi: Stage Manager</span>
-                </div>
-                <p class="text-slate-400 mb-8 leading-relaxed">
-                    Instrumen ringkas bagi Stage Manager dan Kru Lapangan. Pilih babak pada linimasa di bawah ini untuk melihat sinkronisasi singkat antar divisi.
-                </p>
-
-                <div class="flex flex-wrap gap-2 justify-center mb-8 bg-slate-900/50 p-4 rounded-lg border border-slate-700" id="timeline-container">
-                    <!-- Javascript generates buttons here -->
-                </div>
-
-                <div id="cue-detail-card" class="bg-slate-900 border border-slate-700 rounded-xl p-6 shadow-inner">
-                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 border-b border-slate-700 pb-4">
-                        <h3 id="detail-title" class="text-2xl font-bold text-white"></h3>
-                        <span id="detail-time" class="bg-slate-800 text-slate-300 px-3 py-1 rounded border border-slate-600 text-sm font-mono mt-2 md:mt-0"></span>
-                    </div>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="space-y-4">
-                            <div class="bg-slate-800/80 p-5 rounded-lg border-l-4 border-yellow-500 shadow">
-                                <h4 class="font-bold text-yellow-400 flex items-center gap-2"><i class="fa-solid fa-lightbulb"></i> Lighting Cue (Ringkasan)</h4>
-                                <p id="detail-lighting" class="text-sm mt-2 text-slate-300"></p>
-                            </div>
-                            <div class="bg-slate-800/80 p-5 rounded-lg border-l-4 border-blue-500 shadow">
-                                <h4 class="font-bold text-blue-400 flex items-center gap-2"><i class="fa-solid fa-volume-high"></i> Sound Cue (Ringkasan)</h4>
-                                <p id="detail-sound" class="text-sm mt-2 text-slate-300"></p>
-                            </div>
-                        </div>
-                        <div class="space-y-4">
-                            <div class="bg-slate-800/80 p-5 rounded-lg border-l-4 border-red-500 shadow">
-                                <h4 class="font-bold text-red-400 flex items-center gap-2"><i class="fa-solid fa-person-running"></i> Crew Runner (Properti)</h4>
-                                <p id="detail-crew" class="text-sm mt-2 text-slate-300"></p>
-                            </div>
-                            <div class="bg-slate-800/80 p-5 rounded-lg border-l-4 border-green-500 shadow">
-                                <h4 class="font-bold text-emerald-400 flex items-center gap-2"><i class="fa-solid fa-users"></i> Pendamping Grup (Ensemble)</h4>
-                                <p id="detail-grup" class="text-sm mt-2 text-slate-300"></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- TAB 7: BACKSTAGE -->
+        <!-- TAB 6: BACKSTAGE -->
         <div id="backstage" class="tab-content">
             <div class="bg-slate-800 rounded-xl p-6 md:p-8 border border-slate-700 shadow-xl mb-6">
                 <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 gap-4">
                     <h2 class="text-2xl font-bold text-white"><i class="fa-solid fa-map-location-dot mr-2 text-emerald-400"></i>Denah Panggung (2 Tingkat)</h2>
                     <span class="bg-emerald-900/50 text-emerald-300 text-xs px-3 py-1 rounded-full border border-emerald-700/50">Divisi: Keamanan & Pendamping</span>
                 </div>
-                <p class="text-slate-400 mb-8 leading-relaxed">
-                    Panggung dipisah menjadi <strong>Panggung Atas</strong> (Main Cast) dan <strong>Panggung Bawah/Lantai</strong> (300 Ensemble). Alur masuk 300 anak memakai sistem <strong>Ganjil-Genap</strong> untuk mencegah penumpukan.
-                </p>
-
+                
                 <div class="bg-slate-900 p-6 rounded-xl mb-8 border border-slate-700 shadow-inner">
                     <h3 class="text-center font-bold text-slate-300 mb-6 tracking-widest text-sm md:text-base">DENAH LALU LINTAS & 2 LEVEL PANGGUNG</h3>
                     
                     <div class="grid grid-cols-4 gap-4 text-center text-sm md:text-base">
-                        <!-- Area Transit Belakang -->
                         <div class="col-span-4 bg-slate-800 border border-slate-600 p-4 rounded-lg shadow-sm">
                             <h4 class="font-bold text-slate-300">⛺ BACKSTAGE B (HOLDING AREA MASSAL)</h4>
-                            <p class="text-slate-500 text-xs mt-1">Area Tunggu Luar (300 Anak / 12 Grup) - Dikoordinir oleh Pendamping Grup</p>
                         </div>
-
-                        <!-- Jalur Masuk Kiri (Ganjil) -->
                         <div class="col-span-1 bg-emerald-900/30 border border-emerald-700/50 p-4 rounded-lg shadow-sm flex flex-col justify-center relative">
                             <span class="absolute top-2 left-0 right-0 text-[10px] md:text-xs font-bold text-emerald-500">SISTEM GANJIL</span>
-                            <h4 class="font-bold text-emerald-400 mt-5 text-xs md:text-base">SAYAP KIRI<br><span class="font-normal text-xs text-emerald-600/70">(Stage Left)</span></h4>
+                            <h4 class="font-bold text-emerald-400 mt-5 text-xs md:text-base">SAYAP KIRI</h4>
                             <ul class="text-xs text-emerald-300 mt-3 text-center md:text-left list-disc list-inside">
                                 <li>Grup 1, 3, 5, 7, 9, 11</li>
                             </ul>
                         </div>
-
-                        <!-- Panggung Atas & Bawah -->
                         <div class="col-span-2 space-y-4">
-                            <div class="bg-slate-950 text-slate-100 border-2 border-amber-500/50 p-6 rounded-lg shadow-lg flex flex-col items-center justify-center min-h-[120px] relative overflow-hidden">
-                                <div class="absolute inset-0 bg-gradient-to-b from-amber-500/10 to-transparent"></div>
+                            <div class="bg-slate-950 text-slate-100 border-2 border-amber-500/50 p-6 rounded-lg shadow-lg flex flex-col items-center justify-center min-h-[120px] relative">
                                 <h2 class="text-lg md:text-2xl font-bold tracking-widest text-amber-400 relative z-10">PANGGUNG ATAS</h2>
                                 <p class="text-[10px] md:text-xs mt-2 text-slate-400 relative z-10">(Khusus 12 Karakter Utama & Set Properti)</p>
                             </div>
@@ -687,100 +519,62 @@
                                 <p class="text-[10px] md:text-xs mt-2 text-indigo-300/70">(Area Koreografi 300 Anak Ansambel)</p>
                             </div>
                         </div>
-
-                        <!-- Jalur Masuk Kanan (Genap) -->
                         <div class="col-span-1 bg-emerald-900/30 border border-emerald-700/50 p-4 rounded-lg shadow-sm flex flex-col justify-center relative">
                             <span class="absolute top-2 left-0 right-0 text-[10px] md:text-xs font-bold text-emerald-500">SISTEM GENAP</span>
-                            <h4 class="font-bold text-emerald-400 mt-5 text-xs md:text-base">SAYAP KANAN<br><span class="font-normal text-xs text-emerald-600/70">(Stage Right)</span></h4>
+                            <h4 class="font-bold text-emerald-400 mt-5 text-xs md:text-base">SAYAP KANAN</h4>
                             <ul class="text-xs text-emerald-300 mt-3 text-center md:text-left list-disc list-inside">
                                 <li>Grup 2, 4, 6, 8, 10, 12</li>
                             </ul>
                         </div>
-
-                        <!-- Area Penonton / Lorong (Aisle) -->
-                        <div class="col-span-4 bg-rose-900/20 border border-rose-800/50 p-6 rounded-lg shadow-sm relative overflow-hidden mt-4">
+                        <div class="col-span-4 bg-rose-900/20 border border-rose-800/50 p-6 rounded-lg shadow-sm relative mt-4">
                             <h4 class="font-bold text-rose-400">🪑 AREA PENONTON & LORONG (AISLE)</h4>
-                            <p class="text-rose-300/70 text-xs mt-1">Jalur Masuk Tambahan untuk Grand Finale (Menyebar di antara kursi penonton)</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Detail SOP -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="bg-slate-900/50 p-5 rounded-lg border border-slate-700">
                         <h3 class="font-bold text-emerald-400 mb-4 text-lg border-b border-slate-700 pb-2">SOP Pergerakan 300 Anak (Bawah)</h3>
                         <ul class="list-decimal list-inside text-sm text-slate-300 space-y-3">
-                            <li>Semua anggota ensemble menunggu di <strong class="text-white">Backstage B</strong>.</li>
-                            <li>Grup dengan <strong class="text-white">Nomor Ganjil</strong> diarahkan ke Sayap Kiri, <strong class="text-white">Nomor Genap</strong> ke Sayap Kanan.</li>
-                            <li>Masuk ke <em>Panggung Bawah/Lantai</em> dengan sistem "kereta-keretaan" (pegang bahu teman).</li>
+                            <li>Grup dengan <strong class="text-white">Nomor Ganjil</strong> ke Sayap Kiri, <strong class="text-white">Nomor Genap</strong> ke Sayap Kanan.</li>
                             <li><span class="text-red-400 font-bold">Dilarang keras naik ke Panggung Atas</span> untuk mencegah beban berlebih.</li>
                         </ul>
                     </div>
                     <div class="bg-slate-900/50 p-5 rounded-lg border border-slate-700">
                         <h3 class="font-bold text-amber-400 mb-4 text-lg border-b border-slate-700 pb-2">SOP Panggung Atas (12 Utama)</h3>
                         <ul class="list-decimal list-inside text-sm text-slate-300 space-y-3">
-                            <li>Hanya 12 anak, Sutradara, dan Teknisi Mic yang diizinkan berada di area ini (Backstage A).</li>
+                            <li>Hanya 12 anak, Sutradara, dan Teknisi Mic yang diizinkan berada di area ini.</li>
                             <li>Gunakan pita fosfor di lantai panggung atas untuk titik henti saat <em>blackout</em>.</li>
-                            <li>Properti krusial (Krupuk Siti, Daun patah Kasih) diletakkan di meja khusus berlabel.</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- TAB 8: RISIKO -->
+        <!-- TAB 7: RISIKO -->
         <div id="risiko" class="tab-content">
             <div class="bg-slate-800 rounded-xl p-6 md:p-8 border border-slate-700 shadow-xl mb-6">
                 <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 gap-4">
                     <h2 class="text-2xl font-bold text-white"><i class="fa-solid fa-triangle-exclamation mr-2 text-red-500"></i>Manajemen Risiko (Mitigasi)</h2>
                     <span class="bg-red-900/50 text-red-300 text-xs px-3 py-1 rounded-full border border-red-700/50">Divisi: Sutradara & Stage Manager</span>
                 </div>
-                <p class="text-slate-400 mb-8 leading-relaxed">
-                    Berdasarkan analisis karakter spesifik dan skala produksi masif (312 aktor), berikut adalah potensi kendala teknis dan kemungkinan terburuk di atas panggung, beserta langkah mitigasinya.
-                </p>
-
+                
                 <div class="space-y-8">
-                    <!-- Specific Actor Risks -->
                     <div class="bg-slate-900 rounded-xl border border-red-900/50 p-6">
-                        <h3 class="text-xl font-bold mb-4 text-white flex items-center gap-2"><i class="fa-solid fa-masks-theater text-red-400"></i>1. Risiko Karakteristik "Grup Kamar"</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            <div class="bg-slate-800/80 p-5 rounded-lg border-l-4 border-red-500">
-                                <h4 class="font-bold text-slate-200">Udin (Robotik/Datar)</h4>
-                                <p class="text-sm text-slate-400 mt-2"><strong class="text-slate-500">Kendala:</strong> Aktor anak sulit menahan ekspresi.</p>
-                                <p class="text-sm text-red-400 mt-2"><strong class="text-red-500">Terburuk:</strong> <em>Breaking character</em> (tertawa lepas).</p>
-                                <p class="text-sm text-emerald-400 mt-2"><i class="fa-solid fa-shield-halved mr-1"></i> <strong class="text-emerald-500">Mitigasi:</strong> Latihan fokus dengan distraksi.</p>
-                            </div>
-                            <div class="bg-slate-800/80 p-5 rounded-lg border-l-4 border-red-500">
-                                <h4 class="font-bold text-slate-200">Siti (Panik & Krupuk)</h4>
-                                <p class="text-sm text-slate-400 mt-2"><strong class="text-slate-500">Kendala:</strong> Rawan tersedak dan remahan kotor.</p>
-                                <p class="text-sm text-red-400 mt-2"><strong class="text-red-500">Terburuk:</strong> Penari terpeleset di Panggung Bawah.</p>
-                                <p class="text-sm text-emerald-400 mt-2"><i class="fa-solid fa-shield-halved mr-1"></i> <strong class="text-emerald-500">Mitigasi:</strong> Kru "Sapu Kilat" siap sedia.</p>
-                            </div>
-                            <div class="bg-slate-800/80 p-5 rounded-lg border-l-4 border-red-500">
-                                <h4 class="font-bold text-slate-200">Yuni (Profesor)</h4>
-                                <p class="text-sm text-slate-400 mt-2"><strong class="text-slate-500">Kendala:</strong> Properti antena menyenggol orang.</p>
-                                <p class="text-sm text-red-400 mt-2"><strong class="text-red-500">Terburuk:</strong> Antena patah, aktor panik & <em>blank</em>.</p>
-                                <p class="text-sm text-emerald-400 mt-2"><i class="fa-solid fa-shield-halved mr-1"></i> <strong class="text-emerald-500">Mitigasi:</strong> Antena dari spons eva fleksibel.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- General Mass Production Risks -->
-                    <div class="bg-slate-900 rounded-xl border border-orange-900/50 p-6">
-                        <h3 class="text-xl font-bold mb-4 text-white flex items-center gap-2"><i class="fa-solid fa-users text-orange-400"></i>2. Risiko Teknis Skala Masif (300 Anak)</h3>
+                        <h3 class="text-xl font-bold mb-4 text-white flex items-center gap-2"><i class="fa-solid fa-users text-orange-400"></i>Risiko Teknis Skala Masif (300 Anak)</h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div class="bg-slate-800/80 p-5 rounded-lg border-l-4 border-orange-500">
                                 <h4 class="font-bold text-slate-200">Tata Suara (Audio) & Asap</h4>
                                 <ul class="list-disc list-inside text-sm text-slate-400 mt-3 space-y-2">
-                                    <li><strong class="text-red-400">Terburuk:</strong> Suara ribut 300 anak bocor ke mic utama. Asap Buldoser membuat Kasih batuk sungguhan.</li>
-                                    <li><strong class="text-emerald-400">Mitigasi:</strong> Tim <em>sound</em> disiplin <em>mute</em> mic saat sequence tari. Uji coba volume asap <em>dry ice</em> sebelum gladi.</li>
+                                    <li><strong class="text-red-400">Terburuk:</strong> Suara ribut 300 anak bocor ke mic utama. Asap Buldoser membuat Kasih batuk.</li>
+                                    <li><strong class="text-emerald-400">Mitigasi:</strong> Tim <em>sound</em> disiplin <em>mute</em> mic saat sequence tari. Uji coba volume asap <em>dry ice</em>.</li>
                                 </ul>
                             </div>
                             <div class="bg-slate-800/80 p-5 rounded-lg border-l-4 border-orange-500">
-                                <h4 class="font-bold text-slate-200">Lalu Lintas Panggung (Blocking)</h4>
+                                <h4 class="font-bold text-slate-200">Lalu Lintas Panggung</h4>
                                 <ul class="list-disc list-inside text-sm text-slate-400 mt-3 space-y-2">
-                                    <li><strong class="text-red-400">Terburuk:</strong> Tabrakan masal saat <em>blackout</em> antara grup kiri dan kanan yang merusak pementasan.</li>
-                                    <li><strong class="text-emerald-400">Mitigasi:</strong> Implementasi teguh sistem Ganjil-Genap. Pasang jalur fosfor (<em>glow in the dark</em>) di lantai panggung bawah.</li>
+                                    <li><strong class="text-red-400">Terburuk:</strong> Tabrakan masal saat <em>blackout</em>.</li>
+                                    <li><strong class="text-emerald-400">Mitigasi:</strong> Implementasi teguh sistem Ganjil-Genap. Pasang jalur fosfor.</li>
                                 </ul>
                             </div>
                         </div>
@@ -789,21 +583,18 @@
             </div>
         </div>
 
-        <!-- TAB 9: ANALISIS DATA -->
+        <!-- TAB 8: ANALISIS -->
         <div id="analisis" class="tab-content">
             <div class="bg-slate-800 rounded-xl p-6 md:p-8 border border-slate-700 shadow-xl mb-6">
                 <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 gap-4">
                     <h2 class="text-2xl font-bold text-white"><i class="fa-solid fa-chart-pie mr-2 text-cyan-400"></i>Analisis Skala Produksi</h2>
                     <span class="bg-cyan-900/50 text-cyan-300 text-xs px-3 py-1 rounded-full border border-cyan-700/50">Divisi: Pimpinan Produksi</span>
                 </div>
-                <p class="text-slate-400 mb-8 leading-relaxed">
-                    Visualisasi data logistik untuk membantu tim manajemen mengalokasikan sumber daya konsumsi dan <em>wardrobe</em>, serta memetakan beban teknis panggung per babak.
-                </p>
-
+                
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     <div class="bg-slate-900/50 p-6 rounded-xl border border-slate-700 shadow-inner">
                         <h3 class="text-center font-bold text-slate-300 mb-2">Komposisi Pemeran</h3>
-                        <p class="text-center text-xs text-slate-500 mb-6">Total 312 Aktor (Panggung Atas vs Panggung Bawah)</p>
+                        <p class="text-center text-xs text-slate-500 mb-6">Total 312 Aktor</p>
                         <div class="chart-container">
                             <canvas id="castChart"></canvas>
                         </div>
@@ -820,12 +611,158 @@
             </div>
         </div>
 
+        <!-- TAB 9: TIMELINE STANDBY (BAGAN TERAKHIR - NEW) -->
+        <div id="timeline" class="tab-content">
+            <div class="bg-slate-800 rounded-xl p-6 md:p-8 border border-slate-700 shadow-xl mb-6 border-t-4 border-t-orange-500">
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 gap-4">
+                    <h2 class="text-2xl font-bold text-white"><i class="fa-solid fa-stopwatch mr-2 text-orange-400"></i>Master Timeline & Standby List</h2>
+                    <span class="bg-orange-900/50 text-orange-300 text-xs px-3 py-1 rounded-full border border-orange-700/50">Divisi: Sutradara & Stage Manager</span>
+                </div>
+                <p class="text-slate-400 mb-8 leading-relaxed">
+                    Pengingat krusial per menit/detik bagi <strong>Sutradara dan Stage Manager</strong> untuk mempersiapkan elemen (*Call Standby*) <em>sebelum</em> adegan benar-benar terjadi di panggung.
+                </p>
+
+                <div class="overflow-x-auto rounded-lg border border-slate-700 shadow-lg">
+                    <table class="w-full text-sm text-left border-collapse">
+                        <thead class="text-xs text-slate-900 uppercase bg-orange-500">
+                            <tr>
+                                <th scope="col" class="px-4 py-4 border-b border-orange-600 w-24 whitespace-nowrap"><i class="fa-regular fa-clock mr-1"></i> Waktu</th>
+                                <th scope="col" class="px-4 py-4 border-b border-orange-600 w-1/4">Fase / Trigger</th>
+                                <th scope="col" class="px-4 py-4 border-b border-orange-600 w-1/4">Aksi Panggung Utama</th>
+                                <th scope="col" class="px-4 py-4 border-b border-orange-600 w-1/3"><i class="fa-solid fa-bullhorn mr-1"></i> CALL STANDBY (Sutradara/SM)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-slate-300 align-top">
+                            <!-- Pre-show -->
+                            <tr class="bg-slate-900/80 border-b border-slate-700">
+                                <td class="px-4 py-4 font-mono font-bold text-orange-400">- 10:00</td>
+                                <td class="px-4 py-4 font-bold text-white">Pre-Show (House Open)</td>
+                                <td class="px-4 py-4 text-slate-400">Penonton memasuki ruangan. BGM Ambience.</td>
+                                <td class="px-4 py-4">
+                                    <div class="bg-orange-900/30 p-3 rounded border-l-2 border-orange-500">
+                                        <ul class="list-disc list-inside space-y-1">
+                                            <li><strong class="text-white">Standby:</strong> Seluruh Kru Teknis di posisi.</li>
+                                            <li><strong class="text-white">Standby:</strong> Kasih & Grup Kamar di Panggung Atas.</li>
+                                            <li><strong class="text-emerald-400">Standby:</strong> Grup 1, 2, 3 (Wing Kiri) & Grup 4, 5 (Wing Kanan).</li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- Babak 1 -->
+                            <tr class="bg-slate-900/40 border-b border-slate-700">
+                                <td class="px-4 py-4 font-mono font-bold text-slate-200">00:00</td>
+                                <td class="px-4 py-4 font-bold text-pink-400">Start Show! (Prolog)</td>
+                                <td class="px-4 py-4 text-slate-400">Lampu meredup, SFX bising pabrik mulai (Looping). Grup 1 & 2 masuk pantomim.</td>
+                                <td class="px-4 py-4">
+                                    <div class="bg-slate-800 p-2 rounded text-slate-400">
+                                        <em>(Memantau pergerakan Grup 1 & 2)</em>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="bg-slate-900/80 border-b border-slate-700">
+                                <td class="px-4 py-4 font-mono font-bold text-slate-200">02:00</td>
+                                <td class="px-4 py-4 font-bold text-pink-400">Babak 1: Dialog Kamar</td>
+                                <td class="px-4 py-4 text-slate-400">Lampu menyala di ranjang Kasih. Dialog Udin, Siti, Yuni dimulai.</td>
+                                <td class="px-4 py-4">
+                                    <div class="bg-blue-900/30 p-3 rounded border-l-2 border-blue-500">
+                                        <ul class="list-disc list-inside space-y-1">
+                                            <li><strong class="text-blue-300">Call Music:</strong> Siapkan Track 2 (Taman Ajaib).</li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="bg-slate-900/40 border-b border-slate-700">
+                                <td class="px-4 py-4 font-mono font-bold text-slate-200">05:00</td>
+                                <td class="px-4 py-4 font-bold text-emerald-400">Khayalan Taman (Tari)</td>
+                                <td class="px-4 py-4 text-slate-400">Musik ceria meledak. Grup 3, 4, 5 masuk menari ke Panggung Bawah.</td>
+                                <td class="px-4 py-4">
+                                    <div class="bg-orange-900/30 p-3 rounded border-l-2 border-orange-500">
+                                        <ul class="list-disc list-inside space-y-1">
+                                            <li><strong class="text-white">Standby Runner:</strong> Bersiap tarik set Ranjang Kasih.</li>
+                                            <li><strong class="text-white">Standby:</strong> Grup Gang (Bagas, Dino, Bobby) masuk Panggung Atas.</li>
+                                            <li><strong class="text-emerald-400">Standby Bawah:</strong> Grup 6 & 7 di akses Kiri/Kanan.</li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- Babak 2 -->
+                            <tr class="bg-slate-900/80 border-b border-slate-700">
+                                <td class="px-4 py-4 font-mono font-bold text-slate-200">08:30</td>
+                                <td class="px-4 py-4 font-bold text-orange-400">Babak 2: Blackout Transisi</td>
+                                <td class="px-4 py-4 text-slate-400">Lampu mati cepat. Set diganti. Spot menyala untuk Grup Gang.</td>
+                                <td class="px-4 py-4">
+                                    <div class="bg-slate-800 p-2 rounded text-slate-400">
+                                        <em>(Memantau kebersihan panggung atas dari remahan krupuk)</em>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- Babak 3 -->
+                            <tr class="bg-slate-900/40 border-b border-slate-700">
+                                <td class="px-4 py-4 font-mono font-bold text-slate-200">14:00</td>
+                                <td class="px-4 py-4 font-bold text-blue-400">Babak 3: Rapat Alam</td>
+                                <td class="px-4 py-4 text-slate-400">Dialog Matahari, Bulan, Bunga, Kupu-kupu (Panggung Atas).</td>
+                                <td class="px-4 py-4">
+                                    <div class="bg-orange-900/30 p-3 rounded border-l-2 border-orange-500">
+                                        <ul class="list-disc list-inside space-y-1">
+                                            <li><strong class="text-white">Standby:</strong> Grup 8 (Langit) masuk pelan ke Bawah.</li>
+                                            <li><strong class="text-red-400">Standby Kru:</strong> Siapkan Buldoser Kardus raksasa & Mesin Asap.</li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- Babak 4 -->
+                            <tr class="bg-slate-900/80 border-b border-slate-700">
+                                <td class="px-4 py-4 font-mono font-bold text-slate-200">18:00</td>
+                                <td class="px-4 py-4 font-bold text-slate-300">Dialog Kupu-Kupu (Panik)</td>
+                                <td class="px-4 py-4 text-slate-400">Kupu-Kupu mendarat menceritakan Buldoser yang akan datang.</td>
+                                <td class="px-4 py-4">
+                                    <div class="bg-orange-900/30 p-3 rounded border-l-2 border-orange-500">
+                                        <ul class="list-disc list-inside space-y-1">
+                                            <li><strong class="text-white">Call Music:</strong> Siapkan Track 5 (Marching).</li>
+                                            <li><strong class="text-emerald-400">Standby Bawah:</strong> Grup 9 (Pekerja) & Grup 10 (Pagar Betis).</li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="bg-red-900/20 border-b border-red-900/50">
+                                <td class="px-4 py-4 font-mono font-bold text-red-400">20:00</td>
+                                <td class="px-4 py-4 font-bold text-red-400">Babak 4: Buldoser! (KLIMAKS)</td>
+                                <td class="px-4 py-4 text-slate-300">Lampu merah agresif. Buldoser Kardus didorong masuk. Grup 10 Fall choreo.</td>
+                                <td class="px-4 py-4">
+                                    <div class="bg-red-900/50 p-3 rounded border-l-2 border-red-500">
+                                        <ul class="list-disc list-inside space-y-1">
+                                            <li><strong class="text-white">Standby All Cast:</strong> Ganti baju bersih/cerah di backstage A & B!</li>
+                                            <li><strong class="text-emerald-400">Standby Bawah:</strong> Grup 11 (Bibit) & Grup 12 (Pelangi) kumpul di Aisle (Lorong).</li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- Babak 5 -->
+                            <tr class="bg-cyan-900/20">
+                                <td class="px-4 py-4 font-mono font-bold text-cyan-400">28:00</td>
+                                <td class="px-4 py-4 font-bold text-cyan-400">Babak 5: GRAND FINALE</td>
+                                <td class="px-4 py-4 text-slate-300">Lampu fajar menyala terang. Musik Broadway meledak. Seluruh anak menari.</td>
+                                <td class="px-4 py-4">
+                                    <div class="bg-cyan-900/50 p-3 rounded border-l-2 border-cyan-400">
+                                        <ul class="list-disc list-inside space-y-1">
+                                            <li><strong class="text-white">Call FX:</strong> Tembak Konfeti di nada terakhir!</li>
+                                            <li><strong class="text-white">Call Cast:</strong> Persiapan Grand Bow (Hormat).</li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
     </main>
 
     <!-- Footer -->
     <footer class="bg-slate-900 py-8 border-t border-slate-800 text-center">
         <p class="text-slate-500 text-sm">© 2026 Tim Produksi Teater "Mencari Taman" - SD Islam Roushon Fikr.</p>
-        <p class="text-slate-600 text-xs mt-2">Dibuat dengan <i class="fa-solid fa-lightbulb text-yellow-500 mx-1"></i> untuk eksekusi panggung spektakuler (V7.0 Dark Edition).</p>
+        <p class="text-slate-600 text-xs mt-2">Dibuat dengan <i class="fa-solid fa-lightbulb text-yellow-500 mx-1"></i> untuk eksekusi panggung spektakuler (V8.0 Side-by-Side Edition).</p>
     </footer>
 
     <!-- Script Application Logic -->
@@ -916,10 +853,9 @@
             cueData.forEach((babak, index) => {
                 const btn = document.createElement('button');
                 btn.id = 'btn-babak-' + babak.id;
-                // Dark mode styling for timeline buttons
-                btn.className = 'px-4 py-2 rounded-md font-semibold text-sm transition-all duration-300 ' + 
+                btn.className = 'px-3 py-1.5 rounded-md font-semibold text-xs md:text-sm transition-all duration-300 ' + 
                                 (index === 0 ? 'bg-blue-600 text-white shadow-lg transform scale-105' : 'bg-slate-700 text-slate-300 hover:bg-slate-600');
-                btn.innerText = 'Babak ' + babak.id;
+                btn.innerText = 'Bbk ' + babak.id;
                 btn.onclick = () => loadBabakDetail(babak.id);
                 container.appendChild(btn);
             });
@@ -931,7 +867,7 @@
             cueData.forEach(b => {
                 const btn = document.getElementById('btn-babak-' + b.id);
                 if(btn) {
-                    btn.className = 'px-4 py-2 rounded-md font-semibold text-sm transition-all duration-300 ' + 
+                    btn.className = 'px-3 py-1.5 rounded-md font-semibold text-xs md:text-sm transition-all duration-300 ' + 
                                     (b.id === id ? 'bg-blue-600 text-white shadow-lg transform scale-105' : 'bg-slate-700 text-slate-300 hover:bg-slate-600');
                 }
             });
@@ -939,7 +875,7 @@
             const data = cueData.find(b => b.id === id);
             if(data) {
                 document.getElementById('detail-title').innerText = data.title;
-                document.getElementById('detail-time').innerText = "Waktu: " + data.time;
+                document.getElementById('detail-time').innerText = data.time;
                 document.getElementById('detail-lighting').innerHTML = data.lighting;
                 document.getElementById('detail-sound').innerHTML = data.sound;
                 document.getElementById('detail-crew').innerHTML = data.crew;
@@ -961,7 +897,7 @@
                     labels: ['Main Cast (Panggung Atas)', 'Ensemble (Panggung Bawah)'],
                     datasets: [{
                         data: [12, 300],
-                        backgroundColor: ['#f59e0b', '#3b82f6'], // amber-500, blue-500
+                        backgroundColor: ['#f59e0b', '#3b82f6'],
                         borderWidth: 0,
                         hoverOffset: 10
                     }]
@@ -984,19 +920,19 @@
                         {
                             label: 'Lighting Cues',
                             data: [5, 2, 4, 9, 7],
-                            backgroundColor: '#fbbf24', // amber-400
+                            backgroundColor: '#fbbf24', 
                             borderRadius: 4
                         },
                         {
                             label: 'Sound & SFX Cues',
                             data: [6, 3, 5, 10, 6],
-                            backgroundColor: '#60a5fa', // blue-400
+                            backgroundColor: '#60a5fa', 
                             borderRadius: 4
                         },
                         {
                             label: 'Prop/Crew Gerak',
                             data: [4, 3, 3, 9, 8],
-                            backgroundColor: '#f87171', // red-400
+                            backgroundColor: '#f87171',
                             borderRadius: 4
                         }
                     ]
