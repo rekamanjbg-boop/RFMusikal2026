@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dasbor Produksi: Mencari Taman V12 (Director's Script)</title>
+    <title>Dasbor Produksi: Mencari Taman V13 (Ultimate Integrated)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap');
+        
         body { 
             font-family: 'Inter', sans-serif; 
             background-color: #0f172a; 
@@ -29,6 +30,7 @@
             background-color: #3b82f6; 
             color: white; 
             border-color: #3b82f6; 
+            box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.5);
         }
         @keyframes fadeIn { 
             from { opacity: 0; transform: translateY(10px); } 
@@ -45,11 +47,14 @@
             position: relative;
             width: 100%;
             max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 0 auto;
             height: 300px;
-            max-height: 400px;
         }
+        
+        /* Script formatting enhancements */
+        .character-name { color: #fbbf24; font-weight: bold; font-family: 'Inter', sans-serif; text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.9rem; margin-bottom: 0.25rem;}
+        .stage-dir { color: #94a3b8; font-style: italic; font-size: 0.9rem; margin-bottom: 0.5rem;}
+        .dialogue-text { color: #f8fafc; margin-bottom: 1.5rem; line-height: 1.6;}
     </style>
 </head>
 <body class="antialiased min-h-screen flex flex-col">
@@ -62,11 +67,11 @@
                     <i class="fa-solid fa-masks-theater text-blue-500"></i>
                     DASBOR PRODUKSI TEATER
                 </h1>
-                <p class="text-slate-400 mt-1 text-xs md:text-sm">Lakon: "Mencari Taman" | Adaptasi: Noorca M. Massardi | SD Islam Roushon Fikr</p>
+                <p class="text-slate-400 mt-1 text-xs md:text-sm">Lakon: "Mencari Taman" | Adaptasi: Noorca M. Massardi | SD Islam Roushon Fikr 2026</p>
             </div>
             <div class="flex gap-3">
-                <span class="bg-emerald-900/50 text-emerald-300 border border-emerald-700/50 px-3 py-1 rounded-full text-xs font-semibold">
-                    V12 (Director's Script)
+                <span class="bg-blue-900/50 text-blue-300 border border-blue-700/50 px-4 py-2 rounded-lg text-sm font-bold shadow-[0_0_15px_rgba(59,130,246,0.5)]">
+                    V13 (Ultimate Integrated)
                 </span>
             </div>
         </div>
@@ -74,15 +79,15 @@
         <!-- Navigation Tabs -->
         <div class="max-w-[1400px] mx-auto mt-6 overflow-x-auto pb-2">
             <div class="flex space-x-2 whitespace-nowrap" id="tabs-container">
-                <button onclick="openTab(event, 'naskah')" class="tab-btn active px-4 py-2 rounded-lg border border-slate-600 hover:bg-slate-700 transition-colors text-sm font-semibold text-slate-300"><i class="fa-solid fa-scroll mr-2 text-emerald-400"></i>📜 Naskah & Master Cue</button>
-                <button onclick="openTab(event, 'kostum')" class="tab-btn px-4 py-2 rounded-lg border border-slate-600 hover:bg-slate-700 transition-colors text-sm font-semibold text-slate-300"><i class="fa-solid fa-shirt mr-2 text-amber-400"></i>Kostum & Prop</button>
-                <button onclick="openTab(event, 'koreografi')" class="tab-btn px-4 py-2 rounded-lg border border-slate-600 hover:bg-slate-700 transition-colors text-sm font-semibold text-slate-300"><i class="fa-solid fa-music mr-2 text-pink-400"></i>Musik & Koreo</button>
-                <button onclick="openTab(event, 'videotron')" class="tab-btn px-4 py-2 rounded-lg border border-slate-600 hover:bg-slate-700 transition-colors text-sm font-semibold text-slate-300"><i class="fa-solid fa-desktop mr-2 text-purple-400"></i>Videotron</button>
-                <button onclick="openTab(event, 'lighting')" class="tab-btn px-4 py-2 rounded-lg border border-slate-600 hover:bg-slate-700 transition-colors text-sm font-semibold text-slate-300"><i class="fa-solid fa-lightbulb mr-2 text-yellow-400"></i>Lighting</button>
-                <button onclick="openTab(event, 'backstage')" class="tab-btn px-4 py-2 rounded-lg border border-slate-600 hover:bg-slate-700 transition-colors text-sm font-semibold text-slate-300"><i class="fa-solid fa-map-location-dot mr-2 text-emerald-400"></i>Backstage</button>
-                <button onclick="openTab(event, 'risiko')" class="tab-btn px-4 py-2 rounded-lg border border-slate-600 hover:bg-slate-700 transition-colors text-sm font-semibold text-slate-300"><i class="fa-solid fa-triangle-exclamation mr-2 text-red-400"></i>Risiko</button>
-                <button onclick="openTab(event, 'analisis')" class="tab-btn px-4 py-2 rounded-lg border border-slate-600 hover:bg-slate-700 transition-colors text-sm font-semibold text-slate-300"><i class="fa-solid fa-chart-pie mr-2 text-cyan-400"></i>Analisis</button>
-                <button onclick="openTab(event, 'timeline')" class="tab-btn px-4 py-2 rounded-lg border border-slate-600 hover:bg-slate-700 transition-colors text-sm font-semibold text-slate-300"><i class="fa-solid fa-stopwatch mr-2 text-orange-400"></i>Timeline Master</button>
+                <button onclick="openTab(event, 'naskah')" class="tab-btn active px-4 py-2 rounded-lg border border-slate-600 hover:bg-slate-700 transition-all text-sm font-semibold text-slate-300"><i class="fa-solid fa-scroll mr-2 text-emerald-400"></i>Naskah & Cues</button>
+                <button onclick="openTab(event, 'kostum')" class="tab-btn px-4 py-2 rounded-lg border border-slate-600 hover:bg-slate-700 transition-all text-sm font-semibold text-slate-300"><i class="fa-solid fa-shirt mr-2 text-amber-400"></i>Kostum & Prop</button>
+                <button onclick="openTab(event, 'koreografi')" class="tab-btn px-4 py-2 rounded-lg border border-slate-600 hover:bg-slate-700 transition-all text-sm font-semibold text-slate-300"><i class="fa-solid fa-music mr-2 text-pink-400"></i>Musik & Koreo</button>
+                <button onclick="openTab(event, 'videotron')" class="tab-btn px-4 py-2 rounded-lg border border-slate-600 hover:bg-slate-700 transition-all text-sm font-semibold text-slate-300"><i class="fa-solid fa-desktop mr-2 text-purple-400"></i>Videotron AI</button>
+                <button onclick="openTab(event, 'lighting')" class="tab-btn px-4 py-2 rounded-lg border border-slate-600 hover:bg-slate-700 transition-all text-sm font-semibold text-slate-300"><i class="fa-solid fa-lightbulb mr-2 text-yellow-400"></i>Lighting ToR</button>
+                <button onclick="openTab(event, 'backstage')" class="tab-btn px-4 py-2 rounded-lg border border-slate-600 hover:bg-slate-700 transition-all text-sm font-semibold text-slate-300"><i class="fa-solid fa-map-location-dot mr-2 text-emerald-400"></i>Backstage Map</button>
+                <button onclick="openTab(event, 'risiko')" class="tab-btn px-4 py-2 rounded-lg border border-slate-600 hover:bg-slate-700 transition-all text-sm font-semibold text-slate-300"><i class="fa-solid fa-triangle-exclamation mr-2 text-red-400"></i>Mitigasi Risiko</button>
+                <button onclick="openTab(event, 'analisis')" class="tab-btn px-4 py-2 rounded-lg border border-slate-600 hover:bg-slate-700 transition-all text-sm font-semibold text-slate-300"><i class="fa-solid fa-chart-pie mr-2 text-cyan-400"></i>Analisis Kru</button>
+                <button onclick="openTab(event, 'timeline')" class="tab-btn px-4 py-2 rounded-lg border border-slate-600 hover:bg-slate-700 transition-all text-sm font-semibold text-slate-300"><i class="fa-solid fa-stopwatch mr-2 text-orange-400"></i>Timeline</button>
             </div>
         </div>
     </header>
@@ -90,851 +95,508 @@
     <!-- Main Content Area -->
     <main class="max-w-[1400px] mx-auto w-full p-4 md:p-6 flex-grow">
 
-        <!-- TAB 1: NASKAH SUTRADARA & MASTER CUE -->
+        <!-- TAB 1: NASKAH SUTRADARA & MASTER CUE TERINTEGRASI -->
         <div id="naskah" class="tab-content active">
             <div class="bg-slate-800 rounded-xl p-6 md:p-8 border border-slate-700 shadow-xl mb-6">
                 <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-8 gap-4 border-b border-slate-700 pb-4">
-                    <h2 class="text-2xl md:text-3xl font-bold text-white"><i class="fa-solid fa-book-open-reader mr-3 text-emerald-400"></i>Naskah Pegangan Sutradara (Director's Script)</h2>
-                    <div class="flex gap-2 text-xs font-bold flex-wrap">
-                        <span class="bg-emerald-900/50 text-emerald-400 px-2 py-1 rounded border border-emerald-700">SUTRADARA</span>
-                        <span class="bg-orange-900/50 text-orange-400 px-2 py-1 rounded border border-orange-700">STAGE MGR</span>
-                        <span class="bg-yellow-900/50 text-yellow-400 px-2 py-1 rounded border border-yellow-700">LIGHTING</span>
-                        <span class="bg-blue-900/50 text-blue-400 px-2 py-1 rounded border border-blue-700">SOUND</span>
-                        <span class="bg-purple-900/50 text-purple-400 px-2 py-1 rounded border border-purple-700">VIDEOTRON</span>
-                    </div>
+                    <h2 class="text-2xl md:text-3xl font-bold text-white"><i class="fa-solid fa-book-open-reader mr-3 text-emerald-400"></i>Naskah Pegangan Stage Manager</h2>
+                    <p class="text-sm text-slate-400 max-w-md text-right">Isyarat (Cues) diposisikan tepat sebelum dialog yang bersangkutan untuk kemudahan eksekusi <i>show caller</i>.</p>
                 </div>
 
                 <!-- KERTAS NASKAH -->
-                <div class="bg-slate-100 text-slate-900 p-4 md:p-10 rounded-lg shadow-inner max-w-5xl mx-auto script-font text-base leading-relaxed relative">
+                <div class="bg-slate-900 border border-slate-700 p-6 md:p-12 rounded-lg shadow-2xl max-w-5xl mx-auto script-font text-base relative">
                     
-                    <div class="text-center mb-10 border-b-2 border-slate-300 pb-8">
-                        <h1 class="text-3xl md:text-4xl font-bold mb-3 tracking-wide">MENCARI TAMAN</h1>
-                        <p class="text-sm text-slate-600 font-sans uppercase tracking-widest mb-1">Naskah Anak</p>
-                        <p class="text-sm text-slate-600 font-sans">Adaptasi dari Karya Asli: Noorca M. Massardi (1977)</p>
-                        <p class="text-sm text-slate-600 font-sans mt-2 font-semibold">SD Islam Roushon Fikr 2026</p>
+                    <div class="text-center mb-16 border-b border-slate-700 pb-10">
+                        <h1 class="text-4xl md:text-5xl font-extrabold mb-4 text-white tracking-wider">MENCARI TAMAN</h1>
+                        <p class="text-slate-400 font-sans uppercase tracking-widest mb-2 font-bold">Naskah Anak</p>
+                        <p class="text-slate-500 font-sans italic">Adaptasi dari Karya Asli: Noorca M. Massardi (1977)</p>
                     </div>
 
                     <!-- PRE SHOW -->
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-6 border border-slate-700">
-                        <p class="font-bold text-slate-300 mb-2">PENGUMUMAN PRE-SHOW:</p>
-                        <p class="text-slate-200">Kami beritahukan untuk tidak maju ke depan panggung dan menggunakan flash saat memfoto/memvideo para pemeran. terimakasih atas Kerjasama bapak ibu sekalian.<br>
-                        Selamat datang di Pementasan Teater Musical SD Islam Roushon Fikr 2026. dengan judul.<br>
-                        MENCARI TAMAN<br>
-                        Naskah Anak<br>
-                        Adaptasi dari Karya Asli: Noorca M. Massardi (1977)<br>
-                        Selamat menyaksikan!!</p>
+                    <div class="bg-slate-800/80 p-5 rounded-lg border-l-4 border-slate-500 mb-10">
+                        <p class="font-bold text-slate-300 mb-2 font-sans tracking-wide">🎤 PENGUMUMAN PRE-SHOW (VOICE OVER):</p>
+                        <p class="text-slate-300 text-sm">"Kami beritahukan untuk tidak maju ke depan panggung dan menggunakan flash saat memfoto/memvideo para pemeran. Terimakasih atas kerjasama Bapak/Ibu sekalian.<br>
+                        Selamat datang di Pementasan Teater Musical SD Islam Roushon Fikr 2026 dengan judul MENCARI TAMAN... Selamat menyaksikan!!"</p>
                     </div>
 
                     <!-- BABAK 1 -->
-                    <h3 class="text-2xl font-bold mt-12 mb-6 text-slate-800 uppercase bg-slate-300 p-3 rounded">BABAK 1: KAMAR BERDEBU DAN RENCANA PELARIAN</h3>
+                    <h3 class="text-2xl font-bold mt-12 mb-8 text-white uppercase bg-slate-800 border-l-4 border-blue-500 p-3 rounded font-sans tracking-wide">BABAK 1: KAMAR BERDEBU DAN RENCANA PELARIAN</h3>
 
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">NARATOR:</p>
-                        <p class="text-slate-200">Malam itu di dalam kamar, dari sebuah rumah tinggal di suatu kota yang sangat maju, seorang gadis kecil bernama KASIH, tidur di atas tempat tidumya yang khusus, tapi ia sulit untuk bisa tidur, karena di luar udara begitu buruk, langit pekat, bising, kota yang tak pemah tidur. Suara kereta api, pesawat terbang, kendaraan bermotor dan pabrik pabrik begitu gemuruh merongrong peradaban masyarakat kota yang sudah maju. Udara sangat kering, asap bergulung-gulung, pepohonan banyak mati. KASIH berbatuk-batuk, ia gelisah dan menangis karena sulit untuk bisa tidur. Tapi diluar, ribuan anak-anak yang lain di kamarnya yang juga tak henti-hentinya menangis dan terbatuk-batuk setiap malam, sepanjang saat, entah sampai kapan.<br>
-                        (MUSIK)</p>
+                    <!-- MASTER CUE: PROLOG -->
+                    <div class="bg-slate-950 border border-slate-700 p-4 rounded-lg mb-6 shadow-md grid grid-cols-1 md:grid-cols-3 gap-3 font-sans text-sm">
+                        <div class="col-span-1 md:col-span-3 pb-2 border-b border-slate-800 font-bold text-slate-400"><i class="fa-solid fa-flag-checkered mr-2 text-green-500"></i>CUE START BABAK 1 [00:00]</div>
+                        <div><span class="bg-yellow-900 text-yellow-400 px-2 py-1 rounded text-[10px] font-bold mr-2">LIGHTING</span>Fade in perlahan. House light OFF.</div>
+                        <div><span class="bg-blue-900 text-blue-400 px-2 py-1 rounded text-[10px] font-bold mr-2">SOUND</span>Track 1: Ambience Bising Kota, Klakson.</div>
+                        <div><span class="bg-purple-900 text-purple-400 px-2 py-1 rounded text-[10px] font-bold mr-2">VIDEO</span>Segmen 1: Dystopian City Smog (8 detik).</div>
                     </div>
 
-                    <!-- CUE BOX -->
-                    <div class="bg-slate-900 border-l-4 border-slate-500 p-4 rounded-lg mb-6 shadow-md flex flex-col gap-3 font-sans">
-                        <div class="flex items-start gap-3">
-                            <span class="bg-blue-900/50 text-blue-400 px-2 py-0.5 rounded text-xs font-bold border border-blue-700/50 shrink-0">SOUND</span>
-                            <p class="text-sm text-slate-300">[00:00 - 02:00] PROLOG ATMOSFER. Terdengar efek suara bising kota: klakson saling bersahutan, deru mesin pabrik, dan batuk orang dewasa yang berat.</p>
-                        </div>
-                        <div class="flex items-start gap-3">
-                            <span class="bg-yellow-900/50 text-yellow-400 px-2 py-0.5 rounded text-xs font-bold border border-yellow-700/50 shrink-0">LIGHTING</span>
-                            <p class="text-sm text-slate-300">Lampu panggung menyala perlahan.</p>
-                        </div>
-                        <div class="flex items-start gap-3">
-                            <span class="bg-emerald-900/50 text-emerald-400 px-2 py-0.5 rounded text-xs font-bold border border-emerald-700/50 shrink-0">SUTRADARA</span>
-                            <p class="text-sm text-slate-300">KASIH duduk di ranjang, memeluk boneka. Teman-temannya menyelinap masuk ke panggung satu per satu dengan koreografi pantomim mengendap-endap ala detektif komikal.<br>(music latar masuk)<br>[02:00 - 08:30] DIALOG KOMEDI</p>
-                        </div>
+                    <div class="mb-8">
+                        <div class="character-name text-blue-400">NARATOR (V.O)</div>
+                        <div class="dialogue-text">Malam itu di dalam kamar, dari sebuah rumah tinggal di suatu kota yang sangat maju, seorang gadis kecil bernama KASIH, tidur di atas tempat tidurnya yang khusus, tapi ia sulit untuk bisa tidur, karena di luar udara begitu buruk, langit pekat, bising, kota yang tak pernah tidur. Suara kereta api, pesawat terbang, kendaraan bermotor dan pabrik-pabrik begitu gemuruh merongrong peradaban masyarakat kota yang sudah maju. Udara sangat kering, asap bergulung-gulung, pepohonan banyak mati. KASIH berbatuk-batuk, ia gelisah dan menangis karena sulit untuk bisa tidur. Tapi di luar, ribuan anak-anak yang lain di kamarnya yang juga tak henti-hentinya menangis dan terbatuk-batuk setiap malam, sepanjang saat, entah sampai kapan.</div>
                     </div>
 
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">KASIH :</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Bibir bergetar, memeluk bonekanya erat)</p>
-                        <p class="text-slate-200">Tapi Kasih tidak mau keluar. Kasih takut! Dulu Kasih punya sepeda merah. Tapi Ibu bilang di luar banyak mobil. Nanti Kasih bisa ketabrak, terus ( ekspresi makan dengan mulut terbuka )!. haummm…</p>
+                    <!-- MASTER CUE: DIALOG KOMEDI -->
+                    <div class="bg-slate-950 border border-slate-700 p-4 rounded-lg mb-6 shadow-md grid grid-cols-1 md:grid-cols-2 gap-3 font-sans text-sm">
+                        <div class="col-span-1 md:col-span-2 pb-2 border-b border-slate-800 font-bold text-slate-400"><i class="fa-solid fa-bolt mr-2 text-yellow-500"></i>CUE ACTION: DIALOG KOMEDI [02:00]</div>
+                        <div><span class="bg-emerald-900 text-emerald-400 px-2 py-1 rounded text-[10px] font-bold mr-2">STAGE MGR</span>Grup 1 & 2 masuk formasi pantomim bawah. KASIH duduk di ranjang.</div>
+                        <div><span class="bg-yellow-900 text-yellow-400 px-2 py-1 rounded text-[10px] font-bold mr-2">LIGHTING</span>Spotlight fokus ke Panggung Atas (Kamar).</div>
                     </div>
 
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">UDIN :</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Maju dengan wajah datar tanpa emosi )</p>
-                        <p class="text-slate-200">Kenapa? Emangnya mobil punya gigi buat gigit Kasih?<br>( Menoleh ke penonton dengan polos)<br>Mobil kan makannya bensin, bukan anak kecil. Hehe...</p>
+                    <div>
+                        <div class="character-name">KASIH</div>
+                        <div class="stage-dir">(Bibir bergetar, memeluk bonekanya erat)</div>
+                        <div class="dialogue-text">Tapi Kasih tidak mau keluar. Kasih takut! Dulu Kasih punya sepeda merah. Tapi Ibu bilang di luar banyak mobil. Nanti Kasih bisa ketabrak, terus <span class="italic text-slate-400">(ekspresi makan dengan mulut terbuka)</span>!. haummm…</div>
+
+                        <div class="character-name">UDIN</div>
+                        <div class="stage-dir">(Maju dengan wajah datar tanpa emosi. Ingat: DILARANG SENYUM!)</div>
+                        <div class="dialogue-text">Kenapa? Emangnya mobil punya gigi buat gigit Kasih? <span class="italic text-slate-400">(Menoleh ke penonton dengan polos)</span> Mobil kan makannya bensin, bukan anak kecil. Hehe...</div>
+
+                        <div class="character-name">SITI</div>
+                        <div class="stage-dir">(Berjalan sambil bawa krupuk Menepuk jidat panik, matanya membesar)</div>
+                        <div class="dialogue-text">Aduh, Udin! Ketabrak itu bukan digigit! Nanti badannya Kasih gepeng! Kayak... kayak <span class="italic text-slate-400">(menunjukkan krupuknya)</span> kerupuk kulit ini nii… kering, gepeng, remuk berkeping keping, masuk perutku… hehe!</div>
+
+                        <div class="character-name">YUNI</div>
+                        <div class="stage-dir">(Gaya profesor cilik mondar-mandir perlahan)</div>
+                        <div class="dialogue-text">Teman-teman, ini misteri terbesar abad ini. Orang dewasa bikin asap pabrik, tapi kenapa mereka marah kalau kita yang batuk? Aneh, kan?</div>
+
+                        <div class="character-name">UDIN</div>
+                        <div class="dialogue-text">Iya juga ya, Padahal sepeda KASIH saja tidak mengeluarkan asap. paling sedikit debu waktu mengerem. <span class="italic text-slate-400">(lari sedikit kemudian bergaya sedikit mengerem)</span> ciiiittttt…..</div>
+
+                        <div class="character-name">YUNI</div>
+                        <div class="dialogue-text">Mungkin sepeda orang-orang dewasa itu, eh Mobil, eh bukan, pembakaran sampah, eh bukan, pesawat kali..</div>
+
+                        <div class="character-name">SITI</div>
+                        <div class="dialogue-text">Seandainya kita keluar malam ini, Apa yang terjadi menurutmu KASIH?</div>
+
+                        <div class="character-name">KASIH</div>
+                        <div class="dialogue-text">Aku bisa saja tambah batuk, kamu lihat di luar, debunya gelap sekali, bahkan lampu lampu yang terang itu masih terasa gelap.</div>
+
+                        <div class="character-name">UDIN</div>
+                        <div class="dialogue-text">Bisa-bisa muka kita berlumur hitam, debunya menempel, seperti panci Bu SAODAH, berkerak bau minyak.</div>
+
+                        <div class="character-name">YUNI</div>
+                        <div class="stage-dir">(Bertindak tegas, berkacak pinggang)</div>
+                        <div class="dialogue-text">Sudah, sudah! Tolong jangan bahas panci atau bersepeda dulu! Kita keluar menghirup udara malam saja. Sekarang lewat jendela!</div>
+
+                        <div class="character-name">KASIH</div>
+                        <div class="stage-dir">(Mundur ketakutan ke sudut ranjang)</div>
+                        <div class="dialogue-text">Lewat jendela?! Nanti kaki Kasih patah. Nanti Kasih nggak cantik lagi dong!</div>
+
+                        <div class="character-name">SITI</div>
+                        <div class="dialogue-text">Eh tapiii!!… tapiii!!… tapiii!!</div>
+
+                        <div class="character-name">UDIN</div>
+                        <div class="stage-dir">(Melompat ke depan panggung penuh energi meledak-ledak)</div>
+                        <div class="dialogue-text">Tenaaaang! Punggung Udin kan kuat! Ibarat besi titan dari planet baja! Sini, Udin yang gendong Kasih keluar!</div>
+
+                        <div class="character-name">SITI</div>
+                        <div class="dialogue-text">Eh tapiii!!… tapiii!!… tapiii!! <span class="italic text-slate-400">(panik tapi kalah jumlah pendapat)</span></div>
                     </div>
 
-                    <!-- CUE BOX -->
-                    <div class="bg-slate-900 border-l-4 border-emerald-500 p-4 rounded-lg mb-6 shadow-md flex flex-col gap-3 font-sans">
-                        <div class="flex items-start gap-3">
-                            <span class="bg-emerald-900/50 text-emerald-400 px-2 py-0.5 rounded text-xs font-bold border border-emerald-700/50 shrink-0">SUTRADARA</span>
-                            <p class="text-sm text-slate-300">[CATATAN SUTRADARA] Pastikan Udin tidak tersenyum sama sekali saat mengucapkan dialognya. Teman-teman yang lain mematung (freeze) saat Udin bicara.</p>
-                        </div>
+                    <!-- MASTER CUE: TRANSISI MIMPI -->
+                    <div class="bg-slate-950 border border-slate-700 p-4 rounded-lg mb-6 shadow-md grid grid-cols-1 md:grid-cols-3 gap-3 font-sans text-sm">
+                        <div class="col-span-1 md:col-span-3 pb-2 border-b border-slate-800 font-bold text-slate-400"><i class="fa-solid fa-moon mr-2 text-cyan-400"></i>CUE TRANSISI MIMPI (KHAYALAN)</div>
+                        <div><span class="bg-yellow-900 text-yellow-400 px-2 py-1 rounded text-[10px] font-bold mr-2">LIGHTING</span>Crossfade Lambat ke warna Magis (Biru/Ungu).</div>
+                        <div><span class="bg-blue-900 text-blue-400 px-2 py-1 rounded text-[10px] font-bold mr-2">SOUND</span>BGM Bising Fade Out. Masuk Track 2: Taman Ajaib.</div>
+                        <div><span class="bg-purple-900 text-purple-400 px-2 py-1 rounded text-[10px] font-bold mr-2">VIDEO</span>Segmen 16: Asap memudar jadi Bintang.</div>
                     </div>
 
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">SITI</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Berjalan sambil bawa krupuk Menepuk jidat panik, matanya membesar)</p>
-                        <p class="text-slate-200">Aduh, Udin! Ketabrak itu bukan digigit! Nanti badannya Kasih gepeng! ( menunjukkan krupuknya )<br>Kayak... kayak ( menoleh ) kerupuk kulit ini nii… kering, gepeng, remuk berkeping keping, masuk perutku… hehe!</p>
+                    <div class="mb-8">
+                        <div class="character-name text-blue-400">NARATOR (V.O)</div>
+                        <div class="dialogue-text">Ternyata pemandangan di luar kamar tidak seperti para boneka bayangkan. Udara begitu segar, bunga-bunga bermekaran, lebah pun menghinggap pada kelopaknya. rumput rumput ikut bergoyang. dalam keheningan malam di sudut kota itu dengan lampu-lampunya. mereka menari bernyanyi dengan riangnya.</div>
                     </div>
 
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">YUNI</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Gaya profesor cilik mondar-mandir perlahan)</p>
-                        <p class="text-slate-200">Teman-teman, ini misteri terbesar abad ini. Orang dewasa bikin asap pabrik, tapi kenapa mereka marah kalau kita yang batuk? Aneh, kan?</p>
+                    <div class="bg-pink-900/30 border border-pink-700 p-4 rounded-lg mb-10 text-center">
+                        <p class="font-bold text-pink-400 font-sans uppercase">🎵 MUSICAL DANCE SEQUENCE: "TAMAN AJAIB" (3 Menit)</p>
+                        <p class="text-sm text-slate-300 mt-2">Koreografi Ansambel: Grup 3 (Rumput), Grup 4 (Lebah), Grup 5 (Bunga) menari di Panggung Bawah.</p>
                     </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">UDIN</p>
-                        <p class="text-slate-200">Iya juga ya, Padahal sepeda KASIH saja tidak mengeluarkan asap. paling sedikit debu waktu mengerem.(lari sedikit kemudian bergaya sedikit mengerem) ciiiittttt…..</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">YUNI</p>
-                        <p class="text-slate-200">Mungkin sepeda orang-orang dewasa itu, eh Mobil, eh bukan, pembakaran sampah, eh bukan, pesawat kali..</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">SITI</p>
-                        <p class="text-slate-200">Seandainya kita keluar malam ini, Apa yang terjadi menurutmu KASIH?</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">KASIH</p>
-                        <p class="text-slate-200">Aku bisa saja tambah batuk, kamu lihat di luar, debunya gelap sekali, bahkan lampu lampu yang terang itu masih terasa gelap.</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">UDIN</p>
-                        <p class="text-slate-200">Bisa-bisa muka kita berlumur hitam, debunya menempel, seperti panci Bu SAODAH, berkerak bau minyak.</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">YUNI</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Bertindak tegas, berkacak pinggang)</p>
-                        <p class="text-slate-200">Sudah, sudah! Tolong jangan bahas panci atau bersepeda dulu! Kita keluar menghirup udara malam saja. Sekarang lewat jendela!</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">KASIH</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Mundur ketakutan ke sudut ranjang)</p>
-                        <p class="text-slate-200">Lewat jendela?! Nanti kaki Kasih patah. Nanti Kasih nggak cantik lagi dong!</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">SITI</p>
-                        <p class="text-slate-200">Eh tapiii!!… tapiii!!… tapiii!!</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">UDIN</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Melompat ke depan panggung penuh energi meledak-ledak)</p>
-                        <p class="text-slate-200">Tenaaaang! Punggung Udin kan kuat! Ibarat besi titan dari planet baja! Sini, Udin yang gendong Kasih keluar! ( ekspresi menengadahkan punggung untuk menggendong)</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">SITI</p>
-                        <p class="text-slate-200">Eh tapiii!!… tapiii!!… tapiii!! ( panik tapi kalah jumlah pendapat )</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">NARATOR</p>
-                        <p class="text-slate-200">Ternyata pemandangan di luar kamar tidak seperti para boneka bayangkan. Udara begitu segar, bunga-bunga bermekaran, lebah pun menghinggap pada kelopaknya. rumput rumput ikut bergoyang. dalam keheningan malam di sudut kota itu dengan lampu-lampunya. mereka menari bernyanyi dengan riangnya.</p>
-                    </div>
-
-                    <!-- CUE BOX -->
-                    <div class="bg-slate-900 border-l-4 border-slate-500 p-4 rounded-lg mb-6 shadow-md flex flex-col gap-3 font-sans">
-                        <div class="flex items-start gap-3">
-                            <span class="bg-emerald-900/50 text-emerald-400 px-2 py-0.5 rounded text-xs font-bold border border-emerald-700/50 shrink-0">SUTRADARA</span>
-                            <p class="text-sm text-slate-300">( SEQUENCE DANCE MENYANYI MENARI ) (2-3menit)<br>
-                            (KASIH, BONEKA dan PARA LATAR, seperti rerumputan, lebah, dan bunga )</p>
-                        </div>
-                        <div class="flex items-start gap-3">
-                            <span class="bg-blue-900/50 text-blue-400 px-2 py-0.5 rounded text-xs font-bold border border-blue-700/50 shrink-0">SOUND</span>
-                            <p class="text-sm text-slate-300">
-                                1 lagu https://gemini.google.com/share/544ba62e73c7<br>
-                                1 lagu https://www.flowmusic.app/song/bf52cbcc-663f-4b45-a521-d1b702198c90
-                            </p>
-                        </div>
-                    </div>
-
 
                     <!-- BABAK 2 -->
-                    <h3 class="text-2xl font-bold mt-12 mb-6 text-slate-800 uppercase bg-slate-300 p-3 rounded">BABAK 2</h3>
+                    <h3 class="text-2xl font-bold mt-12 mb-8 text-white uppercase bg-slate-800 border-l-4 border-blue-500 p-3 rounded font-sans tracking-wide">BABAK 2: INTERAKSI ANAK LAKI-LAKI DI GANG</h3>
 
-                    <!-- CUE BOX -->
-                    <div class="bg-slate-900 border-l-4 border-orange-500 p-4 rounded-lg mb-6 shadow-md flex flex-col gap-3 font-sans">
-                        <div class="flex items-start gap-3">
-                            <span class="bg-orange-900/50 text-orange-400 px-2 py-0.5 rounded text-xs font-bold border border-orange-700/50 shrink-0">STAGE MGR</span>
-                            <div class="text-sm text-slate-300">
-                                <p class="font-bold mb-1">12:00–20:00 INTERAKSI ANAK LAKI-LAKI DI GANG (SEQUENSE REALISTIS)</p>
-                                <ul class="list-disc list-inside mb-2">
-                                    <li>Bagas : Si realistis yang agak sinis. Suka mengamati sekeliling.</li>
-                                    <li>Dino : Si dramatis yang tidak bisa diam. Suka melebih-lebihkan keadaan.</li>
-                                    <li>Bobby : Si kritis dan pintar. Sering mempertanyakan logika orang dewasa.</li>
-                                </ul>
-                                <p><strong>Latar Tempat:</strong> Di sebuah teras rumah sempit yang berbatasan langsung dengan jalan gang kecil. Di sekeliling mereka banyak motor yang parkir memakan jalan.<br>
-                                (Dino sedang melipat tubuhnya sedemikian rupa agar muat duduk di antara pot bunga. Bagas sedang memainkan batu, sementara Bobby memangku dagu dengan wajah bosan.)</p>
-                            </div>
-                        </div>
+                    <!-- MASTER CUE: BABAK 2 -->
+                    <div class="bg-slate-950 border border-slate-700 p-4 rounded-lg mb-6 shadow-md grid grid-cols-1 md:grid-cols-3 gap-3 font-sans text-sm">
+                        <div class="col-span-1 md:col-span-3 pb-2 border-b border-slate-800 font-bold text-slate-400"><i class="fa-solid fa-flag-checkered mr-2 text-green-500"></i>CUE START BABAK 2</div>
+                        <div><span class="bg-yellow-900 text-yellow-400 px-2 py-1 rounded text-[10px] font-bold mr-2">LIGHTING</span>Blackout 2s. Spot Amber/Putih ke area teras gang.</div>
+                        <div><span class="bg-blue-900 text-blue-400 px-2 py-1 rounded text-[10px] font-bold mr-2">SOUND</span>Track 3: Hip-hop Urban (Volume Pelan/Underscore).</div>
+                        <div><span class="bg-emerald-900 text-emerald-400 px-2 py-1 rounded text-[10px] font-bold mr-2">STAGE MGR</span>Grup 6 & 7 Standby Panggung Bawah.</div>
                     </div>
 
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">Dino:</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Sambil meringis)</p>
-                        <p class="text-slate-200">"Guys, kakiku kesemutan parah. Dari tadi kita duduk di teras selebar penggaris gini. Geser dikit dong!"</p>
+                    <div>
+                        <div class="stage-dir">(Dino sedang melipat tubuhnya sedemikian rupa agar muat duduk di antara pot bunga. Bagas sedang memainkan batu, sementara Bobby memangku dagu dengan wajah bosan.)</div>
+                        
+                        <div class="character-name">DINO</div>
+                        <div class="stage-dir">(Sambil meringis)</div>
+                        <div class="dialogue-text">"Guys, kakiku kesemutan parah. Dari tadi kita duduk di teras selebar penggaris gini. Geser dikit dong!"</div>
+
+                        <div class="character-name">BAGAS</div>
+                        <div class="dialogue-text">"Mau geser ke mana, Din? Kiri ada pot tanaman lidah mertua emaknya bobby, kanan ada knalpot motor bapakku. Kamu mau pantatmu ada tato cap Honda-nya?"</div>
+
+                        <div class="character-name">BOBBY</div>
+                        <div class="stage-dir">(Menghela napas)</div>
+                        <div class="dialogue-text">"Lagian kenapa sih kita nongkrong di sini? Duduk berjejer nempel tembok begini, kita lebih mirip cicak nunggu nyamuk daripada anak-anak lagi main."</div>
+
+                        <div class="character-name">DINO</div>
+                        <div class="dialogue-text">"Ya mau di mana lagi? Lapangan bola kelurahan udah disulap jadi minimarket. Sekarang tiap aku mau nendang bola, bawaannya malah pengen beli es krim. Lapangan voli Pak RT juga udah jadi tempat parkiran."</div>
+
+                        <div class="character-name">BAGAS</div>
+                        <div class="dialogue-text">"Ke taman kota aja gimana?"</div>
+
+                        <div class="character-name">BOBBY</div>
+                        <div class="dialogue-text">"Jangan ngaco. Taman kota tiap sore isinya ibu-ibu senam Zumba. Kemarin aku lari-larian mau main kejar-kejaran, malah dikira ikutan senam. Terus ditarik disuruh baris di belakang. Capek tau!"</div>
+
+                        <div class="character-name">DINO</div>
+                        <div class="dialogue-text">"Terus kenapa kita nggak main di sekolah aja? Kan lapangan sekolah kita gedenya minta ampun!"</div>
+
+                        <div class="character-name">BOBBY</div>
+                        <div class="stage-dir">(Tertawa sarkas)</div>
+                        <div class="dialogue-text">"Oh, sekolah. Jangan harap deh. Jam tiga teng, gerbang udah digembok berlapis-lapis sama Pak Satpam. Katanya, kalau sore lapangan sekolah dipakai buat parkir guru-guru, lagi rapat. Lagian, sekolah sekarang peraturannya aneh!"</div>
+
+                        <div class="character-name">BAGAS</div>
+                        <div class="dialogue-text">"Iya, bener! Ada tulisan gede banget: 'Dilarang Menginjak Rumput'. Lah, rumputnya aja lebih disayang daripada muridnya. Kalau rumputnya keinjak emang dia bakal nangis? Kita kan butuh lari, bukan mau makan rumputnya!"</div>
+
+                        <div class="character-name">DINO</div>
+                        <div class="dialogue-text">"Belum lagi pas jam istirahat. Istirahat cuma 15 menit. Baru juga mau pemanasan main petak umpet, nentuin siapa yang jaga, eh udah bel masuk. Boro-boro main, ngunyah cireng aja belum ketelen."</div>
+
+                        <div class="character-name">BOBBY</div>
+                        <div class="dialogue-text">"Makanya aku suka bingung sama logika orang dewasa. Mereka tuh gimana, ya? Mereka yang bangun rumah gede-gede sampai nutupin gang, mereka yang beli mobil padahal nggak punya garasi, parkir di jalan, tapi giliran kita lari-larian di gang, kita yang dimarahin dibilang berisik."</div>
+
+                        <div class="character-name">BAGAS</div>
+                        <div class="dialogue-text">"Bener! Kemarin aku main bentengan di gang, malah diusir sama Pak RT. Katanya ganggu orang tidur siang. Emang Pak RT kalau tidur siang di atas paving gang?"</div>
+
+                        <div class="character-name">DINO</div>
+                        <div class="stage-dir">(Bangkit berdiri dramatis)</div>
+                        <div class="dialogue-text">"Intinya, dunia ini nggak dirancang buat anak umur 10 tahun kayak kita! Kita disuruh banyak gerak biar sehat, tapi nggak dikasih tempat. Ujung-ujungnya kita main game di HP."</div>
+
+                        <div class="character-name">BOBBY</div>
+                        <div class="dialogue-text">"Dan tebak apa yang terjadi kalau kita main HP?"</div>
+
+                        <div class="character-name">DINO & BAGAS</div>
+                        <div class="stage-dir">(Bersamaan menirukan suara ibu-ibu)</div>
+                        <div class="dialogue-text">"Main HP teruuss! Sana main di luar, cari keringat!!"</div>
+
+                        <div class="character-name">DINO</div>
+                        <div class="dialogue-text">"Pas kita di luar... 'Jangan lari-lari di sini, berisik!!'. Orang dewasa maunya apa sih? Kita disuruh main di luar, tapi nggak dikasih tempat. Kita disuruh terbang?!"</div>
+
+                        <div class="character-name">BOBBY</div>
+                        <div class="dialogue-text">"Udah, terima nasib aja. Besok kita usul ke kepala sekolah, minta nambah ekstrakurikuler namanya 'Diam di Tempat'."</div>
                     </div>
 
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">Bagas:</p>
-                        <p class="text-slate-200">"Mau geser ke mana, Din? Kiri ada pot tanaman lidah mertua emaknya bobby, kanan ada knalpot motor bapakku. Kamu mau pantatmu ada tato cap Honda-nya?"</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">Bobby:</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Menghela napas)</p>
-                        <p class="text-slate-200">"Lagian kenapa sih kita nongkrong di sini? Duduk berjejer nempel tembok begini, kita lebih mirip cicak nunggu nyamuk daripada anak-anak lagi main."</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">Dino:</p>
-                        <p class="text-slate-200">"Ya mau di mana lagi? Lapangan bola kelurahan udah disulap jadi minimarket. Sekarang tiap aku mau nendang bola, bawaannya malah pengen beli es krim. Lapangan voli Pak RT juga udah jadi tempat parkiran."</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">Bagas:</p>
-                        <p class="text-slate-200">"Ke taman kota aja gimana?"</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">Bobby:</p>
-                        <p class="text-slate-200">"Jangan ngaco. Taman kota tiap sore isinya ibu-ibu senam Zumba. Kemarin aku lari-larian mau main kejar-kejaran, malah dikira ikutan senam. Terus ditarik disuruh baris di belakang. Capek tau!"</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">Dino:</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Cemberut)</p>
-                        <p class="text-slate-200">"Terus kenapa kita nggak main di sekolah aja? Kan lapangan sekolah kita gedenya minta ampun!"</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">Bobby:</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Tertawa sarkas ala anak umur 10 tahun)</p>
-                        <p class="text-slate-200">"Oh, sekolah. Jangan harap deh. Jam tiga teng, gerbang udah digembok berlapis-lapis sama Pak Satpam. Katanya, kalau sore lapangan sekolah dipakai buat parkir guru-guru , lagi rapat. Lagian, sekolah sekarang peraturannya aneh!"</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">Bagas:</p>
-                        <p class="text-slate-200">"Iya, bener! Ada tulisan gede banget: 'Dilarang Menginjak Rumput' . Lah, rumputnya aja lebih disayang daripada muridnya. Kalau rumputnya keinjak emang dia bakal nangis? Kita kan butuh lari, bukan mau makan rumputnya!"</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">Dino:</p>
-                        <p class="text-slate-200">"Belum lagi pas jam istirahat. Istirahat cuma 15 menit. Baru juga mau pemanasan main petak umpet, nentuin siapa yang jaga, eh udah bel masuk. Boro-boro main, ngunyah cireng aja belum ketelen."</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">Bobby:</p>
-                        <p class="text-slate-200">"Makanya aku suka bingung sama logika orang dewasa. Mereka tuh gimana, ya? Mereka yang bangun rumah gede-gede sampai nutupin gang, mereka yang beli mobil padahal nggak punya garasi, parkir di jalan, tapi giliran kita lari-larian di gang, kita yang dimarahin dibilang berisik."</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">Bagas:</p>
-                        <p class="text-slate-200">"Bener! Kemarin aku main bentengan di gang, malah diusir sama Pak RT. Katanya ganggu orang tidur siang. Emang Pak RT kalau tidur siang di atas paving gang?"</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">Dino:</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Bangkit berdiri dengan gaya dramatis)</p>
-                        <p class="text-slate-200">"Intinya, dunia ini nggak dirancang buat anak umur 10 tahun kayak kita! Kita disuruh banyak gerak biar sehat, tapi nggak dikasih tempat. Ujung-ujungnya kita main game di HP."</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">Bobby:</p>
-                        <p class="text-slate-200">"Dan tebak apa yang terjadi kalau kita main HP?"</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">Dino & Bagas:</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Bersamaan menirukan suara ibu-ibu)</p>
-                        <p class="text-slate-200">" main HP teruuss! Sana main di luar, cari keringat!!"</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">Dino:</p>
-                        <p class="text-slate-200">"Pas kita di luar... 'Jangan lari-lari di sini, berisik!!'. Orang dewasa maunya apa sih? Kita disuruh main di luar, tapi nggak dikasih tempat. Kita disuruh terbang?!"</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">Bobby:</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Tersenyum miring)</p>
-                        <p class="text-slate-200">"Udah, terima nasib aja. Besok kita usul ke kepala sekolah, minta nambah ekstrakurikuler namanya 'Diam di Tempat'."</p>
-                    </div>
 
                     <!-- BABAK 3 -->
-                    <h3 class="text-2xl font-bold mt-12 mb-6 text-slate-800 uppercase bg-slate-300 p-3 rounded">BABAK 3: Rapat Darurat Warga Sisa Taman</h3>
+                    <h3 class="text-2xl font-bold mt-12 mb-8 text-white uppercase bg-slate-800 border-l-4 border-blue-500 p-3 rounded font-sans tracking-wide">BABAK 3: RAPAT DARURAT WARGA SISA TAMAN</h3>
 
-                    <!-- CUE BOX -->
-                    <div class="bg-slate-900 border-l-4 border-orange-500 p-4 rounded-lg mb-6 shadow-md flex flex-col gap-3 font-sans">
-                        <div class="flex items-start gap-3">
-                            <span class="bg-orange-900/50 text-orange-400 px-2 py-0.5 rounded text-xs font-bold border border-orange-700/50 shrink-0">STAGE MGR</span>
-                            <div class="text-sm text-slate-300">
-                                <p><strong>Latar Tempat:</strong> Sebuah petak tanah kecil yang sangat gersang di tengah persimpangan jalan kota (mungkin hanya seukuran karpet). Terdapat suara bising kendaraan dan klakson dari kejauhan.</p>
-                                <p class="mt-2"><strong>Karakter:</strong><br>
-                                MATAHARI: Pekerja keras yang kelelahan, memakai kacamata hitam yang tertutup debu.<br>
-                                BULAN: Pekerja sif malam yang baru bangun, membawa bantal leher dan kopi.<br>
-                                BUNGA LILY: Bunga yang high maintenance, sedang sibuk mengelap daunnya dengan tisu basah.<br>
-                                BUNGA TULIP: Tetangga Lily yang sinis, memakai masker medis.<br>
-                                KUPU-KUPU: Pekerja komuter yang kehabisan napas, membawa tas selempang kecil yang kempes.</p>
-                            </div>
+                    <!-- MASTER CUE: BABAK 3 -->
+                    <div class="bg-slate-950 border border-slate-700 p-4 rounded-lg mb-6 shadow-md grid grid-cols-1 md:grid-cols-3 gap-3 font-sans text-sm">
+                        <div class="col-span-1 md:col-span-3 pb-2 border-b border-slate-800 font-bold text-slate-400"><i class="fa-solid fa-flag-checkered mr-2 text-green-500"></i>CUE START BABAK 3</div>
+                        <div><span class="bg-yellow-900 text-yellow-400 px-2 py-1 rounded text-[10px] font-bold mr-2">LIGHTING</span>Lampu jingga redup (Sore hari / Sif malam).</div>
+                        <div><span class="bg-blue-900 text-blue-400 px-2 py-1 rounded text-[10px] font-bold mr-2">SOUND</span>SFX Kendaraan Bising Sayup-sayup.</div>
+                        <div><span class="bg-emerald-900 text-emerald-400 px-2 py-1 rounded text-[10px] font-bold mr-2">STAGE MGR</span>Masuk Matahari (Keringetan), Bulan (Bawa Kopi).</div>
+                    </div>
+
+                    <div>
+                        <div class="character-name">MATAHARI</div>
+                        <div class="stage-dir">(Menyeka keringat dengan handuk kecil, terbatuk-batuk)</div>
+                        <div class="dialogue-text">Aduh! Cukup! Aku kehabisan waktu sekarang. Percuma aku bersinar terang dari pagi, sinarku mentok di saringan asap knalpot truk! Panasku bukannya bikin sehat, malah bikin aspal meleleh. Bulan! Woi, Bulan! Giliranmu masuk sif!</div>
+
+                        <div class="character-name">BULAN</div>
+                        <div class="stage-dir">(Berjalan gontai masuk panggung, menguap lebar sambil memegang gelas kopi plastik)</div>
+                        <div class="dialogue-text">Santai sedikit bisa, tidak? Ini baru jam lima sore. Lagipula buat apa aku buru-buru terbit? Percuma. Orang-orang di bawah sana lebih suka lihat layar HP daripada lihat aku. Belum lagi saingannya lampu reklame terang di perempatan itu. Silau banget, mataku sampai minus.</div>
+
+                        <div class="character-name">BUNGA LILY</div>
+                        <div class="stage-dir">(Menggosok kelopaknya dengan panik)</div>
+                        <div class="dialogue-text">Kalian berdua bisa diam tidak? Debunya makin berterbangan kalau kalian ngobrol keras-keras! Lihat nih, kelopakku yang putih bersih jadi abu-abu kusam. Skincare air embun pagi yang kubeli mahal-mahal tadi langsung luntur kena polusi proyek di sebelah!</div>
+
+                        <div class="character-name">BUNGA TULIP</div>
+                        <div class="stage-dir">(Suara teredam dari balik masker medis)</div>
+                        <div class="dialogue-text">Makanya, Lily, pakai masker. Aku sudah bilang dari minggu lalu, tanah di petak ini sudah nggak ada unsur haranya. Tadi pagi aku minum air dari tanah, rasanya... rasa oli bekas campur teh. Kalau begini terus, akarku bisa kena asam urat.</div>
+
+                        <div class="stage-dir">(Tiba-tiba, KUPU-KUPU mendarat darurat menabrak Tulip. Ngos-ngosan.)</div>
+
+                        <div class="character-name">KUPU-KUPU</div>
+                        <div class="dialogue-text">Permisi... numpang parkir sebentar. Hah... hah..., macet banget di jalur udara atas! Nyaris saja sayapku terserempet drone pengantar seblak!</div>
+
+                        <div class="character-name">BUNGA TULIP</div>
+                        <div class="dialogue-text">Heh! Jangan nyender-nyender! Nanti batangnya bengkok! Lagian kamu ini ngapain sih jam segini baru pulang terbang?</div>
+
+                        <div class="character-name">KUPU-KUPU</div>
+                        <div class="dialogue-text">Boro-boro pulang. Aku ini dari pagi muter-muter nyari serbuk sari! Tadi aku cari-cari pakai maps, katanya di utara ada taman kota yang luas. Pas aku sampai sana... ternyata tamannya sudah dicor jadi tempat parkiran! Kalian berdua ini bunga terakhir di sekitar sini. Boleh minta nektarnya sedikit? Buat ganjal perut.</div>
+
+                        <div class="character-name">BUNGA LILY</div>
+                        <div class="dialogue-text">Enak saja! Nektar kami sudah dijatah untuk bertahan hidup sampai minggu depan! Kamu cari saja sirup tumpah di tong sampah depan gang sana.</div>
+
+                        <div class="character-name">MATAHARI</div>
+                        <div class="dialogue-text">Tuh kan, apa kubilang. Semuanya sudah berantakan. Tadi siang pas aku lagi berusaha nembus awan hitam, aku lihat ada tiga anak manusia jalan kaki muter-muter. Badannya dekil semua. Kayaknya nyari tempat main, tapi yang mereka injak cuma paving dan aspal.</div>
+
+                        <div class="character-name">BULAN</div>
+                        <div class="dialogue-text">Tiga anak? Iya aku liat!</div>
+
+                        <div class="character-name">MATAHARI</div>
+                        <div class="dialogue-text">Iya! Kamu lihat juga?</div>
+
+                        <div class="character-name">BULAN</div>
+                        <div class="dialogue-text">Tadi malam mereka numpang tidur di bawah tiang listrik. Kasihan, mau main petak umpet saja tidak ada pohon buat sembunyi.</div>
+
+                        <div class="character-name">KUPU-KUPU</div>
+                        <div class="stage-dir">(Teringat sesuatu yang gawat)</div>
+                        <div class="dialogue-text">Tunggu... bicara soal pohon dan paving beton... kebetulan banget! Tadi pas aku terbang kabur dari area proyek apartemen itu, aku dengar mandornya ngobrol di HT. Katanya... besok pagi petak tanah ini mau diratakan sama bulldozer buat dibikin tiang beton jalan layang!</div>
+
+                        <!-- CUE KAGET -->
+                        <div class="bg-slate-950 border border-slate-700 p-2 rounded mb-4 mt-2">
+                            <span class="bg-blue-900 text-blue-400 px-2 py-1 rounded text-[10px] font-bold mr-2">SOUND</span>SFX Jeng-jeng! Klakson terdengar makin mencekam.
                         </div>
-                        <div class="flex items-start gap-3 mt-2">
-                            <span class="bg-yellow-900/50 text-yellow-400 px-2 py-0.5 rounded text-xs font-bold border border-yellow-700/50 shrink-0">LIGHTING</span>
-                            <p class="text-sm text-slate-300">(Lampu panggung berwarna jingga redup, menandakan sore hari pergantian sif siang ke malam).</p>
-                        </div>
+
+                        <div class="character-name">BUNGA TULIP & BUNGA LILY</div>
+                        <div class="dialogue-text">APA?! DIBULLDOZER?!</div>
+
+                        <div class="character-name">BUNGA TULIP</div>
+                        <div class="dialogue-text">Terus kita pindah ke mana?! Aku nggak mau dimasukkan ke pot plastik murahan di pinggir jalan!</div>
+
+                        <div class="character-name">BULAN</div>
+                        <div class="stage-dir">(Meletakkan kopinya, serius)</div>
+                        <div class="dialogue-text">Matahari... sepertinya besok pagi kamu harus bersinar lebih terik. Kita tidak bisa biarkan petak terakhir ini hilang.</div>
+
+                        <div class="character-name">MATAHARI</div>
+                        <div class="dialogue-text">Dan kamu <span class="italic text-slate-400">(menunjuk Kupu-kupu)</span>, cari tiga anak manusia itu! Kalau mereka mau taman untuk bermain, mereka harus bantu kita mempertahankan tempat ini! Cepat terbang sebelum gelap!</div>
                     </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">MATAHARI</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Menyeka keringat dengan handuk kecil, terbatuk-batuk)</p>
-                        <p class="text-slate-200">Aduh! Cukup! Aku kehabisan waktu sekarang. Percuma aku bersinar terang dari pagi, sinarku mentok di saringan asap knalpot truk! Panasku bukannya bikin sehat, malah bikin aspal meleleh. Bulan! Woi, Bulan! Giliranmu masuk sif!</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">BULAN</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Berjalan gontai masuk panggung, menguap lebar sambil memegang gelas kopi plastik)</p>
-                        <p class="text-slate-200">Santai sedikit bisa, tidak? Ini baru jam lima sore. Lagipula buat apa aku buru-buru terbit? Percuma. Orang-orang di bawah sana lebih suka lihat layar HP daripada lihat aku. Belum lagi saingannya lampu reklame terang di perempatan itu. Silau banget, mataku sampai minus.</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">BUNGA LILY</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Menggosok kelopaknya dengan panik)</p>
-                        <p class="text-slate-200">Kalian berdua bisa diam tidak? Debunya makin berterbangan kalau kalian ngobrol keras-keras! Lihat nih, kelopakku yang putih bersih jadi abu-abu kusam. Skincare air embun pagi yang kubeli mahal-mahal tadi langsung luntur kena polusi proyek di sebelah!</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">BUNGA TULIP</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Suara teredam dari balik masker medis)</p>
-                        <p class="text-slate-200">Makanya, Lily, pakai masker. Aku sudah bilang dari minggu lalu, tanah di petak ini sudah nggak ada unsur haranya. Tadi pagi aku minum air dari tanah, rasanya... rasa oli bekas campur teh. Kalau begini terus, akarku bisa kena asam urat.</p>
-                    </div>
-
-                    <p class="italic mb-4 text-slate-600">(Tiba-tiba, KUPU-KUPU mendarat darurat dengan menabrak pelan tangkai Tulip. Ia ngos-ngosan seperti habis maraton, memegangi dadanya).</p>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">KUPU-KUPU</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Menyandarkan tubuh ke tangkai Tulip, napasnya tersengal)</p>
-                        <p class="text-slate-200">Permisi... numpang parkir sebentar. Hah... hah..., macet banget di jalur udara atas! Nyaris saja sayapku terserempet drone pengantar seblak!</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">BUNGA TULIP</p>
-                        <p class="text-slate-200">Heh! Jangan nyender-nyender! Nanti batangnya bengkok! Lagian kamu ini ngapain sih jam segini baru pulang terbang?</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">KUPU-KUPU</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Sambil memijat sayapnya yang pegal)</p>
-                        <p class="text-slate-200">Boro-boro pulang. Aku ini dari pagi muter-muter nyari serbuk sari! Tadi aku cari-cari pakai maps, katanya di utara ada taman kota yang luas. Pas aku sampai sana... ternyata tamannya sudah dicor jadi tempat parkiran! Kalian berdua ini bunga terakhir di sekitar sini. Boleh minta nektarnya sedikit? Buat ganjal perut.</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">BUNGA LILY</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Menyilangkan daunnya di dada)</p>
-                        <p class="text-slate-200">Enak saja! Nektar kami sudah dijatah untuk bertahan hidup sampai minggu depan! Kamu cari saja sirup tumpah di tong sampah depan gang sana.</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">MATAHARI</p>
-                        <p class="text-slate-200">Tuh kan, apa kubilang. Semuanya sudah berantakan. Tadi siang pas aku lagi berusaha nembus awan hitam, aku lihat ada tiga anak manusia jalan kaki muter-muter. Badannya dekil semua. Kayaknya nyari tempat main, tapi yang mereka injak cuma paving dan aspal.</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">BULAN</p>
-                        <p class="text-slate-200">Tiga anak? Iya aku liat!</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">MATAHARI</p>
-                        <p class="text-slate-200">Iya! Kamu lihat juga?</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">BULAN</p>
-                        <p class="text-slate-200">Tadi malam mereka numpang tidur di bawah tiang listrik. Kasihan, mau main petak umpet saja tidak ada pohon buat sembunyi.</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">KUPU-KUPU</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Mata terbelalak, teringat sesuatu)</p>
-                        <p class="text-slate-200">Tunggu... bicara soal pohon dan paving beton... kebetulan banget! Tadi pas aku terbang kabur dari area proyek apartemen itu, aku dengar mandornya ngobrol di HT. Katanya... besok pagi petak tanah ini mau diratakan sama bulldozer buat dibikin tiang beton jalan layang!</p>
-                    </div>
-
-                    <p class="italic mb-4 text-slate-600">(Semua karakter terdiam kaget. Suara klakson di latar belakang tiba-tiba terdengar lebih keras dan mencekam).</p>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">BUNGA TULIP & BUNGA LILY</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Bersamaan)</p>
-                        <p class="text-slate-200">APA?! DIBULLDOZER?!</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">BUNGA TULIP</p>
-                        <p class="text-slate-200">Terus kita pindah ke mana?! Aku nggak mau dimasukkan ke pot plastik murahan di pinggir jalan!</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">KUPU-KUPU</p>
-                        <p class="text-slate-200">Ya aku lebih bingung! Kalau kalian digusur, besok aku sarapan pakai apa?! Bisa-bisa aku berubah jadi ngengat sungguhan!</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">BULAN</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Meletakkan kopinya, wajahnya menjadi serius)</p>
-                        <p class="text-slate-200">Matahari... sepertinya besok pagi kamu harus bersinar lebih terik. Kita tidak bisa biarkan petak terakhir ini hilang.</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">MATAHARI</p>
-                        <p class="text-slate-200">Dan kamu (menunjuk Kupu-kupu) , cari tiga anak manusia itu! Kalau mereka mau taman untuk bermain, mereka harus bantu kita mempertahankan tempat ini! Cepat terbang sebelum gelap!</p>
-                    </div>
-
-                    <p class="italic mb-4 text-slate-600">(Kupu-kupu mengangguk panik, membetulkan sayapnya, lalu berlari keluar panggung seolah bersiap lepas landas. Lampu panggung mulai meredup perlahan, hanya menyisakan sorotan pada wajah panik para bunga yang bersiap-siap).</p>
-
 
                     <!-- BABAK 4 -->
-                    <h3 class="text-2xl font-bold mt-12 mb-6 text-slate-800 uppercase bg-slate-300 p-3 rounded">BABAK 4: KLIMAKS – RUNTUHNYA SISA TAMAN TERAKHIR</h3>
+                    <h3 class="text-2xl font-bold mt-12 mb-8 text-white uppercase bg-slate-800 border-l-4 border-red-500 p-3 rounded font-sans tracking-wide">BABAK 4: KLIMAKS – RUNTUHNYA SISA TAMAN</h3>
 
-                    <!-- CUE BOX -->
-                    <div class="bg-slate-900 border-l-4 border-orange-500 p-4 rounded-lg mb-6 shadow-md flex flex-col gap-3 font-sans">
-                        <div class="flex items-start gap-3">
-                            <span class="bg-orange-900/50 text-orange-400 px-2 py-0.5 rounded text-xs font-bold border border-orange-700/50 shrink-0">STAGE MGR</span>
-                            <div class="text-sm text-slate-300">
-                                <p><strong>Latar Tempat:</strong> Petak tanah kecil yang gersang di persimpangan jalan. <strong>Waktu:</strong> Waktu subuh menjelang pagi. Langit masih agak gelap, tapi polusi sudah mulai terlihat mengaburkan pandangan.</p>
-                                <p class="mt-2"><strong>Karakter yang terlibat:</strong><br>
-                                Kelompok Kamar: Kasih, Udin, Siti, Yuni.<br>
-                                Kelompok Gang: Bagas, Dino, Bobby.<br>
-                                Kelompok Taman: Matahari, Bulan, Bunga Lily, Bunga Tulip, Kupu-Kupu.</p>
+                    <!-- MASTER CUE: BABAK 4 -->
+                    <div class="bg-slate-950 border border-slate-700 p-4 rounded-lg mb-6 shadow-md grid grid-cols-1 md:grid-cols-3 gap-3 font-sans text-sm">
+                        <div class="col-span-1 md:col-span-3 pb-2 border-b border-slate-800 font-bold text-slate-400"><i class="fa-solid fa-flag-checkered mr-2 text-green-500"></i>CUE START BABAK 4</div>
+                        <div><span class="bg-yellow-900 text-yellow-400 px-2 py-1 rounded text-[10px] font-bold mr-2">LIGHTING</span>Lampu Biru Kemerahan (Subuh berdebu).</div>
+                        <div><span class="bg-emerald-900 text-emerald-400 px-2 py-1 rounded text-[10px] font-bold mr-2">STAGE MGR</span>Pertemuan Semua Kelompok.</div>
+                    </div>
+
+                    <div>
+                        <div class="character-name">BULAN</div>
+                        <div class="dialogue-text">Nah, giliranku sudah mau habis. Semoga sukses bersinar menembus asap knalpot hari ini, Matahari. Aku mau tidur.</div>
+
+                        <div class="character-name">MATAHARI</div>
+                        <div class="dialogue-text">Tunggu dulu, Bulan! Jangan pulang sebelum Kupu-kupu kembali. Hari ini kita punya misi darurat. Kalau petak tanah ini dibulldozer, besok aku memantulkan sinarku ke mana? Ke kepala botak Pak Mandor?!</div>
+                        
+                        <div class="stage-dir">(Kupu-kupu masuk terengah-engah diikuti Bobby, Dino, Bagas).</div>
+
+                        <div class="character-name">KUPU-KUPU</div>
+                        <div class="dialogue-text">Hah... hah... Misi selesai! Kutemukan mereka! Tiga anak manusia yang kebingungan cari tempat main!</div>
+
+                        <div class="character-name">DINO</div>
+                        <div class="stage-dir">(Histeris)</div>
+                        <div class="dialogue-text">TIDAAAK! KITA Diculik ALIEN! Sejak kapan serangga dan bunga bisa ngomong?! Bobby, otakku pasti sudah menguap gara-gara kepanasan main di gang!</div>
+
+                        <div class="character-name">BOBBY</div>
+                        <div class="dialogue-text">Tunggu. Secara logis, ini tidak masuk akal. Tapi, kalau kalian memang bisa bicara... tempat apa ini? Kenapa cuma ada sepetak tanah sekecil ini di tengah kota?</div>
+
+                        <div class="character-name">BUNGA LILY</div>
+                        <div class="dialogue-text">Ini namanya oasis , Tuan Muda yang dekil! Ini sisa keindahan terakhir di kota ini, dan sebentar lagi mau diratakan sama mesin kuning jelek berisik itu!</div>
+
+                        <div class="stage-dir">(Masuk Yuni, Udin, Kasih, dan Siti yang nangis bawa krupuk mlempem).</div>
+
+                        <div class="character-name">YUNI</div>
+                        <div class="stage-dir">(Mengecek antena)</div>
+                        <div class="dialogue-text">Menurut perhitungan rumus gravitasi dan Antena Penangkap Hawa Segar ini, ada sedikit udara yang tidak bikin batuk di koordinat ini!</div>
+
+                        <div class="character-name">UDIN</div>
+                        <div class="dialogue-text">Siti, sudah kubilang mobil tidak makan anak kecil. Dan Udin tidak bisa gepeng. Tulang Udin terbuat dari titanium.</div>
+
+                        <div class="character-name">KASIH</div>
+                        <div class="stage-dir">(Berhenti batuk)</div>
+                        <div class="dialogue-text">Eh? Di sini udaranya wangi... tidak bikin batuk.</div>
+
+                        <div class="character-name">DINO</div>
+                        <div class="dialogue-text">Wah! Pasukan alien datang lagi! Kali ini bawa antena TV!</div>
+
+                        <div class="character-name">BAGAS</div>
+                        <div class="dialogue-text">Kami ini anak-anak korban keegoisan orang dewasa! Kami butuh lapangan bola, bukan lahan parkir!</div>
+
+                        <div class="character-name">MATAHARI</div>
+                        <div class="stage-dir">(Meniup peluit bohongan)</div>
+                        <div class="dialogue-text">PRIIIIITT!! SUDAAAAH! BISA DIAM TIDAK SEMUANYA?! Dengar, anak-anak manusia. Kalian mencari hal yang sama!</div>
+
+                        <div class="character-name">KUPU-KUPU</div>
+                        <div class="dialogue-text">Benar! Kalian mencari TAMAN! Tapi petak tanah ini adalah SATU-SATUNYA tempat yang tersisa!</div>
+
+                        <div class="character-name">KASIH</div>
+                        <div class="dialogue-text">Kasih nggak mau bunga-bunga ini mati. Kalau bunga mati, nanti napas Kasih sakit lagi. Teman-teman... kita harus tolong mereka!</div>
+
+                        <div class="character-name">BOBBY</div>
+                        <div class="stage-dir">(Berteriak memberi komando)</div>
+                        <div class="dialogue-text">PASUKAN PENYELAMAT TAMAN! BERSIAAAAAP!</div>
+
+                        <!-- MASTER CUE: BULDOSER DATANG -->
+                        <div class="bg-red-950/80 border-2 border-red-600 p-4 rounded-lg mb-6 shadow-md font-sans text-sm mt-4">
+                            <div class="pb-2 border-b border-red-800 font-bold text-red-400 mb-2"><i class="fa-solid fa-triangle-exclamation mr-2"></i>CUE KLIMAKS: SERANGAN BULDOSER</div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                <div><span class="bg-blue-900 text-blue-400 px-2 py-1 rounded text-[10px] font-bold mr-2">SOUND</span>Track 5 (Marching) -> <strong class="text-white">SFX TEEET BULDOSER!</strong></div>
+                                <div><span class="bg-yellow-900 text-yellow-400 px-2 py-1 rounded text-[10px] font-bold mr-2">LIGHTING</span>Merah Agresif, Moving Head Chaos!</div>
+                                <div><span class="bg-emerald-900 text-emerald-400 px-2 py-1 rounded text-[10px] font-bold mr-2">STAGE MGR</span>Kru tembak Asap Dry Ice tebal! Dorong Buldoser Kardus! Grup 9 & 10 masuk.</div>
                             </div>
                         </div>
-                        <div class="flex items-start gap-3 mt-2">
-                            <span class="bg-yellow-900/50 text-yellow-400 px-2 py-0.5 rounded text-xs font-bold border border-yellow-700/50 shrink-0">LIGHTING</span>
-                            <p class="text-sm text-slate-300">(Lampu panggung berwarna biru kemerahan menyala perlahan. BULAN sedang berkemas-kemas memasukkan bantal lehernya ke dalam tas ransel, bersiap pulang. MATAHARI sedang melakukan pemanasan senam aerobik kecil-kecilan sambil terbatuk-batuk kecil.)</p>
+
+                        <div class="character-name">YUNI</div>
+                        <div class="dialogue-text">Gawat! Alarm Anti-Debu-ku korslet! Itu monsternya datang!</div>
+
+                        <div class="character-name">BOBBY</div>
+                        <div class="dialogue-text">PASUKAN! BENTUK PAGAR BETIS! Jangan biarkan roda rantai itu menyentuh sehelai pun daun Tulip dan Lily!</div>
+
+                        <div class="character-name">SUARA MANDOR (V.O)</div>
+                        <div class="dialogue-text">"Tes.. tes! Heh, anak-anak! Sedang apa kalian main di tengah lokasi proyek?! Bahaya! Minggir! Jalan layang mau dicor hari ini!"</div>
+
+                        <div class="character-name">UDIN</div>
+                        <div class="dialogue-text">Maju selangkah lagi, Udin gigit ban bulldozernya sampai kempes. Udin sudah sarapan batu bata.</div>
+
+                        <div class="stage-dir">(Pekerja Proyek masuk, menyingkirkan anak-anak. Krupuk Siti jatuh diinjak. Buldoser merenggut bunga. Bunga & Kupu-kupu menangis dibawa keluar. Diganti Balok Beton).</div>
+
+                        <div class="character-name">SITI</div>
+                        <div class="dialogue-text">KRUPUKKUUU!! JANGAN DIINJAK! Tidaaak! Mlempem dan hancur lebur!</div>
+
+                        <div class="character-name">KASIH</div>
+                        <div class="stage-dir">(Memungut daun tiruan jatuh)</div>
+                        <div class="dialogue-text">Bunganya pergi. Tamannya mati. Sekarang semuanya cuma beton...</div>
+
+                        <div class="character-name">BOBBY</div>
+                        <div class="dialogue-text">Orang dewasa itu... mereka menang lagi. Mereka selalu menang kalau soal menghancurkan! Lalu kita disuruh main di mana?! Di atas genteng?!</div>
+
+                        <div class="character-name">KASIH</div>
+                        <div class="dialogue-text">Berarti... kita yang harus bikin taman yang baru! Kalau mereka taruh beton, kita bongkar! Kalau tidak ada tanah, kita bawa tanah sendiri! Kasih tidak mau batuk-batuk lagi!</div>
+
+                        <div class="character-name">DINO</div>
+                        <div class="dialogue-text">MISI KITA BELUM SELESAI?!</div>
+
+                        <div class="bg-slate-950 border border-slate-700 p-2 rounded mb-8 mt-2 text-sm text-slate-300">
+                            <span class="bg-yellow-900 text-yellow-400 px-2 py-1 rounded text-[10px] font-bold mr-2">LIGHTING</span>FADE OUT PELAHAN.
                         </div>
                     </div>
 
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">BULAN</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Sambil menguap)</p>
-                        <p class="text-slate-200">Nah, giliranku sudah mau habis. Semoga sukses bersinar menembus asap knalpot hari ini, Matahari. Aku mau tidur.</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">MATAHARI</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Sambil stretching)</p>
-                        <p class="text-slate-200">Tunggu dulu, Bulan! Jangan pulang sebelum Kupu-kupu kembali. Hari ini kita punya misi darurat. Kalau petak tanah ini dibulldozer, besok aku memantulkan sinarku ke mana? Ke kepala botak Pak Mandor?!</p>
-                    </div>
-
-                    <p class="italic mb-4 text-slate-600">(Tiba-tiba terdengar suara langkah kaki berlarian. KUPU-KUPU masuk ke panggung dengan napas terengah-engah diikuti BOBBY , DINO dan BAGAS di belakangnya dengan wajah bingung dan kelelahan.)</p>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">KUPU-KUPU</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Terduduk lemas di dekat Bunga Tulip)</p>
-                        <p class="text-slate-200">Hah... hah... Misi selesai! Kutebus... eh, kutemukan mereka! Tiga anak manusia yang kebingungan cari tempat main!</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">DINO</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Berteriak histeris dengan gaya dramatis, menunjuk Kupu-kupu dan Bunga)</p>
-                        <p class="text-slate-200">TIDAAAK! KITA Diculik ALIEN! Sejak kapan serangga dan bunga bisa ngomong?! Bobby, otakku pasti sudah menguap gara-gara kepanasan main di gang!</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">BOBBY</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Maju selangkah, mengamati bunga-bunga dengan gaya detektif)</p>
-                        <p class="text-slate-200">Tunggu. Secara logis, ini tidak masuk akal. Tapi, kalau kalian memang bisa bicara... tempat apa ini? Kenapa cuma ada sepetak tanah sekecil ini di tengah kota?</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">BUNGA LILY</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Sambil mengelap kelopaknya dengan tisu basah)</p>
-                        <p class="text-slate-200">Ini namanya oasis , Tuan Muda yang dekil! Ini sisa keindahan terakhir di kota ini, dan sebentar lagi mau diratakan sama mesin kuning jelek berisik itu!</p>
-                    </div>
-
-                    <p class="italic mb-4 text-slate-600">(Tiba-tiba, dari sisi panggung yang lain, terdengar suara gerombolan lain. Masuklah YUNI , diikuti UDIN yang sedang bersama KASIH , dan SITI yang berjalan sambil mengunyah krupuknya yang sudah layu.)</p>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">YUNI</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Membawa alat detektor bohongan dari antena TV rusak)</p>
-                        <p class="text-slate-200">Menurut perhitungan rumus gravitasi dan Antena Penangkap Hawa Segar ini, ada sedikit udara yang tidak bikin batuk di koordinat ini!</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">SITI</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Menangis panik melihat krupuknya)</p>
-                        <p class="text-slate-200">Aduh Yuni, kita nyasar di mana ini?! Krupukku sampai mlempem kena embun polusi! Gimana kalau tiba-tiba ada mobil lewat, terus kita jadi gepeng semua?!</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">UDIN</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Menurunkan Kasih dengan wajah datar tanpa emosi sedikitpun)</p>
-                        <p class="text-slate-200">Siti, sudah kubilang mobil tidak makan anak kecil. Dan Udin tidak bisa gepeng. Tulang Udin terbuat dari titanium.</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">KASIH</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Terbatuk-batuk kecil, memeluk bonekanya)</p>
-                        <p class="text-slate-200">Kasih capek... Kasih mau pulang... eh, tapi Kasih nggak mau pulang ke kamar berdebu... Kasih mau... (Kasih tiba-tiba berhenti batuk saat menghirup udara di dekat Lily dan Tulip) Eh? Di sini udaranya wangi... tidak bikin batuk.</p>
-                    </div>
-
-                    <p class="italic mb-4 text-slate-600">(Kelompok Kamar dan Kelompok Gang akhirnya saling bertatapan. Mereka berdua terkejut.)</p>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">DINO</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Menunjuk Yuni dan teman-temannya)</p>
-                        <p class="text-slate-200">Wah! Pasukan alien datang lagi! Kali ini bawa antena TV!</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">BAGAS</p>
-                        <p class="text-slate-200">Kami ini anak-anak korban keegoisan orang dewasa! Kami butuh lapangan bola, bukan lahan parkir!</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">MATAHARI</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Membunyikan peluit bohongan dari tangannya)</p>
-                        <p class="text-slate-200">PRIIIIITT!! SUDAAAAH! BISA DIAM TIDAK SEMUANYA?!</p>
-                    </div>
-
-                    <p class="italic mb-4 text-slate-600">(Semua anak langsung terdiam dan mematung melihat Matahari yang marah.)</p>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">MATAHARI</p>
-                        <p class="text-slate-200">Dengar, anak-anak manusia. Kalian yang kabur dari kamar karena polusi (menunjuk Kasih dkk) , dan kalian yang diusir dari gang karena butuh tempat bermain (menunjuk Bobby dkk) . Kalian mencari hal yang sama!</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">KUPU-KUPU</p>
-                        <p class="text-slate-200">Benar! Kalian mencari TAMAN! Tapi asal kalian tahu saja... (menunjuk ke arah bawah panggung dengan dramatis) Petak tanah ini adalah SATU-SATUNYA tempat yang tersisa!</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">BUNGA TULIP</p>
-                        <p class="text-slate-200">Dan parahnya, pagi ini, jam 7 teng, mereka akan meratakan tanah ini untuk dibangun tiang beton raksasa. Kalau ini hancur...</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">KASIH</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Berjalan mendekati Bunga Lily dan Tulip, mengelus daun mereka)</p>
-                        <p class="text-slate-200">Kasih nggak mau bunga-bunga ini mati. Kalau bunga mati, nanti napas Kasih sakit lagi. Teman-teman... kita harus tolong mereka!</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">BOBBY</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Berteriak memberi komando)</p>
-                        <p class="text-slate-200">PASUKAN PENYELAMAT TAMAN! BERSIAAAAAP!</p>
-                    </div>
-
-                    <!-- CUE BOX -->
-                    <div class="bg-slate-900 border-l-4 border-slate-500 p-4 rounded-lg mb-6 shadow-md flex flex-col gap-3 font-sans">
-                        <div class="flex items-start gap-3">
-                            <span class="bg-emerald-900/50 text-emerald-400 px-2 py-0.5 rounded text-xs font-bold border border-emerald-700/50 shrink-0">SUTRADARA</span>
-                            <p class="text-sm text-slate-300">* (MUSIK) [SEQUENCE LAGU "KAMI BUTUH TAMAN"] (1 menit) (Lagu bertempo marching yang semangat. Mereka melakukan koreografi baris-berbaris yang jenaka bersiap menyambut kedatangan bulldozer.)<br>
-                            (Tiba-tiba, lagu terpotong oleh suara gemuruh mesin yang memekakkan telinga. Panggung seolah bergetar ringan. Suara klakson alat berat: TEEET! TEEET!)</p>
-                        </div>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">YUNI</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Melihat ke arah sayap kanan panggung, kacamatanya melorot)</p>
-                        <p class="text-slate-200">Gawat! Alarm Anti-Debu -ku korslet! Tingkat asap knalpot dan kebisingan naik 1000 persen! Itu monsternya datang!</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">BAGAS</p>
-                        <p class="text-slate-200">Berdiri yang tegak, Din! Tunjukin kalau kita nggak takut sama besi rongsokan!</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">BOBBY</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Maju ke depan, merentangkan tangan)</p>
-                        <p class="text-slate-200">PASUKAN! BENTUK PAGAR BETIS! Jangan biarkan roda rantai itu menyentuh sehelai pun daun Tulip dan Lily!</p>
-                    </div>
-
-                    <p class="italic mb-4 text-slate-600">(Anak-anak berpegangan tangan, membentuk barikade melengkung melindungi Lily, Tulip, dan Kupu-kupu. Udin berdiri paling depan, tepat di tengah.)</p>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">SUARA MANDOR (VOICE OVER)</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Menggunakan efek suara megaphone / Toa)</p>
-                        <p class="text-slate-200">"Tes.. tes! Heh, anak-anak! Sedang apa kalian main di tengah lokasi proyek?! Bahaya! Minggir, minggir! Jalan layang mau dicor hari ini! Waktu adalah uang!"</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">UDIN</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Berdiri kaku seperti patung, menatap tajam tanpa emosi ke arah depan)</p>
-                        <p class="text-slate-200">Maju selangkah lagi, Udin gigit ban bulldozernya sampai kempes. Udin sudah sarapan batu bata.</p>
-                    </div>
-
-                    <p class="italic mb-4 text-slate-600">(Dua orang PEKERJA PROYEK berpakaian wearpack kotor masuk ke panggung membawa properti lampu hazzard parkiran. Di belakang mereka, sebuah properti BULDOSER KARDUS raksasa didorong perlahan memasuki area panggung. Asap dry ice disemprotkan tebal ke arah panggung menyimulasikan debu.)</p>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">PEKERJA PROYEK 1</p>
-                        <p class="text-slate-200">"Aduh, Dek, jangan main di sini dong. Ayo, minggir dulu ya. Om mau kerja nih."</p>
-                    </div>
-
-                    <p class="italic mb-4 text-slate-600">(Pekerja Proyek 1 dan 2 dengan mudahnya memecah barisan anak-anak. Mereka mengangkat Dino dan Bagas seperti mengangkat karung beras, memindahkan mereka ke pinggir. Siti tersenggol, krupuknya jatuh ke lantai.)</p>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">SITI</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Menjerit histeris)</p>
-                        <p class="text-slate-200">KRUPUKKUUU!! JANGAN DIINJAK! ITU KRUPUK TERAKHIRKU! Tidaaak! Mlempem dan hancur lebur!</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">MATAHARI</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Berada di belakang, berusaha bersinar terang namun tertutup asap dry ice. Ia terbatuk-batuk parah)</p>
-                        <p class="text-slate-200">Uhuk! Uhuk! Debunya... debunya menutupi sinarku! Tolong, mataku kelilipan pasir! (Lampu sorot kuning panggung mulai meredup drastis, diganti lampu abu-abu kelam)</p>
-                    </div>
-
-                    <p class="italic mb-4 text-slate-600">(Bulldozer kardus terus maju. Mesin menderu (SFX). Pekerja Proyek "mencabut" Bunga Lily dan Bunga Tulip, menaikkan mereka ke atas gerobak proyek / menarik mereka keluar panggung. Keduanya meronta-ronta dramatis perlahan menghilang ke sayap panggung.)</p>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">KUPU-KUPU</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Terbang berputar-putar dengan panik, memegangi perutnya)</p>
-                        <p class="text-slate-200">Tidaaak! Bunga-bungaku! Nektarku! Warung makan siangku digusuuur!! (Kupu-kupu menangis kencang dan terbang lari menyusul bunga-bunga)</p>
-                    </div>
-
-                    <p class="italic mb-4 text-slate-600">(Bulldozer maju hingga ke tengah titik bekas taman tadi. Petak tanah itu kini diganti dengan properti BALOK BETON abu-abu yang ditaruh kasar oleh Pekerja. Pekerja dan Bulldozer kemudian perlahan keluar panggung, meninggalkan tumpukan debu dan balok beton).<br>
-                    (Panggung menjadi hening. Suara bising kota dan klakson terdengar sayup-sayup namun lebih suram. Udara (lampu) terasa sangat kelabu. Anak-anak terdiam. Barisan mereka hancur. Bobby jatuh terduduk di aspal.)</p>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">KASIH</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Berjalan gontai mendekati balok beton itu. Ia menemukan sehelai daun Lily tiruan yang terjatuh. Ia memungutnya, tangannya gemetar. Bibirnya mulai menangis terisak)</p>
-                        <p class="text-slate-200">Bunganya... bunganya pergi. Tamannya mati. Sekarang semuanya cuma beton...<br>
-                        (Kasih terbatuk-batuk kecil, ia memeluk daun itu dan bonekanya erat-erat)</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">YUNI</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Mengetuk-ngetuk ujung antenanya yang patah, suaranya parau)</p>
-                        <p class="text-slate-200">Hawa murni di titik ini... sudah nol koma nol persen. Antenaku cuma menangkap debu beton. Kita kalah.</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">BOBBY</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Memukul aspal dengan tangannya, penuh kemarahan)</p>
-                        <p class="text-slate-200">Orang dewasa itu... mereka menang lagi. Mereka selalu menang kalau soal menghancurkan! Lalu kita disuruh main di mana?! Di atas genteng?!</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">UDIN</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Berjalan mendekati Bobby. Wajahnya tetap datar, tapi nadanya memelan. Ia melihat ke arah penonton)</p>
-                        <p class="text-slate-200">Bulldozernya curang. Dia tidak punya hati, cuma punya mesin. Gigi Udin tidak mempan gigit besi. Udin minta maaf.</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">MATAHARI</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Menepuk bahu Kasih dan Bobby dengan lemah. Kondisi Matahari tampak kotor berdebu)</p>
-                        <p class="text-slate-200">Maafkan aku, anak-anak. Tugasku menerangi bumi, tapi aku tidak bisa menerangi hati manusia-manusia serakah itu. Petak terakhir ini sudah lenyap.</p>
-                    </div>
-
-                    <p class="italic mb-4 text-slate-600">(Kasih tiba-tiba berhenti menangis. Ia menghapus air matanya, menatap daun Lily di tangannya. Ekspresinya berubah dari sedih menjadi tekad yang bulat).</p>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">KASIH</p>
-                        <p class="text-slate-200">Kalau tamannya diambil... dan kalau tamannya hancur...<br>
-                        (Semua menoleh ke arah Kasih)<br>
-                        (Berdiri tegak, menatap teman-temannya satu per satu)<br>
-                        Berarti... kita yang harus bikin taman yang baru! Kalau mereka taruh beton, kita bongkar! Kalau tidak ada tanah, kita bawa tanah sendiri! Kasih tidak mau batuk-batuk lagi!</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">BOBBY</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Mata Bobby melebar, ia perlahan berdiri)</p>
-                        <p class="text-slate-200">Bikin taman baru? Menantang logika kota ini dengan tangan kita sendiri?</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">DINO</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Berhenti memeluk tiang, matanya berbinar lagi)</p>
-                        <p class="text-slate-200">MISI KITA BELUM SELESAI?!</p>
-                    </div>
-
-                    <p class="italic mb-4 text-slate-600">(Musik instrumen yang awalnya sedih, perlahan berubah tempo menjadi irama dentuman detak jantung yang membangkitkan semangat heroik.)<br>
-                    (Lampu sorot panggung perlahan memusat pada anak-anak yang kini berkumpul membentuk lingkaran penuh tekad.)<br>
-                    -- FADE OUT / LAYAR DITUTUP PERLAHAN --</p>
 
                     <!-- BABAK 5 -->
-                    <h3 class="text-2xl font-bold mt-12 mb-6 text-slate-800 uppercase bg-slate-300 p-3 rounded">BABAK 5: CAHAYA PAGI DAN BIJI HARAPAN (RESOLUSI)</h3>
+                    <h3 class="text-2xl font-bold mt-12 mb-8 text-white uppercase bg-slate-800 border-l-4 border-cyan-500 p-3 rounded font-sans tracking-wide">BABAK 5: CAHAYA PAGI DAN BIJI HARAPAN</h3>
 
-                    <!-- CUE BOX -->
-                    <div class="bg-slate-900 border-l-4 border-orange-500 p-4 rounded-lg mb-6 shadow-md flex flex-col gap-3 font-sans">
-                        <div class="flex items-start gap-3">
-                            <span class="bg-orange-900/50 text-orange-400 px-2 py-0.5 rounded text-xs font-bold border border-orange-700/50 shrink-0">STAGE MGR</span>
-                            <div class="text-sm text-slate-300">
-                                <p><strong>Latar Tempat:</strong> Kamar tidur Kasih (kembali ke setting Babak 1). Namun, suasana kamar kini terasa jauh lebih cerah, bersih, dan hangat. Cahaya matahari pagi masuk melalui celah jendela dengan indah.</p>
-                                <p class="mt-2"><strong>Karakter yang terlibat:</strong><br>
-                                * Kasih<br>
-                                * Ibu Kasih (Hanya suara atau muncul sebentar)<br>
-                                * Seluruh Pemeran (Ensemble untuk Grand Finale)</p>
+                    <!-- MASTER CUE: FINALE -->
+                    <div class="bg-slate-950 border border-slate-700 p-4 rounded-lg mb-6 shadow-md grid grid-cols-1 md:grid-cols-3 gap-3 font-sans text-sm">
+                        <div class="col-span-1 md:col-span-3 pb-2 border-b border-slate-800 font-bold text-slate-400"><i class="fa-solid fa-flag-checkered mr-2 text-green-500"></i>CUE FINALE [RESOLUSI]</div>
+                        <div><span class="bg-yellow-900 text-yellow-400 px-2 py-1 rounded text-[10px] font-bold mr-2">LIGHTING</span>Cahaya Fajar terang benderang.</div>
+                        <div><span class="bg-blue-900 text-blue-400 px-2 py-1 rounded text-[10px] font-bold mr-2">SOUND</span>SFX Kicau burung. Track 6 (Jazz Broadway) bersiap.</div>
+                        <div><span class="bg-emerald-900 text-emerald-400 px-2 py-1 rounded text-[10px] font-bold mr-2">STAGE MGR</span>Setting kembali ke Kamar Kasih (Cerah).</div>
+                    </div>
+
+                    <div>
+                        <div class="character-name">KASIH</div>
+                        <div class="stage-dir">(Terbangun lega)</div>
+                        <div class="dialogue-text">Wah... napasku terasa plong sekali. Tidak ada asap, tidak ada debu hitam... Udin? Siti? Bobby? Jadi... semuanya cuma mimpi? Ternyata kalian di sini. Maaf ya, di mimpiku tadi kalian hampir saja kena bulldozer. Seram sekali! Tapi... kalau aku cuma diam dan cuma mimpi, bagaimana kalau bulldozer itu benar-benar datang suatu hari nanti?</div>
+
+                        <div class="character-name">IBU (V.O)</div>
+                        <div class="dialogue-text">Kasih! Ayo bangun, sayang. Hari ini kita kan sudah janji mau ke taman depan kompleks untuk menanam bibit pohon mangga!</div>
+
+                        <div class="character-name">KASIH</div>
+                        <div class="dialogue-text">Iya, Bu! Kasih sudah bangun! Kasih siap! Teman-teman di sana... Kasih baru sadar. Kita tidak perlu takut pada jendela. Kita tidak perlu takut pada debu. Karena kalau kita semua mau menanam satu saja pohon hari ini, mimpi buruk tentang bulldozer itu tidak akan pernah jadi nyata.</div>
+
+                        <!-- CUE SONG 6 -->
+                        <div class="bg-cyan-950/50 border border-cyan-600 p-4 rounded-lg mb-6 shadow-md grid grid-cols-1 md:grid-cols-3 gap-3 font-sans text-sm mt-8">
+                            <div class="col-span-1 md:col-span-3 pb-2 border-b border-cyan-800 font-bold text-cyan-400"><i class="fa-solid fa-music mr-2 text-cyan-500"></i>CUE GRAND FINALE</div>
+                            <div><span class="bg-yellow-900 text-yellow-400 px-2 py-1 rounded text-[10px] font-bold mr-2">LIGHTING</span>Mode RGB Chase / Pelangi (Full Fixtures).</div>
+                            <div><span class="bg-blue-900 text-blue-400 px-2 py-1 rounded text-[10px] font-bold mr-2">SOUND</span>Track 6: Broadway Kemenangan GO!</div>
+                            <div><span class="bg-emerald-900 text-emerald-400 px-2 py-1 rounded text-[10px] font-bold mr-2">STAGE MGR</span>ALL CAST (300 anak) Masuk penuhi Lorong & Panggung.</div>
+                        </div>
+
+                        <div class="character-name">NARATOR (V.O)</div>
+                        <div class="dialogue-text">Dan begitulah, perjalanan Kasih mencari taman akhirnya membuahkan hasil. Bukan di negeri dongeng, bukan di balik jendela yang gelap, tapi di dalam hatinya sendiri. Karena taman yang paling indah adalah sebuah taman yang kita jaga bersama-sama dengan penuh cinta.</div>
+
+                        <div class="text-center bg-slate-800 p-6 rounded mb-8">
+                            <div class="character-name text-yellow-400 text-lg mb-2">PADUAN SUARA SELURUH PEMERAN</div>
+                            <div class="dialogue-text text-xl font-bold leading-relaxed">
+                                Dunia ini bukan milik gedung tinggi saja<br>
+                                Dunia ini milik kita, anak-anak bangsa<br>
+                                Jangan tunggu hijau hilang berganti beton<br>
+                                Mari tanam harapan di setiap dahan!<br>
+                                Tersenyumlah bumi, menarilah bunga<br>
+                                Kupu-kupu terbang, membawa cerita<br>
+                                Bahwa taman itu ada, jika kita menjaganya!
                             </div>
                         </div>
+
+                        <div class="character-name text-center text-rose-400 text-lg mb-4">PESAN MENYENANGKAN UNTUK PENONTON (DIBACAKAN BERSAMA):</div>
+                        
+                        <div class="dialogue-text text-center space-y-4">
+                            <p><strong>UDIN:</strong> Terima kasih sudah menonton. Ingat, mobil tidak makan anak kecil, tapi anak kecil butuh oksigen untuk tumbuh besar.</p>
+                            <p><strong>SITI:</strong> Jangan lupa makan krupuk yang renyah di bawah pohon yang rindang, rasanya jauh lebih enak!</p>
+                            <p><strong>BOBBY:</strong> Secara logika, dunia akan lebih pintar kalau kita sering lari-larian di taman daripada cuma main HP di dalam ruangan!</p>
+                            <p><strong>YUNI:</strong> Hari ini kalian semua terlihat sangat luar biasa! Jangan lupa tanam bunga di rumah ya!</p>
+                            <p><strong>MATAHARI & BULAN:</strong> Kami akan terus bersinar untuk kalian, selama kalian mau menjaga udara agar tetap bersih untuk kami tembus!</p>
+                            <p><strong>KASIH:</strong> Selamat pulang ke rumah, teman-teman. Ayo kita buat taman kita sendiri mulai hari ini! Sampai jumpa di pementasan berikutnya!</p>
+                        </div>
+
+                        <div class="bg-slate-950 border border-slate-700 p-2 rounded mt-8 text-center text-sm text-slate-300">
+                            <span class="bg-yellow-900 text-yellow-400 px-2 py-1 rounded text-[10px] font-bold mr-2">FX & LIGHTING</span>CONFETTI CANNON GO! BLACKOUT PERLAHAN!
+                        </div>
+
+                        <p class="text-center font-bold text-3xl mt-12 text-slate-600">-- SELESAI --</p>
                     </div>
-
-                    <p class="italic mb-4 text-slate-600">(Lampu panggung menyala terang benderang. Terdengar suara kicauan burung yang merdu—bukan suara klakson atau mesin pabrik. KASIH terbangun dengan napas yang lega. Ia tidak lagi terbatuk-batuk.)</p>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">KASIH</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Duduk di ranjang, mengucek mata, lalu menghirup napas panjang)</p>
-                        <p class="text-slate-200">Wah... napasku terasa plong sekali. Tidak ada asap, tidak ada debu hitam...<br>
-                        (Kasih melihat ke sekeliling kamarnya. Ia melihat boneka-bonekanya berjajar di meja. Ia mengambil satu boneka laki-laki berkemeja kotak-kotak dan satu boneka perempuan yang memegang replika krupuk.)<br>
-                        (Tersenyum)<br>
-                        Udin? Siti? Bobby? Jadi... semuanya cuma mimpi?</p>
-                    </div>
-
-                    <p class="italic mb-4 text-slate-600">(Ia turun dari kasur, berjalan ke arah jendela. Ia melihat ke luar. Di sana, di meja belajarnya, ada sebuah poster besar bergambar matahari yang tersenyum dan kupu-kupu yang indah—persis seperti karakter di mimpinya tadi. Di sudut meja, ada pula pot kecil berisi bunga Lily yang baru saja kuncup.)</p>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">KASIH</p>
-                        <p class="text-slate-200">Ternyata kalian di sini. Maaf ya, di mimpiku tadi kalian hampir saja kena bulldozer. Seram sekali! Tapi... kalau aku cuma diam dan cuma mimpi, bagaimana kalau bulldozer itu benar-benar datang suatu hari nanti?</p>
-                    </div>
-
-                    <p class="italic mb-4 text-slate-600">(Suara IBU terdengar dari luar panggung)</p>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">IBU (V.O)</p>
-                        <p class="text-slate-200">Kasih! Ayo bangun, sayang. Hari ini kita kan sudah janji mau ke taman depan kompleks untuk menanam bibit pohon mangga!</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">KASIH</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Matanya berbinar senang)</p>
-                        <p class="text-slate-200">Iya, Bu! Kasih sudah bangun! Kasih siap!<br>
-                        (Kasih mengambil topi rimba dan sekop kecilnya. Ia menoleh ke arah penonton dengan wajah yang ceria dan penuh harapan.)<br>
-                        Teman-teman di sana... Kasih baru sadar. Kita tidak perlu takut pada jendela. Kita tidak perlu takut pada debu. Karena kalau kita semua mau menanam satu saja pohon hari ini, mimpi buruk tentang bulldozer itu tidak akan pernah jadi nyata.</p>
-                    </div>
-
-                    <!-- GRAND FINALE -->
-                    <h3 class="text-2xl font-bold mt-12 mb-6 text-slate-800 uppercase bg-slate-300 p-3 rounded">GRAND FINALE: PESAN UNTUK DUNIA</h3>
-
-                    <p class="italic mb-4 text-slate-600">(Seluruh pemeran dari Babak 1 sampai Babak 4 masuk ke panggung. Mereka tidak lagi memakai kostum yang kusam atau kotor. Mereka memakai baju yang berwarna-warni cerah. Kelompok Gang membawa siraman air, Kelompok Kamar membawa bibit tanaman, dan Karakter Alam membawa selendang warna-warni.)<br>
-                    (MUSIK: JAZZ THEATRICAL BROADWAY - Upbeat dengan iringan Brass dan Flute yang megah)</p>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">NARATOR</p>
-                        <p class="text-slate-200">Dan begitulah, perjalanan Kasih mencari taman akhirnya membuahkan hasil. Bukan di negeri dongeng, bukan di balik jendela yang gelap, tapi di dalam hatinya sendiri. Karena taman yang paling indah adalah sebuah taman yang kita jaga bersama-sama dengan penuh cinta.</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700 text-center">
-                        <p class="font-bold text-amber-400 mb-2">PADUAN SUARA SELURUH PEMERAN (Menyanyi)</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Lirik Lagu Penutup)</p>
-                        <p class="text-slate-200 text-lg">
-                            Dunia ini bukan milik gedung tinggi saja<br>
-                            Dunia ini milik kita, anak-anak bangsa<br>
-                            Jangan tunggu hijau hilang berganti beton<br>
-                            Mari tanam harapan di setiap dahan!<br>
-                            Tersenyumlah bumi, menarilah bunga<br>
-                            Kupu-kupu terbang, membawa cerita<br>
-                            Bahwa taman itu ada, jika kita menjaganya!
-                        </p>
-                    </div>
-
-                    <p class="font-bold mt-8 mb-4 text-center text-slate-800 uppercase bg-slate-300 p-2 rounded">PESAN MENYENANGKAN UNTUK PENONTON (DIBACAKAN BERSAMA):</p>
-                    
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">UDIN:</p>
-                        <p class="text-sm text-slate-400 italic mb-2">(Tetap dengan wajah datar tapi memberi jempol)</p>
-                        <p class="text-slate-200">Terima kasih sudah menonton. Ingat, mobil tidak makan anak kecil, tapi anak kecil butuh oksigen untuk tumbuh besar.</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">SITI:</p>
-                        <p class="text-slate-200">Jangan lupa makan krupuk yang renyah di bawah pohon yang rindang, rasanya jauh lebih enak!</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">BOBBY:</p>
-                        <p class="text-slate-200">Secara logika, dunia akan lebih pintar kalau kita sering lari-larian di taman daripada cuma main HP di dalam ruangan!</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">YUNI:</p>
-                        <p class="text-slate-200">Hari ini kalian semua terlihat sangat luar biasa! Jangan lupa tanam bunga di rumah ya!</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">MATAHARI & BULAN:</p>
-                        <p class="text-slate-200">Kami akan terus bersinar untuk kalian, selama kalian mau menjaga udara agar tetap bersih untuk kami tembus!</p>
-                    </div>
-
-                    <div class="bg-slate-800 p-4 rounded-lg shadow-md mb-4 border border-slate-700">
-                        <p class="font-bold text-amber-400 mb-1">KASIH:</p>
-                        <p class="text-slate-200">Selamat pulang ke rumah, teman-teman. Ayo kita buat taman kita sendiri mulai hari ini! Sampai jumpa di pementasan berikutnya!</p>
-                    </div>
-
-                    <p class="italic text-center mb-6 text-slate-600">(Seluruh pemeran membungkuk hormat / Curtain Call. Lampu panggung perlahan mati diiringi musik jazz yang ceria.)</p>
-
-                    <p class="text-center font-bold text-2xl mt-12 text-slate-800">-- SELESAI --</p>
                 </div>
             </div>
         </div>
 
-        <!-- TAB 2: KOSTUM & PROPERTI LENGKAP -->
+        <!-- TAB 2: KOSTUM & PROPERTI -->
         <div id="kostum" class="tab-content">
             <div class="bg-slate-800 rounded-xl p-6 md:p-8 border border-slate-700 shadow-xl mb-6">
-                <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 gap-4">
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 gap-4 border-b border-slate-700 pb-4">
                     <h2 class="text-2xl font-bold text-white"><i class="fa-solid fa-shirt mr-2 text-amber-400"></i>Kebutuhan Kostum & Properti</h2>
                     <span class="bg-amber-900/50 text-amber-300 text-xs px-3 py-1 rounded-full border border-amber-700/50">Divisi: Wardrobe & Props</span>
                 </div>
 
                 <div class="mb-10">
-                    <h3 class="text-xl font-bold text-white border-b border-slate-600 pb-2 mb-4">A. Kostum Karakter Utama (Panggung Atas)</h3>
+                    <h3 class="text-xl font-bold text-white mb-4"><span class="bg-slate-700 px-3 py-1 rounded text-sm mr-2 text-amber-400">A</span>Kostum Karakter Utama (Panggung Atas)</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         <div class="bg-slate-900/80 p-5 rounded-lg border border-slate-700">
                             <strong class="text-amber-400 block text-lg mb-2">Kasih</strong>
                             <p class="text-sm text-slate-300 mb-1"><strong class="text-slate-400">Kostum:</strong> Piyama kusam (Babak 1-4). Baju cerah + topi (Babak 5).</p>
-                            <p class="text-sm text-slate-300"><strong class="text-slate-400">Properti:</strong> Boneka peluk, Daun Lily patah.</p>
+                            <p class="text-sm text-slate-300"><strong class="text-slate-400">Properti:</strong> Boneka peluk, Daun Lily patah, Sekop kecil, Pot kuncup.</p>
                         </div>
                         <div class="bg-slate-900/80 p-5 rounded-lg border border-slate-700">
-                            <strong class="text-amber-400 block text-lg mb-2">Grup Kamar</strong>
+                            <strong class="text-amber-400 block text-lg mb-2">Grup Kamar (Udin, Siti, Yuni)</strong>
                             <p class="text-sm text-slate-300 mb-1"><strong class="text-slate-400">Kostum:</strong> Pakaian rumahan. Yuni pakai kacamata kebesaran.</p>
                             <p class="text-sm text-slate-300"><strong class="text-slate-400">Properti:</strong> Krupuk kulit utuh & mlempem, Antena TV rusak.</p>
                         </div>
                         <div class="bg-slate-900/80 p-5 rounded-lg border border-slate-700">
-                            <strong class="text-amber-400 block text-lg mb-2">Grup Gang</strong>
-                            <p class="text-sm text-slate-300 mb-1"><strong class="text-slate-400">Kostum:</strong> Kaos dan celana pendek dekil.</p>
+                            <strong class="text-amber-400 block text-lg mb-2">Grup Gang (Bagas, Dino, Bobby)</strong>
+                            <p class="text-sm text-slate-300 mb-1"><strong class="text-slate-400">Kostum:</strong> Kaos dan celana pendek dekil berkeringat.</p>
                             <p class="text-sm text-slate-300"><strong class="text-slate-400">Properti:</strong> Batu kerikil kecil.</p>
                         </div>
                         <div class="bg-slate-900/80 p-5 rounded-lg border border-slate-700">
                             <strong class="text-amber-400 block text-lg mb-2">Matahari & Bulan</strong>
-                            <p class="text-sm text-slate-300 mb-1"><strong class="text-slate-400">Kostum:</strong> Baju oranye kotor, kacamata hitam. Baju santai untuk Bulan.</p>
-                            <p class="text-sm text-slate-300"><strong class="text-slate-400">Properti:</strong> Handuk dekil, Bantal leher, Gelas Kopi.</p>
+                            <p class="text-sm text-slate-300 mb-1"><strong class="text-slate-400">Kostum:</strong> Baju kuning/oranye kotor, kacamata hitam. Baju santai/piyama untuk Bulan.</p>
+                            <p class="text-sm text-slate-300"><strong class="text-slate-400">Properti:</strong> Handuk dekil, Peluit bohongan, Bantal leher, Gelas Kopi.</p>
                         </div>
                         <div class="bg-slate-900/80 p-5 rounded-lg border border-slate-700">
                             <strong class="text-amber-400 block text-lg mb-2">Bunga & Kupu-Kupu</strong>
-                            <p class="text-sm text-slate-300 mb-1"><strong class="text-slate-400">Kostum:</strong> Gaun kusam (Lily/Tulip). Sayap lelah (Kupu-kupu).</p>
-                            <p class="text-sm text-slate-300"><strong class="text-slate-400">Properti:</strong> Tisu basah, Masker medis, Tas selempang kecil.</p>
+                            <p class="text-sm text-slate-300 mb-1"><strong class="text-slate-400">Kostum:</strong> Gaun kusam (Lily/Tulip). Sayap kusam lelah (Kupu-kupu).</p>
+                            <p class="text-sm text-slate-300"><strong class="text-slate-400">Properti:</strong> Tisu basah, Masker medis, Tas selempang kempes.</p>
                         </div>
                         <div class="bg-slate-900/80 p-5 rounded-lg border border-slate-700">
-                            <strong class="text-amber-400 block text-lg mb-2">Pekerja Proyek</strong>
-                            <p class="text-sm text-slate-300 mb-1"><strong class="text-slate-400">Kostum:</strong> Wearpack kotor, Helm proyek.</p>
-                            <p class="text-sm text-slate-300"><strong class="text-slate-400">Properti:</strong> Buldoser Kardus Raksasa, Balok beton (kardus).</p>
+                            <strong class="text-amber-400 block text-lg mb-2">Pekerja Proyek (2 Org)</strong>
+                            <p class="text-sm text-slate-300 mb-1"><strong class="text-slate-400">Kostum:</strong> Wearpack kotor, Helm proyek (safety helmet).</p>
+                            <p class="text-sm text-slate-300"><strong class="text-slate-400">Properti:</strong> Buldoser Kardus Raksasa, Balok beton (kardus), Lampu Hazzard.</p>
                         </div>
                     </div>
                 </div>
 
                 <div>
-                    <h3 class="text-xl font-bold text-white border-b border-slate-600 pb-2 mb-4">B. Kebutuhan 12 Grup Pendukung (300 Anak / @25 Anak)</h3>
+                    <h3 class="text-xl font-bold text-white mb-4"><span class="bg-slate-700 px-3 py-1 rounded text-sm mr-2 text-emerald-400">B</span>Kebutuhan 12 Grup Pendukung (300 Anak / @25 Anak)</h3>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                        <div class="bg-slate-900/50 border border-slate-700 p-4 rounded-lg"><div class="font-bold text-emerald-400 pb-1">1: Anak Kamar</div><div class="text-xs text-slate-300">Piyama, (Tangan kosong).</div></div>
+                        <div class="bg-slate-900/50 border border-slate-700 p-4 rounded-lg"><div class="font-bold text-emerald-400 pb-1">1: Anak Kamar</div><div class="text-xs text-slate-300">Piyama, Koreo Pantomim Batuk.</div></div>
                         <div class="bg-slate-900/50 border border-slate-700 p-4 rounded-lg"><div class="font-bold text-slate-400 pb-1">2: Asap & Debu</div><div class="text-xs text-slate-300">Baju abu-abu/hitam berkibar.</div></div>
-                        <div class="bg-slate-900/50 border border-slate-700 p-4 rounded-lg"><div class="font-bold text-green-400 pb-1">3: Rumput Menari</div><div class="text-xs text-slate-300">Baju bernuansa hijau.</div></div>
-                        <div class="bg-slate-900/50 border border-slate-700 p-4 rounded-lg"><div class="font-bold text-yellow-400 pb-1">4: Lebah Pekerja</div><div class="text-xs text-slate-300">Kaos kuning-hitam, Bando lebah.</div></div>
-                        <div class="bg-slate-900/50 border border-slate-700 p-4 rounded-lg"><div class="font-bold text-pink-400 pb-1">5: Bunga Mekar</div><div class="text-xs text-slate-300">Baju cerah, Bunga karton/busa.</div></div>
-                        <div class="bg-slate-900/50 border border-slate-700 p-4 rounded-lg"><div class="font-bold text-orange-400 pb-1">6: Anak Gang</div><div class="text-xs text-slate-300">Baju main kasual/dekil.</div></div>
-                        <div class="bg-slate-900/50 border border-slate-700 p-4 rounded-lg"><div class="font-bold text-red-400 pb-1">7: Kemacetan</div><div class="text-xs text-slate-300">Pakaian bebas, Setir kardus.</div></div>
-                        <div class="bg-slate-900/50 border border-slate-700 p-4 rounded-lg"><div class="font-bold text-blue-400 pb-1">8: Pasukan Langit</div><div class="text-xs text-slate-300">Baju biru/gelap, Awan/bintang.</div></div>
-                        <div class="bg-slate-900/50 border border-slate-700 p-4 rounded-lg"><div class="font-bold text-amber-600 pb-1">9: Pekerja Proyek</div><div class="text-xs text-slate-300">Rompi Proyek, Balok kardus.</div></div>
-                        <div class="bg-slate-900/50 border border-slate-700 p-4 rounded-lg"><div class="font-bold text-purple-400 pb-1">10: Pagar Betis</div><div class="text-xs text-slate-300">Baju bebas, Pegangan tangan.</div></div>
-                        <div class="bg-slate-900/50 border border-slate-700 p-4 rounded-lg"><div class="font-bold text-teal-400 pb-1">11: Pembawa Bibit</div><div class="text-xs text-slate-300">Baju cerah, Pot kecil.</div></div>
-                        <div class="bg-slate-900/50 border border-slate-700 p-4 rounded-lg"><div class="font-bold text-cyan-400 pb-1">12: Pasukan Pelangi</div><div class="text-xs text-slate-300">Baju cerah, Pita senam pelangi.</div></div>
+                        <div class="bg-slate-900/50 border border-slate-700 p-4 rounded-lg"><div class="font-bold text-green-400 pb-1">3: Rumput Menari</div><div class="text-xs text-slate-300">Baju bernuansa hijau. Menari melambai.</div></div>
+                        <div class="bg-slate-900/50 border border-slate-700 p-4 rounded-lg"><div class="font-bold text-yellow-400 pb-1">4: Lebah Pekerja</div><div class="text-xs text-slate-300">Kaos kuning-hitam, Sayap/Bando.</div></div>
+                        <div class="bg-slate-900/50 border border-slate-700 p-4 rounded-lg"><div class="font-bold text-pink-400 pb-1">5: Bunga Mekar</div><div class="text-xs text-slate-300">Baju cerah, Properti bunga raksasa.</div></div>
+                        <div class="bg-slate-900/50 border border-slate-700 p-4 rounded-lg"><div class="font-bold text-orange-400 pb-1">6: Anak Gang</div><div class="text-xs text-slate-300">Baju main kasual/dekil. Pantomim dimarahi.</div></div>
+                        <div class="bg-slate-900/50 border border-slate-700 p-4 rounded-lg"><div class="font-bold text-red-400 pb-1">7: Kemacetan Kota</div><div class="text-xs text-slate-300">Setir mobil kardus / Stang motor.</div></div>
+                        <div class="bg-slate-900/50 border border-slate-700 p-4 rounded-lg"><div class="font-bold text-blue-400 pb-1">8: Pasukan Langit</div><div class="text-xs text-slate-300">Awan mendung / Bintang redup.</div></div>
+                        <div class="bg-slate-900/50 border border-slate-700 p-4 rounded-lg"><div class="font-bold text-amber-600 pb-1">9: Pekerja Proyek</div><div class="text-xs text-slate-300">Rompi Oranye, Balok kardus abu-abu.</div></div>
+                        <div class="bg-slate-900/50 border border-slate-700 p-4 rounded-lg"><div class="font-bold text-purple-400 pb-1">10: Pagar Betis</div><div class="text-xs text-slate-300">Baju bebas, Pegangan tangan (Barikade).</div></div>
+                        <div class="bg-slate-900/50 border border-slate-700 p-4 rounded-lg"><div class="font-bold text-teal-400 pb-1">11: Pembawa Bibit</div><div class="text-xs text-slate-300">Baju cerah, Pot tanaman kecil.</div></div>
+                        <div class="bg-slate-900/50 border border-slate-700 p-4 rounded-lg"><div class="font-bold text-cyan-400 pb-1">12: Pasukan Pelangi</div><div class="text-xs text-slate-300">Baju cerah, Pita senam pelangi meliuk.</div></div>
                     </div>
                 </div>
             </div>
@@ -943,7 +605,7 @@
         <!-- TAB 3: MUSIK & KOREOGRAFI -->
         <div id="koreografi" class="tab-content">
             <div class="bg-slate-800 rounded-xl p-6 md:p-8 border border-slate-700 shadow-xl mb-6">
-                <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 gap-4">
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 gap-4 border-b border-slate-700 pb-4">
                     <h2 class="text-2xl font-bold text-white"><i class="fa-solid fa-music mr-2 text-pink-400"></i>Tabel Scoring Musik & Koreografi</h2>
                     <span class="bg-pink-900/50 text-pink-300 text-xs px-3 py-1 rounded-full border border-pink-700/50">Divisi: Music Director & Koreografer</span>
                 </div>
@@ -952,48 +614,94 @@
                     <table class="w-full text-sm text-left border-collapse">
                         <thead class="text-xs text-slate-300 uppercase bg-slate-900">
                             <tr>
-                                <th scope="col" class="px-4 py-4 border-b border-slate-700 w-32">Babak</th>
-                                <th scope="col" class="px-4 py-4 border-b border-slate-700">Track & Vibe</th>
-                                <th scope="col" class="px-4 py-4 border-b border-slate-700 w-1/4">Timing & Scoring</th>
-                                <th scope="col" class="px-4 py-4 border-b border-slate-700 w-1/3">Koreografi Ansambel (Bawah)</th>
+                                <th scope="col" class="px-4 py-4 border-b border-slate-700 w-24">Babak</th>
+                                <th scope="col" class="px-4 py-4 border-b border-slate-700 w-1/4">Track & Vibe</th>
+                                <th scope="col" class="px-4 py-4 border-b border-slate-700 w-1/3">Detail Timing & Scoring</th>
+                                <th scope="col" class="px-4 py-4 border-b border-slate-700">Koreografi Ansambel (300 Anak)</th>
                             </tr>
                         </thead>
                         <tbody class="text-slate-300 align-top">
                             <tr class="bg-slate-800/80 border-b border-slate-700">
                                 <th scope="row" class="px-4 py-4 font-bold text-pink-400">1: Prolog</th>
-                                <td class="px-4 py-4"><strong class="text-white">Track 1: Misteri Bising</strong><br><span class="text-slate-400">Vibe: Suspense, Komedi Gelap.</span></td>
-                                <td class="px-4 py-4"><strong class="text-slate-200">00:00 - 01:00:</strong> SFX klakson, mesin, batuk (Looping).<br><strong class="text-slate-200">01:00 - 02:00:</strong> Musik detektif mengendap-endap.</td>
-                                <td class="px-4 py-4"><strong class="text-slate-200">Grup 1:</strong> Pantomim batuk.<br><strong class="text-slate-200">Grup 2:</strong> Merayap, tari kontemporer patah-patah.</td>
+                                <td class="px-4 py-4"><strong class="text-white">Track 1: Misteri Bising</strong><br><span class="text-slate-400">Vibe: Bising, Suspense, Komedi Gelap.</span></td>
+                                <td class="px-4 py-4">
+                                    <ul class="space-y-1">
+                                        <li><strong class="text-slate-200">00:00 - 01:00:</strong> SFX klakson, mesin, batuk berat (Looping).</li>
+                                        <li><strong class="text-slate-200">01:00 - 02:00:</strong> Musik detektif mengendap-endap komikal masuk.</li>
+                                    </ul>
+                                </td>
+                                <td class="px-4 py-4">
+                                    <strong class="text-slate-200">Grup 1 (Kamar):</strong> Pantomim batuk.<br>
+                                    <strong class="text-slate-200">Grup 2 (Polusi):</strong> Merayap, tari kontemporer patah-patah ala monster debu.
+                                </td>
                             </tr>
                             <tr class="bg-slate-800/40 border-b border-slate-700">
                                 <th scope="row" class="px-4 py-4 font-bold text-emerald-400">1: Khayalan</th>
-                                <td class="px-4 py-4"><strong class="text-white">Track 2: Taman Ajaib</strong><br><span class="text-slate-400">Vibe: Riang, Orkestra.</span></td>
-                                <td class="px-4 py-4"><strong class="text-slate-200">00:00 - 03:00:</strong> Lagu pop anak ceria. Crescendo saat bunga mekar.</td>
-                                <td class="px-4 py-4"><strong class="text-slate-200">Grup 3:</strong> Duduk berlutut, sway.<br><strong class="text-slate-200">Grup 4:</strong> Lari jinjit kepakkan sayap.<br><strong class="text-slate-200">Grup 5:</strong> Jongkok lalu mekar serempak.</td>
+                                <td class="px-4 py-4"><strong class="text-white">Track 2: Taman Ajaib</strong><br><span class="text-slate-400">Vibe: Magis, Riang, Orkestra Pop Anak.</span></td>
+                                <td class="px-4 py-4">
+                                    <ul class="space-y-1">
+                                        <li><strong class="text-slate-200">00:00 - 03:00:</strong> Transisi chord mayor indah. Crescendo kuat saat lirik ref "bunga bermekaran".</li>
+                                    </ul>
+                                </td>
+                                <td class="px-4 py-4">
+                                    <strong class="text-slate-200">Grup 3 (Rumput):</strong> Duduk berlutut, sway (melambai).<br>
+                                    <strong class="text-slate-200">Grup 4 (Lebah):</strong> Lari jinjit kepakkan sayap.<br>
+                                    <strong class="text-slate-200">Grup 5 (Bunga):</strong> Jongkok lalu mekar serempak.
+                                </td>
                             </tr>
                             <tr class="bg-slate-800/80 border-b border-slate-700">
                                 <th scope="row" class="px-4 py-4 font-bold text-orange-400">2: Gang</th>
-                                <td class="px-4 py-4"><strong class="text-white">Track 3: Realita Urban</strong><br><span class="text-slate-400">Vibe: Hip-hop anak, Stomp perkusi.</span></td>
-                                <td class="px-4 py-4"><strong class="text-slate-200">Underscore:</strong> Volume pelan mengiringi dialog Bobby, Dino, Bagas.</td>
-                                <td class="px-4 py-4"><strong class="text-slate-200">Grup 6:</strong> Pantomim petak umpet slow-motion.<br><strong class="text-slate-200">Grup 7:</strong> Jalan tersendat pegang setir kardus menyilang.</td>
+                                <td class="px-4 py-4"><strong class="text-white">Track 3: Realita Urban</strong><br><span class="text-slate-400">Vibe: Hip-hop anak, Stomp perkusi jalanan.</span></td>
+                                <td class="px-4 py-4">
+                                    <ul class="space-y-1">
+                                        <li><strong class="text-slate-200">Underscore:</strong> Volume diturunkan 40% (pelan) mengiringi obrolan Bobby, Dino, Bagas.</li>
+                                    </ul>
+                                </td>
+                                <td class="px-4 py-4">
+                                    <strong class="text-slate-200">Grup 6 (Anak Gang):</strong> Pantomim petak umpet slow-motion di latar.<br>
+                                    <strong class="text-slate-200">Grup 7 (Macet):</strong> Jalan tersendat pegang setir kardus.
+                                </td>
                             </tr>
                             <tr class="bg-slate-800/40 border-b border-slate-700">
                                 <th scope="row" class="px-4 py-4 font-bold text-blue-400">3: Rapat</th>
-                                <td class="px-4 py-4"><strong class="text-white">Track 4: Ancaman Senja</strong><br><span class="text-slate-400">Vibe: Ambient gelisah, Strings.</span></td>
-                                <td class="px-4 py-4"><strong class="text-slate-200">00:00 - 02:00:</strong> Ambient sore (kicau gagak).<br><strong class="text-yellow-400">02:00 - Selesai:</strong> Strings makin tegang (Loop).</td>
-                                <td class="px-4 py-4"><strong class="text-slate-200">Grup 8:</strong> Masuk pelan bawa awan. Formasi lingkaran, pose statis tiap 10s.</td>
+                                <td class="px-4 py-4"><strong class="text-white">Track 4: Ancaman Senja</strong><br><span class="text-slate-400">Vibe: Ambient senja, gelisah, Strings.</span></td>
+                                <td class="px-4 py-4">
+                                    <ul class="space-y-1">
+                                        <li><strong class="text-slate-200">00:00 - 02:00:</strong> Ambient sore (suara motor jauh).</li>
+                                        <li><strong class="text-yellow-400">02:00 - Selesai (Loop!):</strong> Strings makin tegang seiring Kupu-Kupu menceritakan Buldoser.</li>
+                                    </ul>
+                                </td>
+                                <td class="px-4 py-4">
+                                    <strong class="text-slate-200">Grup 8 (Langit):</strong> Masuk pelan, formasi lingkaran mengelilingi karakter. Pose statis tiap 10 detik.
+                                </td>
                             </tr>
                             <tr class="bg-slate-800/80 border-b border-slate-700">
                                 <th scope="row" class="px-4 py-4 font-bold text-red-400">4: Klimaks</th>
-                                <td class="px-4 py-4"><strong class="text-white">Track 5: Konfrontasi</strong><br><span class="text-slate-400">Vibe: Marching Heroik.</span></td>
-                                <td class="px-4 py-4"><strong class="text-slate-200">00:00 - 01:00:</strong> Lagu "Kami Butuh Taman".<br><strong class="text-red-400">01:00 (Cut):</strong> SFX Mesin Buldoser TEEET!</td>
-                                <td class="px-4 py-4"><strong class="text-slate-200">Grup 10:</strong> Hentak kaki, kunci lengan. Jatuh (Fall Choreo) saat Buldoser maju.<br><strong class="text-slate-200">Grup 9:</strong> Jalan mekanis. Taruh beton sinkron drum.</td>
+                                <td class="px-4 py-4"><strong class="text-white">Track 5: Konfrontasi</strong><br><span class="text-slate-400">Vibe: Marching Heroik -> Distorsi Chaos.</span></td>
+                                <td class="px-4 py-4">
+                                    <ul class="space-y-1">
+                                        <li><strong class="text-slate-200">00:00 - 01:00:</strong> Lagu Mars "Kami Butuh Taman".</li>
+                                        <li><strong class="text-red-400">01:00 (SUDDEN CUT!):</strong> Terpotong keras oleh SFX Mesin Buldoser TEEET! Suara Roda Gigi menakutkan (Loop).</li>
+                                    </ul>
+                                </td>
+                                <td class="px-4 py-4">
+                                    <strong class="text-slate-200">Grup 10 (Pagar):</strong> Hentak kaki, kunci lengan. Choreo "jatuh perlahan" saat diinjak.<br>
+                                    <strong class="text-slate-200">Grup 9 (Pekerja):</strong> Jalan mekanis seram. Taruh beton.
+                                </td>
                             </tr>
                             <tr class="bg-slate-800/40">
                                 <th scope="row" class="px-4 py-4 font-bold text-cyan-400">5: Finale</th>
-                                <td class="px-4 py-4"><strong class="text-white">Track 6: Kemenangan</strong><br><span class="text-slate-400">Vibe: Broadway Jazz Megah.</span></td>
-                                <td class="px-4 py-4"><strong class="text-slate-200">00:00 - Selesai:</strong> Intro kicau burung. Masuk Brass & Flute. Paduan suara.</td>
-                                <td class="px-4 py-4"><strong class="text-slate-200">Grup 11:</strong> Berlutut taruh pot.<br><strong class="text-slate-200">Grup 12:</strong> Lari keliling ciptakan pusaran pita.<br><strong class="text-yellow-400">SEMUA GRUP:</strong> Sway di lorong & Grand Bow.</td>
+                                <td class="px-4 py-4"><strong class="text-white">Track 6: Kemenangan</strong><br><span class="text-slate-400">Vibe: Broadway Jazz Megah (Brass & Flute).</span></td>
+                                <td class="px-4 py-4">
+                                    <ul class="space-y-1">
+                                        <li><strong class="text-slate-200">00:00 - Selesai:</strong> Intro kicau burung murni. Disusul instrumen tiup megah, paduan suara ceria. Grand Ending.</li>
+                                    </ul>
+                                </td>
+                                <td class="px-4 py-4">
+                                    <strong class="text-slate-200">Grup 11 (Bibit):</strong> Berlutut taruh pot.<br>
+                                    <strong class="text-slate-200">Grup 12 (Pelangi):</strong> Lari keliling pusaran pita.<br>
+                                    <strong class="text-yellow-400">SEMUA GRUP:</strong> Sway di lorong & Grand Bow bersama.
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -1001,63 +709,112 @@
             </div>
         </div>
 
-        <!-- TAB 4: VIDEOTRON -->
+        <!-- TAB 4: VIDEOTRON AI PROMPTS -->
         <div id="videotron" class="tab-content">
             <div class="bg-slate-800 rounded-xl p-6 md:p-8 border border-slate-700 shadow-xl mb-6">
-                <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 gap-4">
-                    <h2 class="text-2xl font-bold text-white"><i class="fa-solid fa-desktop mr-2 text-purple-400"></i>Panduan Visual Videotron (Latar)</h2>
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 gap-4 border-b border-slate-700 pb-4">
+                    <div>
+                        <h2 class="text-2xl font-bold text-white"><i class="fa-solid fa-desktop mr-2 text-purple-400"></i>Panduan Generasi AI Videotron (Latar Belakang)</h2>
+                        <p class="text-sm text-slate-400 mt-1">Gunakan teks bahasa Inggris ini di AI Video Generator (Runway, Sora, Pika). Tanpa karakter manusia!</p>
+                    </div>
                     <span class="bg-purple-900/50 text-purple-300 text-xs px-3 py-1 rounded-full border border-purple-700/50">Divisi: Multimedia</span>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="space-y-6">
+                    <!-- Phase 1 -->
                     <div class="bg-slate-900 rounded-lg overflow-hidden border border-slate-700 shadow-lg">
                         <div class="bg-slate-800 border-b border-slate-700 p-3 flex justify-between items-center">
-                            <span class="text-xs text-slate-400 uppercase font-bold tracking-widest">CUE 01: KAMAR</span>
+                            <span class="text-sm text-slate-300 uppercase font-bold tracking-widest"><i class="fa-solid fa-city text-slate-500 mr-2"></i>BABAK 1: KOTA DYSTOPIA & KAMAR (00:00 - 02:00)</span>
                         </div>
-                        <div class="p-6">
-                            <h3 class="text-lg font-bold text-white mb-2">Siluet Kota Beracun</h3>
-                            <p class="text-sm text-slate-400 mb-4"><strong>Palet:</strong> Abu kelam, kuning neon beracun.</p>
-                            <div class="bg-slate-950 p-4 rounded-lg border-l-2 border-yellow-500 text-sm text-slate-300">
-                                <strong class="text-slate-100">Motion:</strong> Asap mengepul tebal dari cerobong (looping lambat). Jendela gedung berkedip.
+                        <div class="p-5">
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                                <div class="bg-slate-950 p-4 rounded-lg border-l-4 border-slate-500 relative">
+                                    <button onclick="navigator.clipboard.writeText('Photorealistic cinematic wide shot of a highly advanced dystopian city at night, completely empty of people, thick black smog filling the air, heavy and oppressive atmosphere, 8k resolution.')" class="absolute top-2 right-2 text-slate-500 hover:text-white"><i class="fa-regular fa-copy"></i></button>
+                                    <h4 class="text-xs text-slate-400 font-bold mb-1">Segmen 1: Kota Dystopia</h4>
+                                    <p class="text-sm text-emerald-300 font-mono italic">"Photorealistic cinematic wide shot of a highly advanced dystopian city at night, completely empty of people, thick black smog filling the air, heavy and oppressive atmosphere, 8k resolution."</p>
+                                </div>
+                                <div class="bg-slate-950 p-4 rounded-lg border-l-4 border-slate-500 relative">
+                                    <button onclick="navigator.clipboard.writeText('Close-up of giant industrial factory smokestacks emitting thick dark smoke into a starless night sky, highly detailed textures, dramatic lighting, empty scene, photorealistic, 4k.')" class="absolute top-2 right-2 text-slate-500 hover:text-white"><i class="fa-regular fa-copy"></i></button>
+                                    <h4 class="text-xs text-slate-400 font-bold mb-1">Segmen 2: Gemuruh Industri</h4>
+                                    <p class="text-sm text-emerald-300 font-mono italic">"Close-up of giant industrial factory smokestacks emitting thick dark smoke into a starless night sky, highly detailed textures, dramatic lighting, empty scene, photorealistic, 4k."</p>
+                                </div>
+                                <div class="bg-slate-950 p-4 rounded-lg border-l-4 border-slate-500 relative">
+                                    <button onclick="navigator.clipboard.writeText('Blurred neon lights of heavy city traffic and glowing car headlights seen through incredibly dense, toxic grey fog at night, abstract atmospheric shot, no humans, cinematic.')" class="absolute top-2 right-2 text-slate-500 hover:text-white"><i class="fa-regular fa-copy"></i></button>
+                                    <h4 class="text-xs text-slate-400 font-bold mb-1">Segmen 3: Lalu Lintas Bising</h4>
+                                    <p class="text-sm text-emerald-300 font-mono italic">"Blurred neon lights of heavy city traffic and glowing car headlights seen through incredibly dense, toxic grey fog at night, abstract atmospheric shot, no humans, cinematic."</p>
+                                </div>
+                                <div class="bg-slate-950 p-4 rounded-lg border-l-4 border-slate-500 relative">
+                                    <button onclick="navigator.clipboard.writeText('Close up of a dirty, dusty glass window from the outside, thick city pollution reflecting on the glass, melancholic and dark atmosphere, ultra-realistic.')" class="absolute top-2 right-2 text-slate-500 hover:text-white"><i class="fa-regular fa-copy"></i></button>
+                                    <h4 class="text-xs text-slate-400 font-bold mb-1">Segmen 4: Jendela Kamar Kasih</h4>
+                                    <p class="text-sm text-emerald-300 font-mono italic">"Close up of a dirty, dusty glass window from the outside, thick city pollution reflecting on the glass, melancholic and dark atmosphere, ultra-realistic."</p>
+                                </div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Phase 2 -->
                     <div class="bg-slate-900 rounded-lg overflow-hidden border border-slate-700 shadow-lg">
                         <div class="bg-slate-800 border-b border-slate-700 p-3 flex justify-between items-center">
-                            <span class="text-xs text-slate-400 uppercase font-bold tracking-widest">CUE 02: KHAYALAN</span>
+                            <span class="text-sm text-cyan-300 uppercase font-bold tracking-widest"><i class="fa-solid fa-seedling text-cyan-500 mr-2"></i>BABAK 1: TRANSISI MIMPI ALAM (02:00 - Selesai)</span>
                         </div>
-                        <div class="p-6">
-                            <h3 class="text-lg font-bold text-white mb-2">Taman Magis Malam Hari</h3>
-                            <p class="text-sm text-slate-400 mb-4"><strong>Palet:</strong> Biru dongker, ungu magis, emas.</p>
-                            <div class="bg-slate-950 p-4 rounded-lg border-l-2 border-purple-500 text-sm text-slate-300">
-                                <strong class="text-slate-100">Motion:</strong> Kunang-kunang berterbangan lambat. Bintang jatuh saat reff.
+                        <div class="p-5">
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                                <div class="bg-slate-950 p-4 rounded-lg border-l-4 border-cyan-500 relative">
+                                    <button onclick="navigator.clipboard.writeText('Breathtaking transition from dark clouds clearing up to reveal a crystal clear, starry night sky, soft silver moonlight shining down, fresh and crisp atmosphere, photorealistic nature scenery.')" class="absolute top-2 right-2 text-slate-500 hover:text-white"><i class="fa-regular fa-copy"></i></button>
+                                    <h4 class="text-xs text-slate-400 font-bold mb-1">Segmen 1: Awan Menyibak</h4>
+                                    <p class="text-sm text-emerald-300 font-mono italic">"Breathtaking transition from dark clouds clearing up to reveal a crystal clear, starry night sky, soft silver moonlight shining down, fresh and crisp atmosphere, photorealistic nature scenery."</p>
+                                </div>
+                                <div class="bg-slate-950 p-4 rounded-lg border-l-4 border-cyan-500 relative">
+                                    <button onclick="navigator.clipboard.writeText('Macro shot of lush green grass swaying gently in a soft night breeze, beautiful colorful blooming flowers illuminated by magical glowing moonlight, a realistic bee resting on a petal, extremely detailed, 8k.')" class="absolute top-2 right-2 text-slate-500 hover:text-white"><i class="fa-regular fa-copy"></i></button>
+                                    <h4 class="text-xs text-slate-400 font-bold mb-1">Segmen 2: Alam Menari</h4>
+                                    <p class="text-sm text-emerald-300 font-mono italic">"Macro shot of lush green grass swaying gently in a soft night breeze, beautiful colorful blooming flowers illuminated by magical glowing moonlight, a realistic bee resting on a petal, extremely detailed, 8k."</p>
+                                </div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Phase 3 -->
                     <div class="bg-slate-900 rounded-lg overflow-hidden border border-slate-700 shadow-lg">
                         <div class="bg-slate-800 border-b border-slate-700 p-3 flex justify-between items-center">
-                            <span class="text-xs text-red-400 uppercase font-bold tracking-widest">CUE 05: KLIMAKS</span>
+                            <span class="text-sm text-amber-300 uppercase font-bold tracking-widest"><i class="fa-solid fa-motorcycle text-amber-500 mr-2"></i>BABAK 2: GANG KOTA SEMPIT (12:00 - 20:00)</span>
                         </div>
-                        <div class="p-6">
-                            <h3 class="text-lg font-bold text-white mb-2">Monster Besi Berjalan</h3>
-                            <p class="text-sm text-slate-400 mb-4"><strong>Palet:</strong> Hitam, besi metalik, sorot kuning tajam.</p>
-                            <div class="bg-slate-950 p-4 rounded-lg border-l-4 border-red-600 text-sm text-slate-300">
-                                <strong class="text-white">Motion:</strong> <em>Camera shake</em> sinkron dentuman drum. Layar tertutup balok abu-abu di akhir.
+                        <div class="p-5">
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                                <div class="bg-slate-950 p-4 rounded-lg border-l-4 border-amber-500 relative">
+                                    <button onclick="navigator.clipboard.writeText('Photorealistic wide shot of an extremely narrow, claustrophobic city alleyway in harsh midday sunlight, towering brick walls on both sides blocking the sky, gritty and dusty atmosphere, 8k.')" class="absolute top-2 right-2 text-slate-500 hover:text-white"><i class="fa-regular fa-copy"></i></button>
+                                    <h4 class="text-xs text-slate-400 font-bold mb-1">Segmen 1: Lorong Sempit Terik</h4>
+                                    <p class="text-sm text-emerald-300 font-mono italic">"Photorealistic wide shot of an extremely narrow, claustrophobic city alleyway in harsh midday sunlight, towering brick walls on both sides blocking the sky, gritty and dusty atmosphere, 8k."</p>
+                                </div>
+                                <div class="bg-slate-950 p-4 rounded-lg border-l-4 border-amber-500 relative">
+                                    <button onclick="navigator.clipboard.writeText('Macro cinematic shot of rusty motorcycle exhaust pipes and greasy engine parts dominating the frame, tightly parked in a narrow alley, warm golden hour late afternoon sunlight hitting the metal.')" class="absolute top-2 right-2 text-slate-500 hover:text-white"><i class="fa-regular fa-copy"></i></button>
+                                    <h4 class="text-xs text-slate-400 font-bold mb-1">Segmen 2: Knalpot di Teras</h4>
+                                    <p class="text-sm text-emerald-300 font-mono italic">"Macro cinematic shot of rusty motorcycle exhaust pipes and greasy engine parts dominating the frame, tightly parked in a narrow alley, warm golden hour late afternoon sunlight hitting the metal."</p>
+                                </div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Phase 4 & 5 -->
                     <div class="bg-slate-900 rounded-lg overflow-hidden border border-slate-700 shadow-lg">
                         <div class="bg-slate-800 border-b border-slate-700 p-3 flex justify-between items-center">
-                            <span class="text-xs text-cyan-400 uppercase font-bold tracking-widest">CUE 06: FINALE</span>
+                            <span class="text-sm text-red-400 uppercase font-bold tracking-widest"><i class="fa-solid fa-truck-monster text-red-500 mr-2"></i>BABAK 4 & 5: KLIMAKS & FINALE</span>
                         </div>
-                        <div class="p-6">
-                            <h3 class="text-lg font-bold text-white mb-2">Taman Impian</h3>
-                            <p class="text-sm text-slate-400 mb-4"><strong>Palet:</strong> Biru langit cerah, hijau, pelangi.</p>
-                            <div class="bg-slate-950 p-4 rounded-lg border-l-4 border-cyan-500 text-sm text-slate-300">
-                                <strong class="text-white">Motion:</strong> Matahari pagi muncul. Merpati terbang. Pelangi melengkung di akhir lagu.
+                        <div class="p-5">
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                                <div class="bg-slate-950 p-4 rounded-lg border-l-4 border-red-600 relative">
+                                    <button onclick="navigator.clipboard.writeText('Massive dark metal bulldozer tracks crushing dry yellow grass, heavy thick grey dust flying into the camera, extremely violent and aggressive atmosphere, camera shaking violently, photorealistic 8k.')" class="absolute top-2 right-2 text-slate-500 hover:text-white"><i class="fa-regular fa-copy"></i></button>
+                                    <h4 class="text-xs text-slate-400 font-bold mb-1">Klimaks: Roda Besi (Camera Shake)</h4>
+                                    <p class="text-sm text-emerald-300 font-mono italic">"Massive dark metal bulldozer tracks crushing dry yellow grass, heavy thick grey dust flying into the camera, extremely violent and aggressive atmosphere, camera shaking violently, photorealistic 8k."</p>
+                                </div>
+                                <div class="bg-slate-950 p-4 rounded-lg border-l-4 border-cyan-500 relative">
+                                    <button onclick="navigator.clipboard.writeText('Gorgeous golden hour sunrise over a clean, modern city, the sky is clear and bright blue, warm sunlight bathing the buildings, fresh morning dew, highly realistic, inspiring and uplifting atmosphere, slow drone shot.')" class="absolute top-2 right-2 text-slate-500 hover:text-white"><i class="fa-regular fa-copy"></i></button>
+                                    <h4 class="text-xs text-slate-400 font-bold mb-1">Finale: Taman Impian</h4>
+                                    <p class="text-sm text-emerald-300 font-mono italic">"Gorgeous golden hour sunrise over a clean, modern city, the sky is clear and bright blue, warm sunlight bathing the buildings, fresh morning dew, highly realistic, inspiring and uplifting atmosphere, slow drone shot."</p>
+                                </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -1065,7 +822,7 @@
         <!-- TAB 5: LIGHTING -->
         <div id="lighting" class="tab-content">
             <div class="bg-slate-800 rounded-xl p-6 md:p-8 border border-slate-700 shadow-xl mb-6">
-                <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 gap-4">
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 gap-4 border-b border-slate-700 pb-4">
                     <h2 class="text-2xl font-bold text-white"><i class="fa-solid fa-lightbulb mr-2 text-yellow-400"></i>Tabel Tata Cahaya (Lighting ToR)</h2>
                     <span class="bg-yellow-900/50 text-yellow-300 text-xs px-3 py-1 rounded-full border border-yellow-700/50">Divisi: Lighting Vendor</span>
                 </div>
@@ -1120,7 +877,7 @@
         <!-- TAB 6: BACKSTAGE -->
         <div id="backstage" class="tab-content">
             <div class="bg-slate-800 rounded-xl p-6 md:p-8 border border-slate-700 shadow-xl mb-6">
-                <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 gap-4">
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 gap-4 border-b border-slate-700 pb-4">
                     <h2 class="text-2xl font-bold text-white"><i class="fa-solid fa-map-location-dot mr-2 text-emerald-400"></i>Denah Panggung (2 Tingkat)</h2>
                     <span class="bg-emerald-900/50 text-emerald-300 text-xs px-3 py-1 rounded-full border border-emerald-700/50">Divisi: Keamanan & Pendamping</span>
                 </div>
@@ -1130,7 +887,7 @@
                     
                     <div class="grid grid-cols-4 gap-4 text-center text-sm md:text-base">
                         <div class="col-span-4 bg-slate-800 border border-slate-600 p-4 rounded-lg shadow-sm">
-                            <h4 class="font-bold text-slate-300">⛺ BACKSTAGE B (HOLDING AREA MASSAL)</h4>
+                            <h4 class="font-bold text-slate-300">⛺ BACKSTAGE B (HOLDING AREA MASSAL 300 ANAK)</h4>
                         </div>
                         <div class="col-span-1 bg-emerald-900/30 border border-emerald-700/50 p-4 rounded-lg shadow-sm flex flex-col justify-center relative">
                             <span class="absolute top-2 left-0 right-0 text-[10px] md:text-xs font-bold text-emerald-500">SISTEM GANJIL</span>
@@ -1146,7 +903,7 @@
                             </div>
                             <div class="bg-slate-800 border-2 border-indigo-500/50 p-6 rounded-lg shadow-inner flex flex-col items-center justify-center min-h-[100px]">
                                 <h2 class="text-base md:text-xl font-bold tracking-widest text-indigo-400">PANGGUNG BAWAH / LANTAI</h2>
-                                <p class="text-[10px] md:text-xs mt-2 text-indigo-300/70">(Area Koreografi 300 Anak Ansambel)</p>
+                                <p class="text-[10px] md:text-xs mt-2 text-indigo-300/70">(Area Koreografi Tari 300 Anak Ansambel)</p>
                             </div>
                         </div>
                         <div class="col-span-1 bg-emerald-900/30 border border-emerald-700/50 p-4 rounded-lg shadow-sm flex flex-col justify-center relative">
@@ -1168,12 +925,13 @@
                         <ul class="list-decimal list-inside text-sm text-slate-300 space-y-3">
                             <li>Grup dengan <strong class="text-white">Nomor Ganjil</strong> ke Sayap Kiri, <strong class="text-white">Nomor Genap</strong> ke Sayap Kanan.</li>
                             <li><span class="text-red-400 font-bold">Dilarang keras naik ke Panggung Atas</span> untuk mencegah beban berlebih.</li>
+                            <li>Masuk ke panggung hanya pada saat isyarat <em>Blackout</em> atau transisi lagu.</li>
                         </ul>
                     </div>
                     <div class="bg-slate-900/50 p-5 rounded-lg border border-slate-700">
                         <h3 class="font-bold text-amber-400 mb-4 text-lg border-b border-slate-700 pb-2">SOP Panggung Atas (12 Utama)</h3>
                         <ul class="list-decimal list-inside text-sm text-slate-300 space-y-3">
-                            <li>Hanya 12 anak, Sutradara, dan Teknisi Mic yang diizinkan berada di area ini.</li>
+                            <li>Hanya 12 anak, Sutradara, dan Teknisi Mic (Backstage A) yang diizinkan di area ini.</li>
                             <li>Gunakan pita fosfor di lantai panggung atas untuk titik henti saat <em>blackout</em>.</li>
                         </ul>
                     </div>
@@ -1184,53 +942,53 @@
         <!-- TAB 7: RISIKO -->
         <div id="risiko" class="tab-content">
             <div class="bg-slate-800 rounded-xl p-6 md:p-8 border border-slate-700 shadow-xl mb-6">
-                <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 gap-4">
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 gap-4 border-b border-slate-700 pb-4">
                     <h2 class="text-2xl font-bold text-white"><i class="fa-solid fa-triangle-exclamation mr-2 text-red-500"></i>Manajemen Risiko (Mitigasi)</h2>
                     <span class="bg-red-900/50 text-red-300 text-xs px-3 py-1 rounded-full border border-red-700/50">Divisi: Sutradara & Stage Manager</span>
                 </div>
                 
                 <div class="space-y-8">
                     <!-- Specific Actor Risks -->
-                    <div class="bg-slate-900 rounded-xl border border-red-900/50 p-6">
+                    <div class="bg-slate-900 rounded-xl border border-red-900/50 p-6 shadow-lg">
                         <h3 class="text-xl font-bold mb-4 text-white flex items-center gap-2"><i class="fa-solid fa-masks-theater text-red-400"></i>1. Risiko Karakteristik "Grup Kamar"</h3>
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                             <div class="bg-slate-800/80 p-5 rounded-lg border-l-4 border-red-500">
-                                <h4 class="font-bold text-slate-200">Udin (Robotik/Datar)</h4>
+                                <h4 class="font-bold text-slate-200 text-lg border-b border-slate-700 pb-2">Udin (Robotik/Datar)</h4>
                                 <p class="text-sm text-slate-400 mt-2"><strong class="text-slate-500">Kendala:</strong> Aktor anak sulit menahan ekspresi.</p>
                                 <p class="text-sm text-red-400 mt-2"><strong class="text-red-500">Terburuk:</strong> <em>Breaking character</em> (tertawa lepas).</p>
                                 <p class="text-sm text-emerald-400 mt-2"><i class="fa-solid fa-shield-halved mr-1"></i> <strong class="text-emerald-500">Mitigasi:</strong> Latihan fokus dengan distraksi.</p>
                             </div>
                             <div class="bg-slate-800/80 p-5 rounded-lg border-l-4 border-red-500">
-                                <h4 class="font-bold text-slate-200">Siti (Panik & Krupuk)</h4>
+                                <h4 class="font-bold text-slate-200 text-lg border-b border-slate-700 pb-2">Siti (Panik & Krupuk)</h4>
                                 <p class="text-sm text-slate-400 mt-2"><strong class="text-slate-500">Kendala:</strong> Rawan tersedak dan remahan kotor.</p>
-                                <p class="text-sm text-red-400 mt-2"><strong class="text-red-500">Terburuk:</strong> Penari terpeleset di Panggung Bawah.</p>
-                                <p class="text-sm text-emerald-400 mt-2"><i class="fa-solid fa-shield-halved mr-1"></i> <strong class="text-emerald-500">Mitigasi:</strong> Kru "Sapu Kilat" siap sedia.</p>
+                                <p class="text-sm text-red-400 mt-2"><strong class="text-red-500">Terburuk:</strong> Lantai licin, penari ansambel terpeleset di Panggung Bawah.</p>
+                                <p class="text-sm text-emerald-400 mt-2"><i class="fa-solid fa-shield-halved mr-1"></i> <strong class="text-emerald-500">Mitigasi:</strong> Kru "Sapu Kilat" siap sedia di sayap.</p>
                             </div>
                             <div class="bg-slate-800/80 p-5 rounded-lg border-l-4 border-red-500">
-                                <h4 class="font-bold text-slate-200">Yuni (Profesor)</h4>
+                                <h4 class="font-bold text-slate-200 text-lg border-b border-slate-700 pb-2">Yuni (Profesor)</h4>
                                 <p class="text-sm text-slate-400 mt-2"><strong class="text-slate-500">Kendala:</strong> Properti antena menyenggol orang.</p>
                                 <p class="text-sm text-red-400 mt-2"><strong class="text-red-500">Terburuk:</strong> Antena patah, aktor panik & <em>blank</em>.</p>
-                                <p class="text-sm text-emerald-400 mt-2"><i class="fa-solid fa-shield-halved mr-1"></i> <strong class="text-emerald-500">Mitigasi:</strong> Antena dari spons eva fleksibel.</p>
+                                <p class="text-sm text-emerald-400 mt-2"><i class="fa-solid fa-shield-halved mr-1"></i> <strong class="text-emerald-500">Mitigasi:</strong> Antena dibuat dari spons eva fleksibel.</p>
                             </div>
                         </div>
                     </div>
 
                     <!-- General Mass Production Risks -->
-                    <div class="bg-slate-900 rounded-xl border border-orange-900/50 p-6">
+                    <div class="bg-slate-900 rounded-xl border border-orange-900/50 p-6 shadow-lg">
                         <h3 class="text-xl font-bold mb-4 text-white flex items-center gap-2"><i class="fa-solid fa-users text-orange-400"></i>2. Risiko Teknis Skala Masif (300 Anak)</h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div class="bg-slate-800/80 p-5 rounded-lg border-l-4 border-orange-500">
-                                <h4 class="font-bold text-slate-200">Tata Suara (Audio) & Asap</h4>
+                                <h4 class="font-bold text-slate-200 text-lg border-b border-slate-700 pb-2">Tata Suara (Audio) & Asap</h4>
                                 <ul class="list-disc list-inside text-sm text-slate-400 mt-3 space-y-2">
-                                    <li><strong class="text-red-400">Terburuk:</strong> Suara ribut 300 anak bocor ke mic utama. Asap Buldoser membuat Kasih batuk.</li>
-                                    <li><strong class="text-emerald-400">Mitigasi:</strong> Tim <em>sound</em> disiplin <em>mute</em> mic saat sequence tari. Uji coba volume asap <em>dry ice</em>.</li>
+                                    <li><strong class="text-red-400">Terburuk:</strong> Suara tangisan 300 anak bocor ke mic utama dari wings, terjadi <em>feedback</em> mic. Asap Buldoser (Dry Ice) membuat Kasih tersedak/batuk sungguhan.</li>
+                                    <li><strong class="text-emerald-400">Mitigasi:</strong> Jauhkan Holding Area dari Wings. Kru Sound disiplin <em>mute</em> mic main cast saat sequence tari masal. Uji coba volume asap H-1.</li>
                                 </ul>
                             </div>
                             <div class="bg-slate-800/80 p-5 rounded-lg border-l-4 border-orange-500">
-                                <h4 class="font-bold text-slate-200">Lalu Lintas Panggung</h4>
+                                <h4 class="font-bold text-slate-200 text-lg border-b border-slate-700 pb-2">Lalu Lintas Penumpukan</h4>
                                 <ul class="list-disc list-inside text-sm text-slate-400 mt-3 space-y-2">
-                                    <li><strong class="text-red-400">Terburuk:</strong> Tabrakan masal saat <em>blackout</em>.</li>
-                                    <li><strong class="text-emerald-400">Mitigasi:</strong> Implementasi teguh sistem Ganjil-Genap. Pasang jalur fosfor.</li>
+                                    <li><strong class="text-red-400">Terburuk:</strong> Chaos dan tabrakan masal saat lampu <em>blackout</em> karena anak-anak berebut masuk ke panggung.</li>
+                                    <li><strong class="text-emerald-400">Mitigasi:</strong> Terapkan ketat SOP Ganjil-Genap. Sebagian grup disebar ke lorong kursi penonton agar panggung tidak jebol.</li>
                                 </ul>
                             </div>
                         </div>
@@ -1242,7 +1000,7 @@
         <!-- TAB 8: ANALISIS -->
         <div id="analisis" class="tab-content">
             <div class="bg-slate-800 rounded-xl p-6 md:p-8 border border-slate-700 shadow-xl mb-6">
-                <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 gap-4">
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 gap-4 border-b border-slate-700 pb-4">
                     <h2 class="text-2xl font-bold text-white"><i class="fa-solid fa-chart-pie mr-2 text-cyan-400"></i>Analisis Skala Produksi</h2>
                     <span class="bg-cyan-900/50 text-cyan-300 text-xs px-3 py-1 rounded-full border border-cyan-700/50">Divisi: Pimpinan Produksi</span>
                 </div>
@@ -1270,9 +1028,9 @@
         <!-- TAB 9: TIMELINE STANDBY (MASTER INTEGRASI) -->
         <div id="timeline" class="tab-content">
             <div class="bg-slate-800 rounded-xl p-6 md:p-8 border border-slate-700 shadow-xl mb-6 border-t-4 border-t-orange-500">
-                <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 gap-4">
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 gap-4 border-b border-slate-700 pb-4">
                     <h2 class="text-2xl font-bold text-white"><i class="fa-solid fa-stopwatch mr-2 text-orange-400"></i>Master Timeline Integrasi (Call Standby)</h2>
-                    <span class="bg-orange-900/50 text-orange-300 text-xs px-3 py-1 rounded-full border border-orange-700/50">Show Caller / Sutradara</span>
+                    <span class="bg-orange-900/50 text-orange-300 text-xs px-3 py-1 rounded-full border border-orange-700/50">Show Caller / Stage Manager</span>
                 </div>
 
                 <div class="overflow-x-auto rounded-lg border border-slate-700 shadow-lg">
@@ -1281,9 +1039,9 @@
                             <tr>
                                 <th class="px-4 py-4 w-24 bg-orange-500 text-slate-900 font-bold border-r border-orange-600"><i class="fa-regular fa-clock mr-1"></i> Waktu</th>
                                 <th class="px-4 py-4 w-40 bg-slate-700 text-white font-bold border-r border-slate-600">Fase / Adegan</th>
-                                <th class="px-4 py-4 w-56 bg-blue-600 text-white font-bold border-r border-blue-700"><i class="fa-solid fa-volume-high"></i> Audio & Sound</th>
-                                <th class="px-4 py-4 w-64 bg-yellow-500 text-slate-900 font-bold border-r border-yellow-600"><i class="fa-solid fa-lightbulb"></i> Lighting & DMX</th>
-                                <th class="px-4 py-4 w-56 bg-purple-600 text-white font-bold border-r border-purple-700"><i class="fa-solid fa-desktop"></i> Videotron</th>
+                                <th class="px-4 py-4 w-56 bg-blue-600 text-white font-bold border-r border-blue-700"><i class="fa-solid fa-volume-high mr-1"></i> Audio & Sound</th>
+                                <th class="px-4 py-4 w-64 bg-yellow-500 text-slate-900 font-bold border-r border-yellow-600"><i class="fa-solid fa-lightbulb mr-1"></i> Lighting & DMX</th>
+                                <th class="px-4 py-4 w-56 bg-purple-600 text-white font-bold border-r border-purple-700"><i class="fa-solid fa-desktop mr-1"></i> Videotron</th>
                                 <th class="px-4 py-4 bg-slate-900 text-emerald-400 font-bold"><i class="fa-solid fa-bullhorn mr-1"></i> CALL STANDBY</th>
                             </tr>
                         </thead>
@@ -1291,7 +1049,7 @@
                             <tr class="bg-slate-900/80 border-b border-slate-700 hover:bg-slate-800 transition-colors">
                                 <td class="px-4 py-4 font-mono font-bold text-orange-400 border-r border-slate-700">- 10:00</td>
                                 <td class="px-4 py-4 font-bold text-white border-r border-slate-700">Pre-Show</td>
-                                <td class="px-4 py-4 border-r border-slate-700">BGM: Ambience Instrumental. Volume 40%.</td>
+                                <td class="px-4 py-4 border-r border-slate-700">BGM: Ambience Instrumental. Volume 40%. Voice Over MC.</td>
                                 <td class="px-4 py-4 border-r border-slate-700">
                                     <span class="bg-slate-800 text-xs px-2 py-1 rounded text-yellow-300 block mb-1">DMX CH 1-10: House Light ON</span>
                                     <span class="bg-slate-800 text-xs px-2 py-1 rounded text-blue-300 block">DMX CH 20-30: Stage Blue (Dim 20%)</span>
@@ -1311,7 +1069,7 @@
                                     <span class="bg-slate-800 text-xs px-2 py-1 rounded text-slate-300 block mb-1">DMX CH 1-10: House OFF (FADE)</span>
                                     <span class="bg-slate-800 text-xs px-2 py-1 rounded text-yellow-500 block mb-1">DMX CH 51: Strobe/Flicker</span>
                                 </td>
-                                <td class="px-4 py-4 border-r border-slate-700">Siluet pabrik berasap.</td>
+                                <td class="px-4 py-4 border-r border-slate-700">Siluet pabrik berasap & kota dystopian.</td>
                                 <td class="px-4 py-4">
                                     <ul class="list-disc list-inside space-y-1 text-xs">
                                         <li><strong class="text-emerald-400">Go Grup 1 & 2:</strong> Masuk Pantomim Bawah.</li>
@@ -1325,7 +1083,7 @@
                                 <td class="px-4 py-4 border-r border-slate-700">
                                     <span class="bg-slate-800 text-xs px-2 py-1 rounded text-pink-400 block mb-1">DMX CH 111-120: Wash RGB</span>Flicker OFF.
                                 </td>
-                                <td class="px-4 py-4 border-r border-slate-700">Taman magis, bintang jatuh.</td>
+                                <td class="px-4 py-4 border-r border-slate-700">Awan menyibak, taman magis, bintang jatuh.</td>
                                 <td class="px-4 py-4">
                                     <ul class="list-disc list-inside space-y-1 text-xs">
                                         <li><strong class="text-emerald-400">Go Grup 3, 4, 5:</strong> Tari ke Bawah.</li>
@@ -1338,9 +1096,9 @@
                                 <td class="px-4 py-4 border-r border-slate-700"><strong class="text-blue-300">Track 3 Play:</strong> Hip-hop urban pelan.</td>
                                 <td class="px-4 py-4 border-r border-slate-700">
                                     <span class="bg-slate-800 text-xs px-2 py-1 rounded text-white block mb-1">BLACKOUT 2 Detik.</span>
-                                    <span class="bg-slate-800 text-xs px-2 py-1 rounded text-orange-300 block mb-1">DMX CH 10-15: Profile Amber</span>
+                                    <span class="bg-slate-800 text-xs px-2 py-1 rounded text-orange-300 block mb-1">DMX CH 10-15: Spot Amber/Putih</span>
                                 </td>
-                                <td class="px-4 py-4 border-r border-slate-700">Gang beton, grafiti statis.</td>
+                                <td class="px-4 py-4 border-r border-slate-700">Gang sempit, knalpot motor berdesakan.</td>
                                 <td class="px-4 py-4">
                                     <ul class="list-disc list-inside space-y-1 text-xs">
                                         <li><strong class="text-emerald-400">Go Grup 6 & 7:</strong> Pantomim Bawah.</li>
@@ -1354,7 +1112,7 @@
                                 <td class="px-4 py-4 border-r border-slate-700">
                                     <span class="bg-slate-800 text-xs px-2 py-1 rounded text-red-400 block mb-1">DMX CH 121-130: Wash Red/Amber</span>
                                 </td>
-                                <td class="px-4 py-4 border-r border-slate-700">Senja polusi, awan bergerak cepat.</td>
+                                <td class="px-4 py-4 border-r border-slate-700">Senja polusi, langit berubah gelap.</td>
                                 <td class="px-4 py-4">
                                     <ul class="list-disc list-inside space-y-1 text-xs">
                                         <li><strong class="text-emerald-400">Go Grup 8:</strong> Masuk formasi langit.</li>
@@ -1368,13 +1126,13 @@
                                     <strong class="text-white">Track 5 Play:</strong> Marching.<br><strong class="text-red-400">Cut to TEEET (Mesin)!</strong>
                                 </td>
                                 <td class="px-4 py-4 border-r border-red-900/50">
-                                    <span class="bg-red-800 text-xs px-2 py-1 rounded text-white block mb-1">DMX CH 201-220: Beam (Chaos)</span>
+                                    <span class="bg-red-800 text-xs px-2 py-1 rounded text-white block mb-1">DMX CH 201-220: Beam Merah (Chaos)</span>
                                     <span class="bg-red-800 text-xs px-2 py-1 rounded text-white block mb-1">DMX CH 221-230: Spot Buldoser</span>
                                 </td>
-                                <td class="px-4 py-4 border-r border-red-900/50">Roda gigi raksasa, <strong class="text-white">Camera Shake!</strong></td>
+                                <td class="px-4 py-4 border-r border-red-900/50">Roda gigi monster, debu tebal, <strong class="text-white">Camera Shake!</strong></td>
                                 <td class="px-4 py-4">
                                     <ul class="list-disc list-inside space-y-1 text-xs">
-                                        <li><strong class="text-red-300">Go Kru:</strong> Tembak Asap! Dorong Buldoser!</li>
+                                        <li><strong class="text-red-300">Go Kru:</strong> Tembak Asap Dry Ice! Dorong Buldoser!</li>
                                         <li><strong class="text-emerald-400">Go Grup 9 & 10:</strong> Masuk Pagar Betis & Fall Choreo.</li>
                                     </ul>
                                 </td>
@@ -1393,7 +1151,7 @@
                                 <td class="px-4 py-4">
                                     <ul class="list-disc list-inside space-y-1 text-xs">
                                         <li><strong class="text-emerald-300">Go ALL CAST:</strong> Memenuhi Panggung Bawah & Lorong.</li>
-                                        <li><strong class="text-yellow-300">Call FX:</strong> Tembak Konfeti saat Bow!</li>
+                                        <li><strong class="text-yellow-300">Call FX:</strong> Tembak Konfeti saat Bow terakhir!</li>
                                     </ul>
                                 </td>
                             </tr>
@@ -1408,7 +1166,7 @@
     <!-- Footer -->
     <footer class="bg-slate-900 py-8 border-t border-slate-800 text-center">
         <p class="text-slate-500 text-sm">© 2026 Tim Produksi Teater "Mencari Taman" - SD Islam Roushon Fikr.</p>
-        <p class="text-slate-600 text-xs mt-2">Dibuat dengan <i class="fa-solid fa-lightbulb text-yellow-500 mx-1"></i> untuk eksekusi panggung spektakuler (V12 Director's Script).</p>
+        <p class="text-slate-600 text-xs mt-2">Dibuat dengan <i class="fa-solid fa-lightbulb text-yellow-500 mx-1"></i> untuk eksekusi panggung spektakuler (V13 Ultimate Integrated).</p>
     </footer>
 
     <!-- Script Application Logic -->
@@ -1442,8 +1200,8 @@
                 event.currentTarget.classList.add('active');
             }
 
-            // Inisiasi chart jika membuka tab analisis
-            if(tabName === 'analisis' && !castChartInstance) {
+            // Inisiasi chart jika membuka tab analisis dan cegah duplikasi grafik
+            if(tabName === 'analisis') {
                 initCharts();
             }
         }
@@ -1452,6 +1210,10 @@
             const castCtx = document.getElementById('castChart');
             const intCtx = document.getElementById('intensityChart');
             
+            // Destroy existing charts if they exist before re-rendering
+            if(castChartInstance) castChartInstance.destroy();
+            if(intensityChartInstance) intensityChartInstance.destroy();
+
             if(castCtx) {
                 castChartInstance = new Chart(castCtx.getContext('2d'), {
                     type: 'doughnut',
